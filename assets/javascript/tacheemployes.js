@@ -62,10 +62,10 @@ function dresserEmployesTaches(baseEmployes) {
         if (dataTache.length != 0) {
           dataTache.forEach(key => {
             const optionSelect = document.createElement("option");
-            optionSelect.value = key.libelle;
+            optionSelect.value = key.id+"-"+key.libelle;
             optionSelect.textContent = key.libelle;
             selectTache.append(optionSelect);
-          })
+          });
         }
       }
 
@@ -186,7 +186,7 @@ document.querySelectorAll("option").forEach(key =>{ key.style.fontSize = "13px";
 document.querySelectorAll("button[ref='valider']").forEach(cle=>cle.addEventListener("click", validerTache));
 function validerTache(event){
   const employe = JSON.parse(localStorage.getItem("EMPLOYES")).filter(cle => cle.id == event.target.id.replace("Valider-", ""))[0];
-  const tache = document.getElementById(event.target.id.replace("Valider", "tache"));
+  const tache = document.getElementById(event.target.id.replace("Valider", "tache")).value.split("-");
   const debutTache = document.getElementById(event.target.id.replace("Valider", "debut"));
   const finTache = document.getElementById(event.target.id.replace("Valider", "fin"));
   const dureTache = document.getElementById(event.target.id.replace("Valider", "duree"));
@@ -200,7 +200,8 @@ function validerTache(event){
         idEmploye: employe.id,
         employe: employe.nom,
         categorie: employe.specialite,
-        tache: tache.value,
+        idTache: tache[0],
+        tache: document.getElementById(event.target.id.replace("Valider", "tache")).value.replace(`${tache[0]}-`, ""),
         debutTache: debutTache.value,
         dureTache: dureTache.value,
         valider_le: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),

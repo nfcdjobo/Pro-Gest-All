@@ -359,11 +359,6 @@ function modifierTaches(evenement) {
             newprixanormalinput.textContent = prixanormalElement.value;
             prixanormalElement.remove();
 
-
-
-
-
-
             const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
             const inaction1 = document.createElement("button");
             inaction1.id = envo.id.replace("envoyer", "modifier");
@@ -390,7 +385,6 @@ function modifierTaches(evenement) {
             document.getElementById("LIB").textContent = moninput.value;
             document.getElementById("DES").textContent = monselect.value;
             HID.style.visibility = "visible";
-
         } else {
             alert("Aucune action n'a été faite !")
         }
