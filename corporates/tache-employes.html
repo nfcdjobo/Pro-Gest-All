@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pro-Gest’All | Créer Employés</title>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="./../assets/images/logo/logoprogestall.svg">
+
+    <link id="theme-style" rel="stylesheet" href="./../assets/css/portal.css">
+    <link id="theme-style" rel="stylesheet" href="./../assets/css/mescouleurs.css">
+
+</head>
+
+<body class="app">
+    <header class="app-header haut-niveau">
+        <div class="en-tete-inner">
+            <div class="contenaire-fluid polo-2">
+                <div class="en-tete-content">
+                    <div class="row justifier-contenu centrer-contenu">
+                        <div class="colle-auto">
+                            <a id="sidepanel-toggler" class="sidepanel-toggler d-inline-block d-xl-none" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30"
+                                    role="img">
+                                    <title>Menu</title>
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10"
+                                        stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="barre-recherche pas-dimension-super col">
+                            <i class="barre-recherche-auto fas fa-search"></i>
+                        </div>
+                        <div class="toute-boite-recherche col">
+                            <form class="app-search-form">
+                                <input type="text" placeholder="Search..." name="search"
+                                    class="form-control search-input">
+                                <button type="submit" class="bouton bouton-recherche bouton-primondial" value="Search">
+                                    <i class="bi bi-search"></i></button>
+                            </form>
+                        </div>
+                        <!--//toute-boite-recherche-->
+
+                        <div class="app-utilities colle-auto">
+                            <div class="element-utile">
+                                <a href="./reglage.html" title="Settings">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear icon"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+                                        <path fill-rule="evenodd"
+                                            d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <!--//element-utile-->
+
+                            <div class="element-utile mon-dropdown dropdown">
+                                <a class="mes-dropdown" id="logo-user"><img
+                                        src="./../assets/images/logo/logoprogestall.svg" alt="user profile"></a>
+                                <ul class="dropdown-menu" id="dropdown-menu" aria-labelledby="logo-user">
+                                    <li><a class="element-dropdown" href="./account.html">Account</a></li>
+                                    <li><a class="element-dropdown" href="./reglage.html">Réglage</a></li>
+                                    <li>
+                                        <hr class="dropdown-sauter">
+                                    </li>
+                                    <li><a class="element-dropdown" href="./login.html">Me déconnecter</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="app-sidepanel" class="app-sidepanel">
+            <div id="sidepanel-drop" class="sidepanel-drop"></div>
+            <div class="sidepanel-inner d-flex flex-column">
+                <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
+                <div class="app-branding">
+                    <a class="app-logo" href="./dashboard.html">
+                        <img class="logo-icon me-2" src="./../assets/images/logo/logoprogestall.svg" alt="logo">
+                        <span class="logo-text">Pro-Gest'All</span>
+                    </a>
+                </div>
+                <nav id="app-nav-main" class="app-nav app-nav-main flex-grow-1">
+                    <ul class="app-menu list-nonstyle accordion" id="menu-accordion">
+                        <li class="nav-item">
+                            <a class="nav-link" href="./dashboard.html">
+                                <span class="icone-navbar">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M7.646 1.146a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5H9.5a.5.5 0 0 1-.5-.5v-4H7v4a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6zM2.5 7.707V14H6v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4h3.5V7.707L8 2.207l-5.5 5.5z" />
+                                        <path fill-rule="evenodd"
+                                            d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                                    </svg>
+                                </span>
+                                <span class="contenu-menu">Tableau de bord</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./roles.html">
+                                <span class="icone-navbar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                        class="bi bi-ubuntu" viewBox="0 0 16 16">
+                                        <path
+                                            d="M2.273 9.53a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.547Zm9.467-4.984a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546ZM7.4 13.108a5.535 5.535 0 0 1-3.775-2.88 3.273 3.273 0 0 1-1.944.24 7.4 7.4 0 0 0 5.328 4.465c.53.113 1.072.169 1.614.166a3.253 3.253 0 0 1-.666-1.9 5.639 5.639 0 0 1-.557-.091Zm3.828 2.285a2.273 2.273 0 1 0 0-4.546 2.273 2.273 0 0 0 0 4.546Zm3.163-3.108a7.436 7.436 0 0 0 .373-8.726 3.276 3.276 0 0 1-1.278 1.498 5.573 5.573 0 0 1-.183 5.535 3.26 3.26 0 0 1 1.088 1.693ZM2.098 3.998a3.28 3.28 0 0 1 1.897.486 5.544 5.544 0 0 1 4.464-2.388c.037-.67.277-1.313.69-1.843a7.472 7.472 0 0 0-7.051 3.745Z" />
+                                    </svg>
+                                </span>
+                                <span class="contenu-menu">Rôles</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./categories.html">
+                                <span class="icone-navbar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-snow3" viewBox="0 0 16 16">
+                                        <path d="M8 7.5a.5.5 0 1 0 0 1 .5.5 0 0 0 0-1z" />
+                                        <path
+                                            d="M8 16a.5.5 0 0 1-.5-.5v-1.293l-.646.647a.5.5 0 0 1-.707-.708L7.5 12.793v-1.51l-2.053-1.232-1.348.778-.495 1.85a.5.5 0 1 1-.966-.26l.237-.882-1.12.646a.5.5 0 0 1-.5-.866l1.12-.646-.883-.237a.5.5 0 1 1 .258-.966l1.85.495L5 9.155v-2.31l-1.4-.808-1.85.495a.5.5 0 1 1-.259-.966l.884-.237-1.12-.646a.5.5 0 0 1 .5-.866l1.12.646-.237-.883a.5.5 0 1 1 .966-.258l.495 1.849 1.348.778L7.5 4.717v-1.51L6.147 1.854a.5.5 0 1 1 .707-.708l.646.647V.5a.5.5 0 0 1 1 0v1.293l.647-.647a.5.5 0 1 1 .707.708L8.5 3.207v1.51l2.053 1.232 1.348-.778.495-1.85a.5.5 0 1 1 .966.26l-.236.882 1.12-.646a.5.5 0 0 1 .5.866l-1.12.646.883.237a.5.5 0 1 1-.26.966l-1.848-.495-1.4.808v2.31l1.4.808 1.849-.495a.5.5 0 1 1 .259.966l-.883.237 1.12.646a.5.5 0 0 1-.5.866l-1.12-.646.236.883a.5.5 0 1 1-.966.258l-.495-1.849-1.348-.778L8.5 11.283v1.51l1.354 1.353a.5.5 0 0 1-.707.708l-.647-.647V15.5a.5.5 0 0 1-.5.5zm2-6.783V6.783l-2-1.2-2 1.2v2.434l2 1.2 2-1.2z" />
+                                    </svg>
+                                </span>
+                                <span class="contenu-menu">Catégories d'employé</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./taches.html">
+                                <span class="icone-navbar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                        class="bi bi-book" viewBox="0 0 16 16">
+                                        <path
+                                            d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                                    </svg>
+                                </span>
+                                <span class="contenu-menu">Tâches</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./admin.html">
+                                <span class="icone-navbar">
+                                    <svg width="1em" height="1em" viewBox="0 0 20 20" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg" class="bi bi-database-fill-gear">
+                                        <rect x="0" fill="none" width="20" height="20" />
+                                        <g>
+                                            <path fill-rule="evenodd"
+                                                d="M14 10c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm-1-5V3h2v2h2v2h-2v2h-2V7h-2V5h2zM9 6c0-1.6.8-3 2-4h-1c-3.9 0-7 .9-7 2 0 1 2.6 1.8 6 2zm1 9c-3.9 0-7-.9-7-2v3c0 1.1 3.1 2 7 2s7-.9 7-2v-3c0 1.1-3.1 2-7 2zm2.8-4.2c-.9.1-1.9.2-2.8.2-3.9 0-7-.9-7-2v3c0 1.1 3.1 2 7 2s7-.9 7-2v-2c-.9.7-1.9 1-3 1-.4 0-.8-.1-1.2-.2zM10 10h1c-1-.7-1.7-1.8-1.9-3C5.7 6.9 3 6 3 5v3c0 1.1 3.1 2 7 2z" />
+                                        </g>
+                                    </svg>
+                                </span>
+                                <span class="contenu-menu">Administrateurs</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="./employes.html">
+                                <span class="icone-navbar">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
+                                        class="bi bi-person-workspace" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H4Zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                                        <path
+                                            d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.373 5.373 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2H2Z" />
+                                    </svg>
+                                </span>
+                                <span class="contenu-menu">Employés</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item menu-inferieur">
+                            <a class="nav-link menu-inferieur-tog active" id="planification"
+                                href="#Planifier-les-tâches">
+                                <span class="icone-navbar">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-files"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4z" />
+                                        <path
+                                            d="M6 0h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2v-1a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6a1 1 0 0 0-1 1H4a2 2 0 0 1 2-2z" />
+                                    </svg>
+                                </span>
+                                <span class="contenu-menu">Planifier les tâches</span>
+                                <span class="icone-menu">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z" />
+                                    </svg>
+                                </span>
+                            </a>
+                            <div id="planification-1" class="collapse premier-menu">
+                                <ul class="list-menu list-nonstyle">
+                                    <li class="element_menu">
+                                        <a class="link-menu " href="./tache-admin.html">Administrateurs</a>
+                                    </li>
+                                    <li class="element_menu">
+                                        <a class="link-menu active" href="./tache-employes.html">Employés</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="plaquette-footer">
+                    <nav class="app-nav app-nav-footer">
+                        <ul class="app-menu footer-menu list-nonstyle">
+                            <li class="nav-item">
+
+                                <a class="nav-link" href="./reglage.html">
+                                    <span class="icone-navbar">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z" />
+                                            <path fill-rule="evenodd"
+                                                d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z" />
+                                        </svg>
+                                    </span>
+                                    <span class="contenu-menu">Réglages</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="app-wrapper">
+        <div class="app-content cible-3 cible-mode-3 logueur-page-4">
+            <div class="container-xl">
+                <div class="row g-3 mb-4 centrer-contenu justifier-contenu">
+                    <div class="colle-auto">
+                        <h1 class="app-page-title mb-0">Affecter les tâches</h1>
+                    </div>
+                    <div class="colle-auto">
+                        <div class="page-utilities">
+                            <div class="row g-2 justify-content-start justify-content-md-end centrer-contenu">
+                                <div class="colle-auto">
+                                    <form class="docs-search-form row gx-1 centrer-contenu">
+                                        <div class="colle-auto">
+                                            <input type="text" id="search-docs" name="searchdocs"
+                                                class="form-control search-docs" placeholder="Search">
+                                        </div>
+                                        <div class="colle-auto">
+                                            <button type="submit" class="bouton tout-bouton-suivant">
+                                                <i class="bi bi-search"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                                <div class="colle-auto">
+                                    <select class="form-select w-auto">
+                                        <option selected="" value="option-1">All</option>
+                                        <option value="option-2">Text file</option>
+                                        <option value="option-3">Image</option>
+                                        <option value="option-4">Spreadsheet</option>
+                                        <option value="option-5">Presentation</option>
+                                        <option value="option-6">Zip file</option>
+                                    </select>
+                                </div>
+
+                                <div class="colle-auto">
+                                    <a class="bouton app-bouton-primondial" href="ajouteremployes.html">
+                                        <i class="bi bi-person-fill-add me-2"></i> Créer Employé
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+
+
+
+                <nav id="orders-table-tab"
+                    class="orders-table-tab tout-navbar-table nav shadow-sm flex-column flex-sm-row mb-4">
+                    <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab"
+                        href="#orders-all">All</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" href="#orders-paid">Paid</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab"
+                        href="#orders-pending">Pending</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab"
+                        href="#orders-cancelled">Cancelled</a>
+                </nav>
+
+
+                <div class="tab-content" id="orders-table-tab-content">
+                    <div class="tab-pane fade show active" id="orders-all" role="tabpanel"
+                        aria-labelledby="orders-all-tab">
+                        <div class="app-card app-card-orders-table shadow-sm mb-5">
+                            <div class="niveau-stand-body">
+                                <div class="table-responsive">
+                                    <table class="table app-table-hover mb-0 text-left">
+                                        <thead>
+                                            <tr>
+                                                <th class="cell">ID</th>
+                                                <th class="cell">PHOTO</th>
+                                                <th class="cell">EMPLOYE</th>
+                                                <th class="cell">CATEGORIE</th>
+                                                <th class="cell">TÂCHE</th>
+                                                <th class="cell">DEBUT DE TÂCHE</th>
+                                                <th class="cell">FIN DE TÂCHE</th>
+                                                <th class="cell">DUREE</th>
+                                                <th class="cell">ATTRIBUER</th>
+                                                <th class="cell">CONFIRMER</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="contenu-tach"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="tout-pagination">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!--//tout-pagination-->
+
+                    </div>
+                    <!--//tab-pane-->
+
+                    <div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
+                        <div class="app-card app-card-orders-table mb-5">
+                            <div class="niveau-stand-body">
+                                <div class="table-responsive">
+
+                                    <table class="table mb-0 text-left">
+                                        <thead>
+                                            <tr>
+                                                <th class="cell">Order</th>
+                                                <th class="cell">Product</th>
+                                                <th class="cell">Customer</th>
+                                                <th class="cell">Date</th>
+                                                <th class="cell">Status</th>
+                                                <th class="cell">Total</th>
+                                                <th class="cell"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="cell">#15346</td>
+                                                <td class="cell"><span class="truncate">Lorem ipsum dolor sit amet eget
+                                                        volutpat erat</span></td>
+                                                <td class="cell">John Sanders</td>
+                                                <td class="cell"><span>17 Oct</span><span class="note">2:16 PM</span>
+                                                </td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$259.35</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="cell">#15344</td>
+                                                <td class="cell"><span class="truncate">Pellentesque diam
+                                                        imperdiet</span></td>
+                                                <td class="cell">Teresa Holland</td>
+                                                <td class="cell"><span class="cell-data">16 Oct</span><span
+                                                        class="note">01:16 AM</span></td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$123.00</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="cell">#15343</td>
+                                                <td class="cell"><span class="truncate">Vestibulum a accumsan lectus sed
+                                                        mollis ipsum</span></td>
+                                                <td class="cell">Jayden Massey</td>
+                                                <td class="cell"><span class="cell-data">15 Oct</span><span
+                                                        class="note">8:07 PM</span></td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$199.00</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="cell">#15341</td>
+                                                <td class="cell"><span class="truncate">Morbi vulputate lacinia neque et
+                                                        sollicitudin</span></td>
+                                                <td class="cell">Raymond Atkins</td>
+                                                <td class="cell"><span class="cell-data">11 Oct</span><span
+                                                        class="note">11:18 AM</span></td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$678.26</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./../assets/javascript/lepremisse.js"></script>
+    <script src="./../assets/javascript/popupprfil.js"></script>
+    <script src="./../assets/javascript/planifie.js"></script>
+
+    <!-- Validateur d'adresse email et d'adresse téléphonique  -->
+    <script src="./../assets/javascript/verifierChamps.js"></script>
+
+    <!--  -->
+    <script src="./../assets/javascript/tacheemployes.js"></script>
+
+</body>
+
+</html>
