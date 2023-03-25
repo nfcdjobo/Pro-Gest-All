@@ -75,28 +75,43 @@ function dresserEmployesTaches(baseEmployes) {
       ligne.append(col_debut);
 
       const debut = document.createElement("input");
-      debut.type = "datetime-local";
+      debut.type = "date";
       debut.className = "form-control";
       debut.id = `debut-${employe.id}`;
       debut.style.maxWidth = "170px";
       col_debut.append(debut);
 
-      const col_fin = document.createElement("td");
-      col_fin.className = "cell";
-      col_fin.id = `col-fin-${employe.id}`;
-      ligne.append(col_fin);
 
-      const fin = document.createElement("input");
-      fin.type = "datetime-local";
-      fin.className = "form-control";
-      fin.id = `fin-${employe.id}`;
-      fin.style.maxWidth = "170px";
-      col_fin.append(fin);
 
-      const duree = document.createElement("td");
+      const col_duree = document.createElement("td");
+      col_duree.className = "cell";
+      col_duree.id = `col-duree-${employe.id}`;
+      ligne.append(col_duree);
+
+      const duree = document.createElement("input");
+      duree.type = "number";
+      duree.min = 1;
       duree.id = `duree-${employe.id}`;
-      duree.textContent = "03 jour(s)";
-      ligne.append(duree);
+      duree.style.maxWidth = "70px"
+      duree.placeholder = "01"
+      duree.className = "form-control";
+      col_duree.append(duree);
+
+
+
+
+//       const col_fin = document.createElement("td");
+//       col_fin.className = "cell";
+//       col_fin.id = `col-fin-${employe.id}`;
+//       ligne.append(col_fin);
+// 
+//       const fin = document.createElement("input");
+//       fin.type = "datetime-local";
+//       fin.className = "form-control";
+//       fin.disabled = true;
+//       fin.id = `fin-${employe.id}`;
+//       fin.style.maxWidth = "170px";
+//       col_fin.append(fin);
 
       const col_validation = document.createElement("td");
       col_validation.id = `col-validation-${employe.id}`;
@@ -175,36 +190,43 @@ function validerTache(event){
   const debutTache = document.getElementById(event.target.id.replace("Valider", "debut"));
   const finTache = document.getElementById(event.target.id.replace("Valider", "fin"));
   const dureTache = document.getElementById(event.target.id.replace("Valider", "duree"));
-  alert(new Date(finTache.value) - new Date(debutTache.value))
-  const tacheAttribuees = [];
-  const attribution = {
-    id: `${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`,
-    idEmploye: employe.id,
-    employe: employe.nom,
-    categorie: employe.specialite,
-    tache: tache.value,
-    debutTache: debutTache.value,
-    finTache: finTache.value,
-    valider_le: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
-    statut: 1,
+  const start = JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES"));
+  
+  if (debutTache.value != ""){
+    if (dureTache.value != ""){
+      const tacheAttribuees = [];
+      const attribution = {
+        id: `${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`,
+        idEmploye: employe.id,
+        employe: employe.nom,
+        categorie: employe.specialite,
+        tache: tache.value,
+        debutTache: debutTache.value,
+        dureTache: dureTache.value,
+        valider_le: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+        statut: 1,
+      }
 
+      const dataTacheAttribue = [];
+      if (JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"))) {
+        const tacheAttribues = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"));
+        tacheAttribues.push(attribution);
+        localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(tacheAttribues));
+      } else {
+        dataTacheAttribue.push(attribution);
+        localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(dataTacheAttribue));
+      }
+      const employJson = JSON.parse(localStorage.getItem("EMPLOYES"));
+      const cible = employJson.filter(cle => cle.id == attribution.idEmploye && cle.nom == attribution.employe)[0];
+      const indiceCible = employJson.indexOf(cible);
+      cible.programmer = true;
+      employJson[indiceCible] = cible;
+      localStorage.setItem("EMPLOYES", JSON.stringify(employJson));
+      document.getElementById(event.target.id.replace("Valider", "ligne")).remove();
+    }else{
+      dureTache.focus();
+    }
+  }else{
+    debutTache.focus();
   }
-
-  // const dataTacheAttribue = [];
-  // if(JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"))){
-  //   const tacheAttribues = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"));
-  //   tacheAttribues.push(attribution);
-  //   localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(tacheAttribues));
-  // }else{
-  //   dataTacheAttribue.push(attribution);
-  //   localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(dataTacheAttribue));
-  // }
-  // const employJson = JSON.parse(localStorage.getItem("EMPLOYES"));
-  // const cible = employJson.filter(cle => cle.id == attribution.idEmploye && cle.nom == attribution.employe)[0];
-  // const indiceCible = employJson.indexOf(cible);
-  // cible.programmer = true;
-  // employJson[indiceCible] = cible;
-  // localStorage.setItem("EMPLOYES", JSON.stringify(employJson));
-  // document.getElementById(event.target.id.replace("Valider", "ligne")).remove();
-
 }

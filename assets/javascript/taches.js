@@ -9,7 +9,7 @@ if (JSON.parse(localStorage.getItem("CATEGORIES")).filter(key => key.statut != 0
     })
 }
 
-// localStorage.removeItem("TACHES");
+
 
 document.getElementById("saveTache").addEventListener("click", saveTaches);
 const HID = document.getElementById("hidden");
@@ -17,64 +17,92 @@ HID.style.visibility = "hidden";
 function saveTaches(event) {
     const errorlibelle = document.getElementById("errorlibelle");
     const errorCategorie = document.getElementById("errorCategorie");
+    const errorprix = document.getElementById("errorprix");
+    const errorprixau = document.getElementById("errorprixau");
+
     const libelleTache = document.getElementById("libelleTache");
+    const prixTache = document.getElementById("prixTache");
+    const prixTacheAutre = document.getElementById("prixTacheAutre");
     const categorieEmployes = document.getElementById("categorie-employes");
+
     let datecreer = new Date();
     let datemodifier = new Date();
     if (libelleTache.value.replaceAll(" ", "") != "") {
         errorlibelle.textContent = "";
-        if (categorieEmployes.value.replaceAll(" ", "") != "") {
-            errorCategorie.textContent = "";
-            const ID = document.getElementById("ID");
-            const LIB = document.getElementById("LIB");
-            const DES = document.getElementById("DES");
+        if (prixTache.value != "") {
+            errorprix.textContent = "";
+            if (prixTacheAutre.value != "") {
+                errorprixau.textContent = "";
+                if (categorieEmployes.value.replaceAll(" ", "") != "") {
+                    errorCategorie.textContent = "";
 
-            let dataAll = [];
-            const NewTache = {
-                id: "",
-                libelle: libelleTache.value,
-                destinataire: categorieEmployes.value,
-                statut: 1,
-                effectue: false,
-                creerle: datecreer.toLocaleString('en-GB', { timeZone: 'UTC' }),
-                modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' })
-            };
+                    const ID = document.getElementById("ID");
+                    const LIB = document.getElementById("LIB");
+                    const PRXN = document.getElementById("PRXN");
+                    const PRXAU = document.getElementById("PRXAU");
+                    const DES = document.getElementById("DES");
 
-            if (localStorage.getItem("TACHES") == null) {
-                NewTache.id = "T00L1";
-                dataAll.push(NewTache);
-                localStorage.setItem("TACHES", JSON.stringify(dataAll));
-                libelleTache.style.border = "1px solid rgb(206, 212, 218)";
-                libelleTache.value = "";
-                categorieEmployes.value = "";
-            } else {
-                if (!JSON.parse(localStorage.getItem("TACHES")).find(cle => cle.libelle == libelleTache.value)) {
-                    const conversion = JSON.parse(localStorage.getItem("TACHES"))
-                    conversion.forEach(objetCategorie => {
-                        dataAll.push(objetCategorie)
-                    });
-                    NewTache.id = "T00L" + (dataAll.length + 1);
-                    dataAll.push(NewTache);
-                    localStorage.setItem("TACHES", JSON.stringify(dataAll));
-                    libelleTache.style.border = "1px solid rgb(206, 212, 218)";
-                    libelleTache.value = "";
-                    categorieEmployes.value = "";
-                } else {
-                    errorlibelle.textContent = "Cette tâche existe déjà.";
-                    errorlibelle.style.color = "red";
-                    errorlibelle.style.fontWeight = "blod";
+                    let dataAll = [];
+                    const NewTache = {
+                        id: "",
+                        libelle: libelleTache.value,
+                        destinataire: categorieEmployes.value,
+                        prixTache: parseInt(prixTache.value),
+                        prixTacheAutre: parseInt(prixTacheAutre.value),
+                        effectue: false,
+                        statut: 1,
+                        creerle: datecreer.toLocaleString('en-GB', { timeZone: 'UTC' }),
+                        modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' }),
+                    };
+
+                    if (localStorage.getItem("TACHES") == null) {
+                        NewTache.id = "T00L1";
+                        dataAll.push(NewTache);
+                        localStorage.setItem("TACHES", JSON.stringify(dataAll));
+                        libelleTache.style.border = "1px solid rgb(206, 212, 218)";
+                        libelleTache.value = "";
+                        categorieEmployes.value = "";
+                    } else {
+                        if (!JSON.parse(localStorage.getItem("TACHES")).find(cle => cle.libelle == libelleTache.value)) {
+                            const conversion = JSON.parse(localStorage.getItem("TACHES"))
+                            conversion.forEach(objetCategorie => {
+                                dataAll.push(objetCategorie)
+                            });
+                            NewTache.id = "T00L" + (dataAll.length + 1);
+                            dataAll.push(NewTache);
+                            localStorage.setItem("TACHES", JSON.stringify(dataAll));
+                            libelleTache.style.border = "1px solid rgb(206, 212, 218)";
+                            libelleTache.value = "";
+                            categorieEmployes.value = "";
+                        } else {
+                            errorlibelle.textContent = "Cette tâche existe déjà.";
+                            errorlibelle.style.color = "red";
+                            errorlibelle.style.fontWeight = "blod";
+                        }
+                    }
+                    ID.textContent = NewTache.id;
+                    LIB.textContent = NewTache.libelle;
+                    DES.textContent = NewTache.destinataire;
+                    HID.style.visibility = "visible";
+
+                   
+                }else{
+                    categorieEmployes.focus()
+                    categorieEmployes.style.border = "1.2px solid red";
+                    errorCategorie.textContent = "Ce champ est obligatoire";
+                    errorCategorie.style.color = "red";
                 }
+            }else{
+                prixTacheAutre.focus()
+                prixTacheAutre.style.border = "1.2px solid red";
+                errorprixau.textContent = "Ce champ est obligatoire";
+                errorprixau.style.color = "red";
             }
-            ID.textContent = NewTache.id;
-            LIB.textContent = NewTache.libelle;
-            DES.textContent = NewTache.destinataire;
-            HID.style.visibility = "visible";
-
-        } else {
-            categorieEmployes.focus()
-            categorieEmployes.style.border = "1.2px solid red";
-            errorCategorie.textContent = "Ce champ est obligatoire";
-            errorCategorie.style.color = "red";
+        }else {
+            prixTache.focus()
+            prixTache.style.border = "1.2px solid red";
+            errorprix.textContent = "Ce champ est obligatoire";
+            errorprix.style.color = "red";
         }
     } else {
         libelleTache.focus();
@@ -114,17 +142,17 @@ function afficheTaches(donneCategorie) {
             monDestinataire.textContent = element.destinataire;
             maligne.append(monDestinataire);
 
-            const creerle = document.createElement("td");
-            creerle.className = "cell";
-            creerle.id = `taches-${element.id}-creerle`;
-            creerle.textContent = element.creerle;
-            maligne.append(creerle);
+            const monPrixNormal = document.createElement("td");
+            monPrixNormal.className = "cell";
+            monPrixNormal.id = `taches-${element.id}-prixnormal`;
+            monPrixNormal.textContent = element.prixTache;
+            maligne.append(monPrixNormal);
 
-            const modifierle = document.createElement("td");
-            modifierle.className = "cell";
-            modifierle.id = `taches-${element.id}-modifierle`;
-            modifierle.textContent = element.modifierle;
-            maligne.append(modifierle);
+            const monPrixAnormal = document.createElement("td");
+            monPrixAnormal.className = "cell";
+            monPrixAnormal.id = `taches-${element.id}-prixanormal`;
+            monPrixAnormal.textContent = element.prixTacheAutre;
+            maligne.append(monPrixAnormal);
 
             const monaction1 = document.createElement("td");
             monaction1.className = "cell";
@@ -148,6 +176,9 @@ function afficheTaches(donneCategorie) {
             monaction2.append(boutonsupprimer);
             maligne.append(monaction2);
             contenutableau.append(maligne);
+
+            // document.querySelectorAll("td").forEach(cle =>{ cle.style.fontSize = "12px", cle.style.fontWeight = "500"});
+            
         })
     }
 
@@ -166,7 +197,9 @@ function creerFormulaireModifier(event) {
 
         
         const encainInputLibelle = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
+        console.log(encainInputLibelle.value)
         const tdLibelle = document.getElementById(envo.id.replace("envoyer", "libelle"));
+        console.log(tdLibelle)
         tdLibelle.textContent = encainInputLibelle.value;
         encainInputLibelle.remove();
 
@@ -174,6 +207,21 @@ function creerFormulaireModifier(event) {
         const tdDestinataire = document.getElementById(envo.id.replace("envoyer", "categorie"));
         tdDestinataire.textContent = encainSelectDestinataire.value;
         encainSelectDestinataire.remove();
+
+        const encainInputPrixnormal = document.getElementById(`new-${envo.id.replace("envoyer", "prixnormal")}`);
+        const tdPrixnormal = document.getElementById(envo.id.replace("envoyer", "prixnormal"));
+        tdPrixnormal.textContent = encainInputPrixnormal.value;
+        encainInputPrixnormal.remove();
+
+        const encainInputPrixanormal = document.getElementById(`new-${envo.id.replace("envoyer", "prixanormal")}`);
+        console.log("encainInputPrixanormal", encainInputPrixanormal)
+        const tdPrixanormal = document.getElementById(envo.id.replace("envoyer", "prixanormal"));
+        tdPrixanormal.textContent = encainInputPrixanormal.value;
+        encainInputPrixanormal.remove();
+
+
+
+
 
         const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
         const inaction1 = document.createElement("button");
@@ -204,6 +252,26 @@ function creerFormulaireModifier(event) {
     libelleElement.textContent = "";
     libelleElement.append(newlibelleinput);
 
+    const prixnormalElement = document.getElementById(event.target.id.replace("modifier", "prixnormal"));
+    const newprixnormalinput = document.createElement("input");
+    newprixnormalinput.type = "number";
+    newprixnormalinput.value = prixnormalElement.textContent;
+    newprixnormalinput.id = `new-${event.target.id.replace("modifier", "prixnormal")}`;
+    newprixnormalinput.className = "form-control";
+    prixnormalElement.textContent = "";
+    prixnormalElement.append(newprixnormalinput);
+
+    const prixanormalElement = document.getElementById(event.target.id.replace("modifier", "prixanormal"));
+    const newprixanormalinput = document.createElement("input");
+    newprixanormalinput.type = "number";
+    newprixanormalinput.value = prixanormalElement.textContent;
+    newprixanormalinput.id = `new-${event.target.id.replace("modifier", "prixanormal")}`;
+    newprixanormalinput.className = "form-control";
+    prixanormalElement.textContent = "";
+    prixanormalElement.append(newprixanormalinput);
+
+
+
     const adminRoles = document.getElementById(event.target.id.replace("modifier", "categorie"));
     const selectDestinataire = document.createElement("select");
     selectDestinataire.id = `new-${event.target.id.replace("modifier", "categorie")}`;
@@ -226,9 +294,6 @@ function creerFormulaireModifier(event) {
     libelleElement.innerHTML = "";
     libelleElement.append(newlibelleinput);
 
-
-
-
     const action2element = document.getElementById(event.target.id.replace("modifier", "action2"));
     const annuleelement = document.createElement("button")
     annuleelement.id = event.target.id.replace("modifier", "annuler");
@@ -246,22 +311,29 @@ function creerFormulaireModifier(event) {
     envoieement.addEventListener("click", modifierTaches);
     action1element.innerHTML = "";
     action1element.append(envoieement);
+    // document.querySelectorAll("input").forEach(cle => { cle.style.fontSize = "13px", cle.style.fontWeight = "500" });
+    // document.querySelectorAll("option").forEach(cle => { cle.style.fontSize = "13px", cle.style.fontWeight = "500" });
+    // document.querySelectorAll("select").forEach(cle => { cle.style.fontSize = "13px", cle.style.fontWeight = "500" });
 }
 
 
 function modifierTaches(evenement) {
     const idenel = document.getElementById(evenement.target.id.replace("envoyer", "id"));
     const moninput = document.getElementById("new-" + evenement.target.id.replace("envoyer", "libelle"));
+    const prixnormal = document.getElementById("new-" + evenement.target.id.replace("envoyer", "prixnormal"));
+    const prixanormal = document.getElementById("new-" + evenement.target.id.replace("envoyer", "prixanormal"));
     const monselect = document.getElementById("new-" + evenement.target.id.replace("envoyer", "categorie"));
 
     const local = JSON.parse(localStorage.getItem("TACHES"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible) {
-        if ((moninput.value != cible.libelle || monselect.value != cible.destinataire) && moninput.value.replaceAll(" ", "") != "") {
+        if ((moninput.value != cible.libelle || monselect.value != cible.destinataire || parseInt(prixnormal.value) != cible.prixTache || parseInt(prixanormal.value) != cible.prixTacheAutre) && moninput.value.replaceAll(" ", "") != "" && prixnormal.value != "" && prixanormal.value != "") {
             let ladate = new Date();
             cible.libelle = moninput.value;
             cible.destinataire = monselect.value;
+            cible.prixTache = parseInt(prixnormal.value);
+            cible.prixTacheAutre = parseInt(prixanormal.value);
             cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
             local[indece] = cible;
             localStorage.setItem("TACHES", JSON.stringify(local));
@@ -276,6 +348,21 @@ function modifierTaches(evenement) {
             const tdDestinataire = document.getElementById(envo.id.replace("envoyer", "categorie"));
             tdDestinataire.textContent = encainSelectDestinataire.value;
             encainSelectDestinataire.remove();
+
+            const prixnormalElement = document.getElementById("new-"+envo.id.replace("envoyer", "prixnormal"));
+            const tdprixnormalinput = document.getElementById(envo.id.replace("envoyer", "prixnormal"));
+            tdprixnormalinput.textContent = prixnormalElement.value;
+            prixnormalElement.remove();
+
+            const prixanormalElement = document.getElementById("new-"+envo.id.replace("envoyer", "prixanormal"));
+            const newprixanormalinput = document.getElementById(envo.id.replace("envoyer", "prixanormal"));
+            newprixanormalinput.textContent = prixanormalElement.value;
+            prixanormalElement.remove();
+
+
+
+
+
 
             const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
             const inaction1 = document.createElement("button");
@@ -323,6 +410,15 @@ function annulerAction(even) {
     tdSelectDestinataire.textContent = encainSelectDestinataire.value;
     encainSelectDestinataire.remove();
 
+    const prixnormalElement = document.getElementById(`new-${envo.id.replace("annuler", "prixnormal")}`);
+    const tdprixnormalinput = document.getElementById(envo.id.replace("annuler", "prixnormal"));
+    tdprixnormalinput.textContent = prixnormalElement.value;
+    prixnormalElement.remove();
+
+    const prixanormalElement = document.getElementById(`new-${envo.id.replace("annuler", "prixanormal")}`);
+    const tdprixanormalinput = document.getElementById(envo.id.replace("annuler", "prixanormal"));
+    tdprixanormalinput.textContent = prixanormalElement.value;
+    prixanormalElement.remove();
 
     const tdaction1 = document.getElementById(envo.id.replace("annuler", "action1"));
     const inaction1 = document.createElement("button");

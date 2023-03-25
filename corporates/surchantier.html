@@ -2,17 +2,16 @@
 <html lang="en">
 
 <head>
-    <title>Pro-Gest’All | Tâches</title>
+    <title>Pro-Gest’All | Créer Employés</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="shortcut icon" href="./../assets/images/logo/logoprogestall.svg">
 
-    <link rel="shortcut icon" href="./../assets/images/logo/logoprogestall.png">
-
-    <!-- App CSS -->
     <link id="theme-style" rel="stylesheet" href="./../assets/css/portal.css">
     <link id="theme-style" rel="stylesheet" href="./../assets/css/mescouleurs.css">
 
@@ -130,7 +129,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="./taches.html">
+                            <a class="nav-link" href="./taches.html">
                                 <span class="icone-navbar">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
                                         class="bi bi-book" viewBox="0 0 16 16">
@@ -173,7 +172,8 @@
                         </li>
 
                         <li class="nav-item menu-inferieur">
-                            <a class="nav-link menu-inferieur-tog" id="planification" href="#Planifier-les-tâches">
+                            <a class="nav-link menu-inferieur-tog active" id="planification"
+                                href="#Planifier-les-tâches">
                                 <span class="icone-navbar">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-files"
                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +198,7 @@
                                         <a class="link-menu " href="./tache-admin.html">Administrateurs</a>
                                     </li>
                                     <li class="element_menu">
-                                        <a class="link-menu" href="./tache-employes.html">Employés</a>
+                                        <a class="link-menu active" href="./tache-employes.html">Employés</a>
                                     </li>
                                 </ul>
                             </div>
@@ -229,14 +229,12 @@
             </div>
         </div>
     </header>
-
     <div class="app-wrapper">
-
         <div class="app-content cible-3 cible-mode-3 logueur-page-4">
             <div class="container-xl">
                 <div class="row g-3 mb-4 centrer-contenu justifier-contenu">
                     <div class="colle-auto">
-                        <h1 class="app-page-title mb-0">Tâches</h1>
+                        <h1 class="app-page-title mb-0">Chantiers</h1>
                     </div>
                     <div class="colle-auto">
                         <div class="page-utilities">
@@ -266,98 +264,155 @@
                         </div>
                     </div>
                 </div>
-
                 <hr class="mb-4">
 
 
 
-                <div class="row g-4 settings-section">
-                    <div class="colonne-modere-12 nbr-colonne-modere-4">
-                        <h3 class="section-title">Créer tâches</h3>
-                        <div class="app-card app-card-settings shadow-sm p-4">
-                            <div class="niveau-stand-body">
-                                <div class="row">
-                                    <div class="colonne-12 nbr-colonne-modere-12">
-                                        <div class="mb-3">
-                                            <label for="libelleTache" class="form-label">Libellé de tâche</label>
-                                            <input type="text" class="form-control" id="libelleTache"
-                                                placeholder="Libellé de la tâche">
-                                            <span id="errorlibelle"></span>
-                                        </div>
+                <nav id="orders-table-tab"
+                    class="orders-table-tab tout-navbar-table nav shadow-sm flex-column flex-sm-row mb-4">
+                    <a class="flex-sm-fill text-sm-center nav-link active" id="orders-all-tab"
+                        href="#orders-all">All</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" id="orders-paid-tab" href="#orders-paid">Paid</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" id="orders-pending-tab"
+                        href="#orders-pending">Pending</a>
+                    <a class="flex-sm-fill text-sm-center nav-link" id="orders-cancelled-tab"
+                        href="#orders-cancelled">Cancelled</a>
+                </nav>
 
-                                        <div class="mb-3">
-                                            <label for="prixTache" class="form-label">Prix de la tâche</label>
-                                            <input type="number" min="500" class="form-control" id="prixTache" placeholder="Prix de la tâche">
-                                            <span id="errorprix"></span>
-                                        </div>
 
-                                        <div class="mb-3">
-                                            <label for="prixTacheAutre" class="form-label">Prix si tâche non terminée</label>
-                                            <input type="number" min="500" class="form-control" id="prixTacheAutre" placeholder="Prix de la tâche">
-                                            <span id="errorprixau"></span>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="option" class="form-label">Destinée à la catégorie</label>
-                                            <select class="form-select" id="categorie-employes">
-                                                <option value="" selected>Choisir une catégorie</option>
-                                            </select>
-                                            <span id="errorCategorie"></span>
-                                        </div>
-                                        
-
-                                        <button type="submit" class="bouton bouton-primondial"
-                                            id="saveTache">Sauvégarder</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="hidden">
-                                <hr class="mb-4" hidden>
-                                <div class="resume" hidden>
-                                    <div>Identifiant : <span id="ID"></span></div>
-                                    <div>Libellé : <span id="LIB"></span></div>
-                                    <div>Catégorie : <span id="DES"></span></div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="colonne-modere-12 nbr-colonne-modere-8">
-                        <h3 class="section-title">Tâches ajoutées</h3>
-
-                        <div class="app-card app-card-settings shadow-sm p-4">
-
+                <div class="tab-content" id="orders-table-tab-content">
+                    <div class="tab-pane fade show active" id="orders-all" role="tabpanel"
+                        aria-labelledby="orders-all-tab">
+                        <div class="app-card app-card-orders-table shadow-sm mb-5">
                             <div class="niveau-stand-body">
                                 <div class="table-responsive">
                                     <table class="table app-table-hover mb-0 text-left">
                                         <thead>
                                             <tr>
                                                 <th class="cell">ID</th>
-                                                <th class="cell">LIBELLE</th>
-                                                <th class="cell">EXECUTEURS</th>
-                                                <th class="cell">PRIX NORMAL</th>
-                                                <th class="cell">AUTRE PRIX</th>
+                                                <th class="cell">PHOTO</th>
+                                                <th class="cell">EMPLOYE</th>
+                                                <th class="cell">CATEGORIE</th>
+                                                <th class="cell">TÂCHE</th>
+                                                <th class="cell">DEBUT DE TÂCHE</th>
+                                                <th class="cell">DUREE (jr)</th>
+                                                <th class="cell">ATTRIBUER</th>
+                                                <th class="cell">CONFIRMER</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="contenutableau"></tbody>
+                                        <tbody id="contenu-tach"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="tout-pagination">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="tab-pane fade" id="orders-paid" role="tabpanel" aria-labelledby="orders-paid-tab">
+                        <div class="app-card app-card-orders-table mb-5">
+                            <div class="niveau-stand-body">
+                                <div class="table-responsive">
+
+                                    <table class="table mb-0 text-left">
+                                        <thead>
+                                            <tr>
+                                                <th class="cell">Order</th>
+                                                <th class="cell">Product</th>
+                                                <th class="cell">Customer</th>
+                                                <th class="cell">Date</th>
+                                                <th class="cell">Status</th>
+                                                <th class="cell">Total</th>
+                                                <th class="cell"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="cell">#15346</td>
+                                                <td class="cell"><span class="truncate">Lorem ipsum dolor sit amet eget
+                                                        volutpat erat</span></td>
+                                                <td class="cell">John Sanders</td>
+                                                <td class="cell"><span>17 Oct</span><span class="note">2:16 PM</span>
+                                                </td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$259.35</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="cell">#15344</td>
+                                                <td class="cell"><span class="truncate">Pellentesque diam
+                                                        imperdiet</span></td>
+                                                <td class="cell">Teresa Holland</td>
+                                                <td class="cell"><span class="cell-data">16 Oct</span><span
+                                                        class="note">01:16 AM</span></td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$123.00</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="cell">#15343</td>
+                                                <td class="cell"><span class="truncate">Vestibulum a accumsan lectus sed
+                                                        mollis ipsum</span></td>
+                                                <td class="cell">Jayden Massey</td>
+                                                <td class="cell"><span class="cell-data">15 Oct</span><span
+                                                        class="note">8:07 PM</span></td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$199.00</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td class="cell">#15341</td>
+                                                <td class="cell"><span class="truncate">Morbi vulputate lacinia neque et
+                                                        sollicitudin</span></td>
+                                                <td class="cell">Raymond Atkins</td>
+                                                <td class="cell"><span class="cell-data">11 Oct</span><span
+                                                        class="note">11:18 AM</span></td>
+                                                <td class="cell"><span class="badge bg-success">Paid</span></td>
+                                                <td class="cell">$678.26</td>
+                                                <td class="cell"><a class="petit-bouton tout-bouton-suivant"
+                                                        href="#">View</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <hr class="mb-4">
             </div>
         </div>
     </div>
 
-    <!-- Page Specific JS -->
     <script src="./../assets/javascript/lepremisse.js"></script>
     <script src="./../assets/javascript/popupprfil.js"></script>
-    <script src="./../assets/javascript/taches.js"></script>
     <script src="./../assets/javascript/planifie.js"></script>
 
     <!-- Validateur d'adresse email et d'adresse téléphonique  -->
     <script src="./../assets/javascript/verifierChamps.js"></script>
+
+    <!--  -->
+    <script src="./../assets/javascript/surchantiers.js"></script>
 
 </body>
 
