@@ -2,7 +2,7 @@
 let contenurole = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
 function afficheAdministrateurs(dataAdministrateur) {
     if (dataAdministrateur) {
-        const consernes = dataAdministrateur.filter(cle => cle.statut != 0);
+        const consernes = dataAdministrateur.filter(cle => cle.statut != 0 && cle.id != "ADMIN");
         consernes.forEach(element => {
             const contenutableau = document.getElementById("contenutableau");
 
