@@ -1,5 +1,5 @@
 if (sessionStorage.getItem("SUPER_ADMINISTRATEUR")){
-    window.location.href = './../corporates/dashboard.html';
+    window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
 }
 document.getElementById("creerCompte").addEventListener("click", creerCompte);
 function creerCompte(event){
@@ -41,7 +41,7 @@ function creerCompte(event){
                                     roles:"SUPER-ADMIN",
                                     telephone:"",
                                     statut: "ADMIN",
-                                    
+
                                     create_at: "",
                                     update_at: "",
                                 }
@@ -73,7 +73,7 @@ function creerCompte(event){
                                 errorPassword.textContent = "";
                                 errorConfirmPassword.textContent = "";
                                 alert("Votre compte a été créé avac succès. Cliquez sur OK pour vous connecter.");
-                                window.location.href = './../corporates/login.html';
+                                window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
                             } else {
                                 confirmePassword.focus();
                                 errorConfirmPassword.textContent = "Le mot de passe de confirmation n'est pas correcte";

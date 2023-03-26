@@ -1,5 +1,5 @@
 if (sessionStorage.getItem("ADMIN")) {
-    window.location.href = './../corporates/dashboard.html';
+    window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
 }
 
 if (JSON.parse(localStorage.getItem("ADMINISTRATEURS"))){
@@ -27,5 +27,4 @@ function connexion(event){
         alert("Ce utilisateur n'est pas reconnu. Veuillez donc créer un compte.");
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/sinscrire.html";
     }
-    
 }

@@ -25,7 +25,7 @@ document.getElementById("deconnexion").addEventListener("click", deconnection);
 function deconnection() {
     if (window.confirm("Etes-vous vraiment sûre de vouloir vous déconnecter ?")) {
         sessionStorage.clear();
-        window.location.href = './../corporates/login.html';
+        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
     }
 }
 if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")){
@@ -48,7 +48,7 @@ if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")){
             document.querySelectorAll("a[href='./admin.html']").forEach(cle => cle.remove());
         }
         if (window.location.href.includes("admin.html") || window.location.href.includes("addadmin.html")){
-            window.location.href = './../corporates/login.html';
+            window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
         }
         
         
