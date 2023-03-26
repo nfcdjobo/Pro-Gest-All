@@ -1,4 +1,4 @@
-if (sessionStorage.getItem("SUPER_ADMINISTRATEUR")) {
+if (sessionStorage.getItem("ADMIN")) {
     window.location.href = './../corporates/dashboard.html';
 }
 
@@ -16,14 +16,14 @@ function connexion(event){
         password: password.value,
     }
 
-    sessionStorage.setItem("SUPER_ADMINISTRATEUR", JSON.stringify(dataSession));
+    sessionStorage.setItem("ADMIN", JSON.stringify(dataSession));
     const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email ==dataSession.email && cle.password == dataSession.password);
     if (dataLocal){
         window.location.href = './../corporates/dashboard.html';
     }else{
         sessionStorage.clear();
         document.getElementById("error-password").textContent = "Email ou mot de passe incorrecte."
-        
+
     }
     
 }
