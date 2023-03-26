@@ -36,11 +36,13 @@ if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")){
     console.log(ADMINISTRATEURS)
     console.log( "SUPER_ADMINISTRATEUR", SUPER_ADMINISTRATEUR.email,SUPER_ADMINISTRATEUR.password )
     console.log("SESSION", SESSION.email, SESSION.password)
-    console.log(ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password))
+    console.log(ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password));
 
-    if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email == SUPER_ADMINISTRATEUR.email && SESSION.password == SUPER_ADMINISTRATEUR.password)){
-        alert("SUPPER ADMIN");
-    } else if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email != SUPER_ADMINISTRATEUR.email && SESSION.password != SUPER_ADMINISTRATEUR.password)){
+    // if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email == SUPER_ADMINISTRATEUR.email && SESSION.password == SUPER_ADMINISTRATEUR.password)) {
+    //      
+    // } 
+
+    if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email != SUPER_ADMINISTRATEUR.email && SESSION.password != SUPER_ADMINISTRATEUR.password)){
         if (document.querySelector("a[href='./addadmin.html']")){
             document.querySelectorAll("a[href='./addadmin.html']").forEach(cle => cle.remove());
         }
@@ -50,8 +52,6 @@ if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")){
         if (window.location.href.includes("admin.html") || window.location.href.includes("addadmin.html")){
             window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
         }
-        
-        
     }
 }
 
