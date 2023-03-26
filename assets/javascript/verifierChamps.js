@@ -39,7 +39,7 @@ function validateur(event) {
                 document.getElementById("error-email").style.fontWeight = "600";
             }
         }else {
-            if (expressionReguliere.test(event.target.value)) {
+            if (expressionReguliereEmail.test(event.target.value)) {
                 document.getElementById("error-email-confirm").textContent = "Ce format est accepté.";
                 document.getElementById("error-email-confirm").style.color = "green";
                 document.getElementById("error-email-confirm").style.fontWeight = "600";

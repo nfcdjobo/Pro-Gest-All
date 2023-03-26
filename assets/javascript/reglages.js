@@ -28,6 +28,7 @@ function personnaliserOuvrable() {
           if (apresMidiOuvrable1.value != "") {
             if (apresMidiOuvrable2.value != "") {
               if (dataJours.length != 0) {
+                
                 const avant_H1 = new Date(`2023-03-15, ${avantMidiOuvrable1.value}:00`).getHours();
                 const avant_M1 = new Date(`2023-03-15, ${avantMidiOuvrable1.value}:00`).getMinutes();
                 const avant_H2 = new Date(`2023-03-15, ${avantMidiOuvrable2.value}:00`).getHours();
@@ -43,7 +44,7 @@ function personnaliserOuvrable() {
                 const apres_H2 = new Date(`2023-03-15, ${apresMidiOuvrable2.value}:00`).getHours();
                 const apres_M2 = new Date(`2023-03-15, ${apresMidiOuvrable2.value}:00`).getMinutes();
 
-                if ((avant_H1 < avant_H2) && (avant_H2 <= repos_H1) && (repos_H1 < repos_H2) && (repos_H2 <= apres_H1) && (apres_H1 < apres_H2)) {
+                if ((avant_H1 <= avant_H2) && (avant_H2 <= repos_H1) && (repos_H1 <= repos_H2) && (repos_H2 <= apres_H1) && (apres_H1 <= apres_H2)) {
                   const ObjeOuvrable = {
                     identite: "ouvrable",
                     jours: dataJours,
@@ -108,17 +109,6 @@ function personnaliserOuvrable() {
                   soir_1.append(ii_3_2);
 
 
-
-
-
-
-
-
-
-
-
-
-
                 } else {
                   window.scroll(0, 140);
                   messageAlert.textContent = "Formulaire mal remplie !!";
@@ -178,7 +168,8 @@ function afficheParametre(donnee) {
       strong.textContent = ` ${key} `;
       par.append(ii);
       par.append(strong);
-      jourOuvre.append(par)
+      jourOuvre.append(par);
+      document.getElementById(key).checked = true;
     });
 
     const ii_1_1 = document.createElement("i");
@@ -190,6 +181,8 @@ function afficheParametre(donnee) {
     matin_1.append(ii_1_1);
     matin_1.append(strong_1);
     matin_1.append(ii_1_2);
+    document.getElementById("avantMidiOuvrable1").value = donnee.ouvertureService;
+    document.getElementById("avantMidiOuvrable2").value = donnee.stopServicePose;
 
     const ii_2_1 = document.createElement("i");
     ii_2_1.className = "bi bi-align-start";
@@ -200,6 +193,8 @@ function afficheParametre(donnee) {
     pose_1.append(ii_2_1);
     pose_1.append(strong_2);
     pose_1.append(ii_2_2);
+    document.getElementById("apresMidiPose1").value = donnee.debutPoseService;
+    document.getElementById("apresMidiPose2").value = donnee.finPoseService;
 
     const ii_3_1 = document.createElement("i");
     ii_3_1.className = "bi bi-align-start";
@@ -210,6 +205,8 @@ function afficheParametre(donnee) {
     soir_1.append(ii_3_1);
     soir_1.append(strong_3);
     soir_1.append(ii_3_2);
+    document.getElementById("apresMidiOuvrable1").value = donnee.repriseService;
+    document.getElementById("apresMidiOuvrable2").value = donnee.arretService;
   }
 }
 
@@ -280,18 +277,6 @@ function personnaliserWeek() {
                   apresMidiWeek2.value = "";
                   ElementWeek.forEach(key => key.checked = false);
 
-
-                  
-
-
-
-
-
-
-
-
-
-
                 } else {
                   window.scroll(0, 730);
                   messageWeekEnd.textContent = "Formulaire mal remplie !!";
@@ -349,6 +334,7 @@ function afficheParametreWeek(donneeWeek) {
       par.append(ii);
       par.append(strong);
       weekEndJours.append(par);
+      document.getElementById(key).checked = true;
     });
     
     const matin_2 = document.getElementById("matin-2");
@@ -362,6 +348,8 @@ function afficheParametreWeek(donneeWeek) {
     matin_2.append(ii_1_1);
     matin_2.append(strong_1);
     matin_2.append(ii_1_2);
+    document.getElementById("avantMidiWeek1").value = donneeWeek.ouvertureService;
+    document.getElementById("avantMidiWeek2").value = donneeWeek.stopServicePose;
 
     const pose_2 = document.getElementById("pose-2");
     pose_2.innerHTML = "";
@@ -374,6 +362,8 @@ function afficheParametreWeek(donneeWeek) {
     pose_2.append(ii_2_1);
     pose_2.append(strong_2);
     pose_2.append(ii_2_2);
+    document.getElementById("apresMidiPose3").value = donneeWeek.debutPoseService;
+    document.getElementById("apresMidiPose4").value = donneeWeek.finPoseService;
 
     const soir_2 = document.getElementById("soir-2");
     soir_2.innerHTML = "";
@@ -386,6 +376,8 @@ function afficheParametreWeek(donneeWeek) {
     soir_2.append(ii_3_1);
     soir_2.append(strong_3);
     soir_2.append(ii_3_2);
+    document.getElementById("apresMidiWeek1").value = donneeWeek.repriseService;
+    document.getElementById("apresMidiWeek2").value = donneeWeek.arretService;
   }
 
 }
@@ -443,6 +435,7 @@ function savaMasseSalariale() {
         sall_1.append(infos1);
         sall_1.append(strong_1);
         sall_1.append(ii_1_2);
+
 
         const sall_2 = document.getElementById("sall-2");
         sall_2.innerHTML = "";
@@ -512,6 +505,7 @@ function afficherMasseSalariale(detailSalariale){
     sall_1.append(infos1);
     sall_1.append(strong_1);
     sall_1.append(ii_1_2);
+    document.getElementById("min-salaire").value = detailSalariale.min_salaire;
 
     const sall_2 = document.getElementById("sall-2");
     sall_2.innerHTML = "";
@@ -527,6 +521,7 @@ function afficherMasseSalariale(detailSalariale){
     sall_2.append(infos2);
     sall_2.append(strong_2);
     sall_2.append(ii_2_2);
+    document.getElementById("max-salaire").value = detailSalariale.max_salaire;
 
     const sall_3 = document.getElementById("sall-3");
     sall_3.innerHTML = "";
@@ -542,6 +537,7 @@ function afficherMasseSalariale(detailSalariale){
     sall_3.append(infos3);
     sall_3.append(strong_3);
     sall_3.append(ii_3_2);
+    document.getElementById("min-tache-no-end").value = detailSalariale.min_tache_no_end;
 
     const sall_4 = document.getElementById("sall-4");
     sall_4.innerHTML = "";
@@ -557,6 +553,7 @@ function afficherMasseSalariale(detailSalariale){
     sall_4.append(infos4);
     sall_4.append(strong_4);
     sall_4.append(ii_4_2);
+    document.getElementById("max-tache-no-end").value = detailSalariale.max_tache_no_end;
   }
 }
 
