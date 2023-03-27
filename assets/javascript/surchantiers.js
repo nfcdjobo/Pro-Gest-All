@@ -110,6 +110,7 @@ function afficherAttribution(dataValidation){
             accomplir.textContent = "100%";
             accomplir.style.color = "white";
             accomplir.style.fontWeight = "500";
+            accomplir.addEventListener("click", approuver);
             tdAccompli.append(accomplir);
 
             const tdNonTerminer = document.createElement("td");
@@ -124,8 +125,8 @@ function afficherAttribution(dataValidation){
             nonTerminer.style.color = "white";
             nonTerminer.style.fontWeight = "500";
             nonTerminer.style.cursor = "help";
+            nonTerminer.addEventListener("click", approuver);
             tdNonTerminer.append(nonTerminer);
-
 
             const tdRienAccomplir = document.createElement("td");
             tdRienAccomplir.className = "cell";
@@ -139,6 +140,7 @@ function afficherAttribution(dataValidation){
             rienAccomplir.style.color = "white";
             rienAccomplir.style.fontWeight = "500";
             rienAccomplir.style.cursor = "no-drop";
+            rienAccomplir.addEventListener("click", approuver);
             tdRienAccomplir.append(rienAccomplir);
 
         });
@@ -151,10 +153,15 @@ if (localStorage.getItem("TACHES_ATTRIBUEES")) {
 }
 
 
-let today = new Date();
-let born = new Date("09 05, 1994 00:00:00")
-let lasday = new Date("24 03, 2023 00:00:00");
+// POUR CONFIRMER LE TRAVAIL EFFECTUE
+function approuver(event){
+    if (event.target.id.includes("accomplir")){
+        alert("accomplir");
+    } else if (event.target.id.includes("nonTerminer")){
+        alert("nonTerminer")
+    }else{
+        alert("rienAccomplir")
+    }
+}
 
-console.log("=====================================================");
-// if()
-console.log(today.getMilliseconds() > lasday.getMilliseconds())
+

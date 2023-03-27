@@ -15,9 +15,10 @@ function connexion(event){
         password: password.value,
     }    
     if (localStorage.getItem("ADMINISTRATEURS")){
-        sessionStorage.setItem("ADMIN", JSON.stringify(dataSession));
+        
         const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.email && cle.password == dataSession.password);
         if (dataLocal) {
+            sessionStorage.setItem("ADMIN", JSON.stringify(dataSession));
             window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
         }else{
             sessionStorage.clear();

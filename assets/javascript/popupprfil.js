@@ -55,4 +55,3 @@ if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")){
     }
 }
 
-console
