@@ -57,6 +57,7 @@ function dresserEmployesTaches(baseEmployes) {
       selectTache.append(presselectionner);
 
       if (JSON.parse(localStorage.getItem("TACHES"))) {
+        alert(23)
         const dataTache = JSON.parse(localStorage.getItem("TACHES")).filter(tache => tache.destinataire == employe.specialite);
         
         if (dataTache.length != 0) {
