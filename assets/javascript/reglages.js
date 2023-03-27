@@ -402,10 +402,6 @@ function savaMasseSalariale() {
   const min_tache_no_end = document.getElementById("min-tache-no-end");
   const max_tache_no_end = document.getElementById("max-tache-no-end");
 
-  console.log("1",min_salaire.value);
-  console.log("12",max_salaire.value)
-  console.log("15", min_tache_no_end.value)
-  console.log("17",max_tache_no_end.value)
   // 
   window.scroll(0, 1280);
 
@@ -558,56 +554,3 @@ function afficherMasseSalariale(detailSalariale){
 }
 
 afficherMasseSalariale(dataSalariale)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 
-// const pers = {
-//   nom: "KOFFI", prenom: "Jean-Luc",
-//   age: function () {
-//     console.log(this)
-//     return this.nom
-//   },
-// };
-// this.nom = "KONE";
-// function tester() {
-//   return this.nom;
-// }
-// 
-// let tab1 = pers.age;
-// let tab2 = pers.age.bind(pers);
-// console.log("age simple", pers.age());
-// console.log("Sans bind :", tab1());
-// console.log("Avec bind :", tab2());
-// 
-// console.log("1: ", tester());
-// tester.bind(pers);
-// console.log("2: ", pers.age());
-// console.log(this)

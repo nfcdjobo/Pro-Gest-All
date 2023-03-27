@@ -71,9 +71,6 @@ function afficherAttribution(dataValidation){
             const encours = document.createElement("td");
             encours.className = "cell";
             encours.id = `${cle.idEmploye}-${cle.idTache}-encours`;
-            console.log("aze",(jour.getMilliseconds() + (parseInt(cle.dureTache) - 1) * 86400000));
-            console.log("++++++++++++++++++++++++++++++++++++++")
-            // console.log(new Date().getMilliseconds() > (jour.getMilliseconds() + (parseInt(cle.dureTache) - 1) * 86400000))
             if ((jour.getMilliseconds() + (parseInt(cle.dureTache) - 1) * 86400000) < new Date().getMilliseconds() && (jour.getMilliseconds() <= new Date().getMilliseconds())) {
                 encours.textContent = "Fermer !!";
                 encours.style.color = "red";

@@ -197,9 +197,7 @@ function creerFormulaireModifier(event) {
 
         
         const encainInputLibelle = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
-        console.log(encainInputLibelle.value)
         const tdLibelle = document.getElementById(envo.id.replace("envoyer", "libelle"));
-        console.log(tdLibelle)
         tdLibelle.textContent = encainInputLibelle.value;
         encainInputLibelle.remove();
 
@@ -214,7 +212,6 @@ function creerFormulaireModifier(event) {
         encainInputPrixnormal.remove();
 
         const encainInputPrixanormal = document.getElementById(`new-${envo.id.replace("envoyer", "prixanormal")}`);
-        console.log("encainInputPrixanormal", encainInputPrixanormal)
         const tdPrixanormal = document.getElementById(envo.id.replace("envoyer", "prixanormal"));
         tdPrixanormal.textContent = encainInputPrixanormal.value;
         encainInputPrixanormal.remove();

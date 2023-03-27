@@ -10,7 +10,6 @@ if (JSON.parse(localStorage.getItem("ROLES"))){
     })
 }
 
-
 document.getElementById("saveadmin").addEventListener("click", saveadministrateur);
 
 function saveadministrateur(event){

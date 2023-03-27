@@ -159,12 +159,3 @@ function saveEmployes(event) {
     }
 }
 
-// const tab = [1, 2, 3, 4, 5, 6];
-// function solution(ma_table, po){
-//     if (tama_tableb.indexOf(po) != -1) {
-//         const newtab = ma_table.filter(cle => { ma_table.indexOf(po) != -1 });
-//         return newtab;
-//     }
-// }
-// 
-// console.log(solution([1, 2, 3, 4, 5, 6], 5))

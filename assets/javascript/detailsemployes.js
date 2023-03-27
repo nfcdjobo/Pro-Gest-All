@@ -14,6 +14,3 @@ document.getElementById("emailEmploye").textContent = requette.email;
 document.getElementById("emailEmploye").textContent = requette.email;
 document.getElementById("emailEmploye").textContent = requette.email;
 
-// const tab = ["001-1", "001-2", "003-1", "005-1", "001-3", "001-4", "005-3", "002-1", "001-6", "002-5", "002-4"];
-// const id = "001";
-// console.log(tab.filter(cle => cle.includes(id)));

@@ -25,6 +25,7 @@ document.getElementById("deconnexion").addEventListener("click", deconnection);
 function deconnection() {
     if (window.confirm("Etes-vous vraiment sûre de vouloir vous déconnecter ?")) {
         sessionStorage.clear();
+        // window.location.href = "./corporates/login.html";
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
     }
 }
@@ -33,15 +34,7 @@ if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")){
     const SUPER_ADMINISTRATEUR = JSON.parse(localStorage.getItem("SUPER_ADMINISTRATEUR"));
     const SESSION = JSON.parse(sessionStorage.getItem("ADMIN"));
     const ADMINISTRATEURS = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle => cle.statut == 1 || cle.statut == "ADMIN");
-    console.log(ADMINISTRATEURS)
-    console.log( "SUPER_ADMINISTRATEUR", SUPER_ADMINISTRATEUR.email,SUPER_ADMINISTRATEUR.password )
-    console.log("SESSION", SESSION.email, SESSION.password)
-    console.log(ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password));
-
-    // if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email == SUPER_ADMINISTRATEUR.email && SESSION.password == SUPER_ADMINISTRATEUR.password)) {
-    //      
-    // } 
-
+    
     if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email != SUPER_ADMINISTRATEUR.email && SESSION.password != SUPER_ADMINISTRATEUR.password)){
         if (document.querySelector("a[href='./addadmin.html']")){
             document.querySelectorAll("a[href='./addadmin.html']").forEach(cle => cle.remove());
@@ -50,6 +43,7 @@ if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")){
             document.querySelectorAll("a[href='./admin.html']").forEach(cle => cle.remove());
         }
         if (window.location.href.includes("admin.html") || window.location.href.includes("addadmin.html")){
+            // window.location.href = "./corporates/login.html";
             window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
         }
     }
