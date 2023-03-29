@@ -22,7 +22,18 @@ function afficherTacheNonPayee(dataTacheValide){
         select.id = `select-${requette.id}`;
         select.className = "form-select";
         reseauxPayement.append(select);
-        let sommeTotal = 0
+        let sommeTotal = 0;
+        let tout =0
+        dataTacheValide.forEach(cle => {
+            tout += cle.montant;
+        });
+
+        const option1 = document.createElement("option");
+        option1.value = `all-${requette.id}-${tout}`;
+        option1.textContent = `La totalité: ${tout} FCFA`;
+        select.append(option1)
+
+
         dataTacheValide.forEach(cle=>{
             sommeTotal += cle.montant;
             const tr = document.createElement("tr");
@@ -48,15 +59,20 @@ function afficherTacheNonPayee(dataTacheValide){
             tdMontant.textContent = cle.montant+" FCFA";
             contenutableau.append(tdMontant);
 
-            const tdModePayement = document.createElement("td");
-            tdModePayement.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-modePayement`;
-            tdModePayement.textContent = cle.modePayement;
-            contenutableau.append(tdModePayement);
+            const option = document.createElement("option");
+            option.value = `${cle.id}-${cle.idEmploye}-${cle.idTache}-${cle.montant}`;
+            option.textContent = `${cle.montant} FCFA`;
+            select.append(option)
 
-            const tdTelephoneEmploye = document.createElement("td");
-            tdTelephoneEmploye.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-telephoneEmploye`;
-            tdTelephoneEmploye.textContent = `${cle.telephoneEmploye}`;
-            contenutableau.append(tdTelephoneEmploye);
+//             const tdModePayement = document.createElement("td");
+//             tdModePayement.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-modePayement`;
+//             tdModePayement.textContent = cle.modePayement;
+//             contenutableau.append(tdModePayement);
+// 
+//             const tdTelephoneEmploye = document.createElement("td");
+//             tdTelephoneEmploye.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-telephoneEmploye`;
+//             tdTelephoneEmploye.textContent = `${cle.telephoneEmploye}`;
+//             contenutableau.append(tdTelephoneEmploye);
 
             const tdRegle = document.createElement("td");
             tdRegle.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-regle`;

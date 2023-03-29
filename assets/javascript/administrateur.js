@@ -14,6 +14,26 @@ function afficheAdministrateurs(dataAdministrateur) {
             monid.textContent = element.id;
             maligne.append(monid);
 
+            const colPhoto = document.createElement("td");
+            colPhoto.className = "cell";
+            colPhoto.id = `admin-${element.id}-photo`;
+            const maPhoto = document.createElement("a");
+            maPhoto.id = `admin-${element.id}-maPhoto`;
+            maPhoto.href = `profil.html#${element.id}`;
+            maPhoto.className = "item-data";
+            colPhoto.append(maPhoto);
+
+            const image = document.createElement("img");
+            image.id = `admin-${element.id}-image`;
+            image.className = "";
+            image.src = element.photo;
+            image.style.width = "25px";
+            image.style.height = "25px";
+            image.style.borderRadius = "100%";
+            image.style.backgroundSize = "cover";
+            maPhoto.append(image);
+            maligne.append(colPhoto);
+
             const monNom = document.createElement("td");
             monNom.className = "cell";
             monNom.id = `admin-${element.id}-nom`;
@@ -83,6 +103,27 @@ function formulaireModifier(event){
     if (document.querySelector(".bi-send")) {
         const envo = document.querySelector(".bi-send");
 
+        const encainInputPhoto = document.getElementById(`new-${envo.id.replace("envoyer", "photo")}`);
+        const tdPhoto = document.getElementById(envo.id.replace("envoyer", "photo"));
+        const lienDetail = document.createElement("a");
+        lienDetail.className = "item-data";
+        lienDetail.id = envo.id.replace("envoyer", "maPhoto");
+        lienDetail.href = `profil.html#${envo.id.replace("-envoyer", "")}`;
+        const monImage = document.createElement("img");
+        monImage.id = envo.id.replace("envoyer", "image");
+        const proofil = JSON.parse(localStorage.ADMINISTRATEURS).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-envoyer", ""));
+        monImage.src = proofil[0].photo;
+        monImage.style.width = "25px";
+        monImage.style.height = "25px";
+        monImage.style.borderRadius = "100%";
+        monImage.style.backgroundSize = "cover";
+        lienDetail.append(monImage);
+        tdPhoto.append(lienDetail);
+        encainInputPhoto.remove();
+
+
+
+
         const encainInputNom = document.getElementById(`new-${envo.id.replace("envoyer", "nom")}`);
         const tdNom = document.getElementById(envo.id.replace("envoyer", "nom"));
         tdNom.textContent = encainInputNom.value;
@@ -132,6 +173,16 @@ function formulaireModifier(event){
         document.getElementById(envo.id.replace("envoyer", "annuler")).remove();
         document.getElementById(envo.id).remove();
     }
+
+    const colPhoto = document.getElementById(event.target.id.replace("modifier", "photo"));
+    const newInputPhoto = document.createElement("input");
+    newInputPhoto.type = "file";
+    newInputPhoto.id = `new-${event.target.id.replace("modifier", "photo")}`;
+    newInputPhoto.className = "form-control";
+    colPhoto.innerHTML = "";
+    colPhoto.append(newInputPhoto);
+
+
 
     const adminNom = document.getElementById(event.target.id.replace("modifier", "nom"));
     const inputNom = document.createElement("input");
@@ -216,6 +267,28 @@ function formulaireModifier(event){
 
 function annuler(even) {
     const envo = document.querySelector(".bi-x-circle");
+
+    const encainInputPhoto = document.getElementById(`new-${envo.id.replace("annuler", "photo")}`);
+    const tdPhoto = document.getElementById(envo.id.replace("annuler", "photo"));
+    const lienDetail = document.createElement("a");
+    lienDetail.className = "item-data";
+    lienDetail.id = envo.id.replace("annuler", "maPhoto");
+    lienDetail.href = `profil.html#${envo.id.replace("-annuler", "")}`;
+    const monImage = document.createElement("img");
+    monImage.id = envo.id.replace("annuler", "image");
+    const proofil = JSON.parse(localStorage.ADMINISTRATEURS).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-annuler", ""));
+    monImage.src = proofil[0].photo;
+    monImage.style.width = "25px";
+    monImage.style.height = "25px";
+    monImage.style.borderRadius = "100%";
+    monImage.style.backgroundSize = "cover";
+    lienDetail.append(monImage);
+    tdPhoto.append(lienDetail);
+    encainInputPhoto.remove();
+
+
+
+
     const encaininputNom = document.getElementById(`new-${envo.id.replace("annuler", "nom")}`);
     const tdNom = document.getElementById(envo.id.replace("annuler", "nom"));
     tdNom.textContent = encaininputNom.value;
