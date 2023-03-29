@@ -4,8 +4,9 @@ const contenuTableau = document.getElementById("contenu-tach");
 function afficherAttribution(dataValidation){
     if(Array.isArray(dataValidation) && dataValidation.length != 0){
         dataValidation.forEach(cle=>{
+            let ref = cle.id.split("-");
             const ligne = document.createElement("tr");
-            ligne.id = `ligne-${cle.idEmploye}-${cle.idTache}`;
+            ligne.id = `ligne-${ref[0]}-${cle.idEmploye}-${cle.idTache}`;
             contenuTableau.append(ligne);
 
             const tdId = document.createElement("td");
@@ -149,15 +150,71 @@ if (localStorage.getItem("TACHES_ATTRIBUEES")) {
     afficherAttribution(dataTacheAttribuees);
 }
 
-
 // POUR CONFIRMER LE TRAVAIL EFFECTUE
 function approuver(event){
-    if (event.target.id.includes("accomplir")){
-        alert("accomplir");
-    } else if (event.target.id.includes("nonTerminer")){
-        alert("nonTerminer")
-    }else{
-        alert("rienAccomplir")
+    if(confirm(`Pour approuver cliquez sur "OK"`)){
+        let data = event.target.id.split("-");
+        let idEmploye = data[0];
+        let idTache = data[1];
+        let bigTache = JSON.parse(localStorage.getItem("TACHES"));
+        let tache = bigTache.find(cle => cle.id == idTache);
+
+        let bigRequette = JSON.parse(localStorage.getItem("EMPLOYES"));
+        let employe = bigRequette.find(cle => cle.id == idEmploye);
+        let indice = bigRequette.indexOf(employe);
+
+        let rapport = {
+            id:"",
+            idEmploye: employe.id,
+            nomEmploye: employe.nom,
+            emailEmploye: employe.email,
+            modePayement: employe.modePayement,
+            telephoneEmploye: employe.telephone,
+            photoEmploye: employe.photo,
+            specialiteEmploy: employe.specialite,
+            ageEmploye: employe.age,
+
+            idTache: tache.id,
+            libelleTache: tache.libelle,
+            prixTacheTache: tache.prixTache,
+            prixTacheAutreTache: tache.prixTacheAutre,
+            regle: false,
+            creer_le: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            modifier_le: new Date().toLocaleString('en-GB', { timeZone: 'UTC' })
+        }
+        let bigData = [];
+        if (event.target.id.includes("accomplir")) {
+            rapport.montant = tache.prixTache;
+        } else if (event.target.id.includes("nonTerminer")) {
+            rapport.montant = tache.prixTacheAutre;
+        } else {
+            rapport.montant = tache.prixTacheAutre * 0;
+        }
+
+        if (localStorage.getItem("TACHES_VALIDEES")) {
+            const allValidation = JSON.parse(localStorage.getItem("TACHES_VALIDEES"));
+            rapport.id = "V00L" + (allValidation.length + 1);
+            allValidation.push(rapport);
+            localStorage.setItem("TACHES_VALIDEES", JSON.stringify(allValidation));
+        } else {
+            rapport.id = "V00L1";
+            bigData.push(rapport);
+            localStorage.setItem("TACHES_VALIDEES", JSON.stringify(bigData));
+        }
+
+        employe.programmer = false;
+        bigRequette[indice] = employe;
+        localStorage.setItem("EMPLOYES", JSON.stringify(bigRequette));
+
+        let parent = event.target.closest("tr");
+        const idParent = parent.id.replace("ligne-", "").split("-");
+        let allTacheValidee = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"));
+        const requetteTacheAttribue = allTacheValidee.find(cle => { return cle.id.includes(idParent[0]) });
+        const indeceTacheAttribue = allTacheValidee.indexOf(requetteTacheAttribue);
+        requetteTacheAttribue.statut = 0;
+        allTacheValidee[indeceTacheAttribue] = requetteTacheAttribue;
+        localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(allTacheValidee));
+        parent.remove();
     }
 }
 

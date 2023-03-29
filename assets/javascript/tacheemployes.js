@@ -57,9 +57,7 @@ function dresserEmployesTaches(baseEmployes) {
       selectTache.append(presselectionner);
 
       if (JSON.parse(localStorage.getItem("TACHES"))) {
-        alert(23)
         const dataTache = JSON.parse(localStorage.getItem("TACHES")).filter(tache => tache.destinataire == employe.specialite);
-        
         if (dataTache.length != 0) {
           dataTache.forEach(key => {
             const optionSelect = document.createElement("option");
@@ -197,7 +195,7 @@ function validerTache(event){
     if (dureTache.value != ""){
       const tacheAttribuees = [];
       const attribution = {
-        id: `${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`,
+        
         idEmploye: employe.id,
         employe: employe.nom,
         categorie: employe.specialite,
@@ -211,10 +209,12 @@ function validerTache(event){
 
       const dataTacheAttribue = [];
       if (JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"))) {
+        attribution.id = `VAL0${(JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES")).length+1)}-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
         const tacheAttribues = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"));
         tacheAttribues.push(attribution);
         localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(tacheAttribues));
       } else {
+        attribution.id = `VAL01-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
         dataTacheAttribue.push(attribution);
         localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(dataTacheAttribue));
       }

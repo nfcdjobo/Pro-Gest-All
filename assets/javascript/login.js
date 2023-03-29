@@ -1,10 +1,9 @@
 if (sessionStorage.getItem("ADMIN")) {
-    window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
+    window.location.href = "dashboard.html";
+    // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
 }
 
-if (JSON.parse(localStorage.getItem("ADMINISTRATEURS"))){
-    document.getElementById("creer-compte").remove();
-}
+
 
 document.getElementById("submit-login").addEventListener("click", connexion);
 function connexion(event){
@@ -19,13 +18,15 @@ function connexion(event){
         const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.email && cle.password == dataSession.password);
         if (dataLocal) {
             sessionStorage.setItem("ADMIN", JSON.stringify(dataSession));
-            window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
+            window.location.href = "dashboard.html";
+            // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
         }else{
             sessionStorage.clear();
             document.getElementById("error-password").textContent = "Email ou mot de passe incorrecte."
         }
     }else{
         alert("Ce utilisateur n'est pas reconnu. Veuillez donc créer un compte.");
-        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/sinscrire.html";
+        window.location.href = "sinscrire.html";
+        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/sinscrire.html";
     }
 }
