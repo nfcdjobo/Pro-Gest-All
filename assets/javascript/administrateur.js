@@ -286,9 +286,6 @@ function annuler(even) {
     tdPhoto.append(lienDetail);
     encainInputPhoto.remove();
 
-
-
-
     const encaininputNom = document.getElementById(`new-${envo.id.replace("annuler", "nom")}`);
     const tdNom = document.getElementById(envo.id.replace("annuler", "nom"));
     tdNom.textContent = encaininputNom.value;
@@ -343,6 +340,7 @@ function annuler(even) {
 function modifierAdmininstrateur(evenement) {
     const idenel = document.getElementById(evenement.target.id.replace("envoyer", "id"));
 
+    const monProfil = document.getElementById("new-" + evenement.target.id.replace("envoyer", "photo"));
     const monInputNom = document.getElementById("new-" + evenement.target.id.replace("envoyer", "nom"));
     const monInputNaissance = document.getElementById("new-" + evenement.target.id.replace("envoyer", "naissance"));
     const monSelectRole = document.getElementById("new-" + evenement.target.id.replace("envoyer", "role"));
@@ -362,6 +360,47 @@ function modifierAdmininstrateur(evenement) {
             cible.email = monInputEmail.value;
             cible.telephone = monInputPhone.value;
             cible.password = monInputPassword.value;
+
+            const envo = document.querySelector(".bi-send");
+            const encainInputPhoto = document.getElementById(`new-${envo.id.replace("envoyer", "photo")}`);
+            const tdPhoto = document.getElementById(envo.id.replace("envoyer", "photo"));
+            const lienDetail = document.createElement("a");
+            lienDetail.className = "item-data";
+            lienDetail.id = envo.id.replace("envoyer", "maPhoto");
+            lienDetail.href = `profil.html#${envo.id.replace("-envoyer", "")}`;
+            const monImage = document.createElement("img");
+            monImage.id = envo.id.replace("envoyer", "image");
+            const proofil = JSON.parse(localStorage.ADMINISTRATEURS).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-envoyer", ""));
+            monImage.src = proofil[0].photo;
+            monImage.style.width = "25px";
+            monImage.style.height = "25px";
+            monImage.style.borderRadius = "100%";
+            monImage.style.backgroundSize = "cover";
+            lienDetail.append(monImage);
+            tdPhoto.append(lienDetail);
+            encainInputPhoto.remove();
+
+
+
+            if (monProfil.value != "") {
+                let fichierModif = new FileReader();
+                fichierModif.readAsDataURL(monProfil.files[0]);
+                fichierModif.addEventListener("load", () => {
+                    cible.photo = fichierModif.result;
+                    local[indece] = cible;
+                    localStorage.setItem("ADMINISTRATEURS", JSON.stringify(local));
+                    monImage.src = fichierModif.result;
+                });
+            }
+
+
+            
+
+
+
+
+
+
             
             local[indece] = cible;
             localStorage.setItem("ADMINISTRATEURS", JSON.stringify(local));
