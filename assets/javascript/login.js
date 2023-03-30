@@ -46,16 +46,25 @@ function connexion(event) {
                     // window.location.href = "/login.html";
                     window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
                 }
-            } else if (dataSession.email === sperAdmin.login && dataSession.password === sperAdmin.password) {
+            }else{
                 localStorage.setItem("SUPER_ADMINISTRATEUR", JSON.stringify(sperAdmin));
-                data.push(newAdmin)
                 localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
                 sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(sperAdmin));
-                window.location.href = "dashboard.html";
-            }else{
-                document.getElementById("error-password").textContent = "Votre compte n'est pas valable";
-                window.location.href = "login.html";
+                if (dataSession.email === sperAdmin.login && dataSession.password === sperAdmin.password) {
+                    localStorage.setItem("SUPER_ADMINISTRATEUR", JSON.stringify(sperAdmin));
+                    data.push(newAdmin)
+                    localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
+                    sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(sperAdmin));
+                    window.location.href = "dashboard.html";
+                } else {
+                    document.getElementById("error-password").textContent = "Votre compte n'est pas valable";
+                    window.location.href = "login.html";
+                }
             }
+            
+            
+            
+            
         }else{
             password.value = "";
             password.focus();
