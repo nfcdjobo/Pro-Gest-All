@@ -85,6 +85,16 @@ function afficherValider(allValidate){
             tdAction.className = "cell";
             tr.append(tdAction);
 
+
+            const tdLinks = document.createElement("a");
+            tdLinks.id = `${cle.id}-${cle.idEmploye}-${cle.idTache}-links`;
+            tdLinks.className = "item-data";
+            tdLinks.href = `detailsemploye.html#${cle.idEmploye}-${cle.idTache}`;
+            tdAction.append(tdLinks);
+
+
+
+
             const bouton = document.createElement("td");
             bouton.id = `${cle.id}-${cle.idEmploye}-${cle.idTache}-payer`;
             bouton.className = "bouton bouton-success  bi bi-cash-coin";
@@ -92,10 +102,13 @@ function afficherValider(allValidate){
             bouton.style.backgroundColor = "white"
             bouton.style.border = ".5px solid green"
 
-            tdAction.append(bouton);
+            tdLinks.append(bouton);
 
         })
     }
 }
-const TACHES_VALIDEES = JSON.parse(localStorage.TACHES_VALIDEES).filter(cle => !cle.regle && cle.montant !== 0)
-afficherValider(TACHES_VALIDEES)
+
+if (localStorage.TACHES_VALIDEES){
+    const TACHES_VALIDEES = JSON.parse(localStorage.TACHES_VALIDEES).filter(cle => !cle.regle && cle.montant !== 0)
+    afficherValider(TACHES_VALIDEES)
+}

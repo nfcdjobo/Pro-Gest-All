@@ -435,7 +435,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="colonne-modere-12 colonne-longueur-6">
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="colonne-modere-12 colonne-longueur-6"  id="payement-1">
                             <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
                                 <div class="app-card-header interieur border-bottom-0">
                                     <div class="row centrer-contenu gx-3">
@@ -488,11 +499,108 @@
                                 </div>
                                 
                                 <div class="app-card-footer p-4 mt-auto">
-                                    <a class="bouton bouton-danger bi bi-currency-dollar" style="color: white;"> Effectuer le payement</a>
+                                    <a class="bouton bouton-danger bi bi-currency-dollar" style="color: white;" id="passePayement"> Effectuer le payement</a>
                                 </div>
 
                             </div>
                         </div>
+
+
+
+                        <div class="colonne-modere-12 colonne-longueur-6"  id="resumePayement">
+                            <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
+                                <div class="app-card-header interieur border-bottom-0">
+                                    <div class="row centrer-contenu gx-3">
+                                        <div class="colle-auto">
+                                            <div class="app-icon-holder">
+                                                <svg viewBox="0 0 512 512" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_iconCarrier">
+                                                        <path fill="currentColor" d="M256 16C123.5 16 16 123.5 16 256c0 132.6 107.5 240 240 240 132.6 0 240-107.4 240-240S388.6 16 256 16zm0 60c99.4 0 180 80.6 180 180s-80.6 180-180 180S76 355.4 76 256 156.6 76 256 76zm91.3 64.2c-6.5 0-12.5 2.4-16.8 8.2-52 70.1-69 96.5-106 169.8-8.4-11.1-65.6-72.4-93.9-94.1-14.2-10.9-41.3 27.2-31.6 37.1C142.6 306.1 220.1 406 232.7 405c21.4-1.7 75.1-136.8 148.8-233.7 8-10.4-15-31.3-34.2-31.1z">
+                                                        </path>
+                                                    </g>
+                                                </svg>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="colle-auto">
+                                            <h4 class="app-card-title">Finaliser le payement</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="niveau-stand-body px-4 w-90">
+                                    <div class="item border-bottom py-3">
+                                        <div class="row justifier-contenu centrer-contenu">
+                                            <div class="colle-auto">
+                                                <div class="item-label">
+                                                    <div class="item-data"> Nom et Prénom(s) du bénéficiaire: </div>
+                                                    <i class="fab fa-cc-visa me-2"></i><strong id="somNom">Mme. / M. Djobo</strong>
+                                                </div>
+
+                                                <div class="item-label">
+                                                   
+                                                    <div class="item-data">Montant à payer: </div>
+                                                    <i class="fab fa-cc-visa me-2"></i><strong id="sonArgent">150000 FCFA</strong>
+                                                </div>
+
+                                                <div class="item-label">
+                                                    <div class="item-data">Pour la tâche: </div>
+                                                    <i class="fab fa-cc-visa me-2"></i><strong  id="saTache">#T00L9 / TA9</strong>
+                                                    
+                                                </div>
+
+                                                <div class="item-label">
+                                                    <div class="item-data">Réseaux mobile de payement: </div>
+                                                    <i class="fab fa-cc-visa me-2"></i><strong id="sonReseau">Orange Money</strong>
+                                                    
+                                                </div>
+
+                                                <div class="item-label">
+                                                    <div class="item-data">Numéro de compte du bénéficiaire: </div>
+                                                    <i class="fab fa-cc-visa me-2"></i><strong id="sonCompte">+225 0909875444</strong>
+                                                   
+                                                </div>
+
+                                                <div class="item-label">
+                                                    
+                                                    <div class="item-data me-2">A la date du:</div>
+                                                    <i class="fab fa-cc-visa me-0"></i><strong id="saDate"></strong>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                </div>
+                        
+                                <div class="app-card-footer p-4 mt-auto">
+                                    
+                                    <button class="bouton bouton-all-info" style="color: white; " id="saValidation">
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="font-weight: 700;" width="1.2rem" height="1.2rem" fill="currentColor" class="bi bi-check2-circle"
+                                            viewBox="0 0 16 16">
+                                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
+                                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
+                                        </svg>
+                                         Valider le payement
+                                    </button>
+                                </div>
+                        
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
 
                 </div>

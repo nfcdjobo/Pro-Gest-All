@@ -1,6 +1,4 @@
 document.getElementById("saveCategorie").addEventListener("click", saveCategorie);
-const HID = document.getElementById("hidden");
-HID.style.visibility = "hidden";
 function saveCategorie(event) {
     let errorlibelle = document.getElementById("errorlibelle");
     let libelleCategorie = document.getElementById("libelleCategorie");
@@ -36,16 +34,19 @@ function saveCategorie(event) {
             localStorage.setItem("CATEGORIES", JSON.stringify(dataAll));
             libelleCategorie.style.border = "1px solid rgb(206, 212, 218)";
             libelleCategorie.value = "";
+           
         }
-        ID.textContent = NewCategorie.id;
-        LIB.textContent = NewCategorie.libelle;
-        HID.style.visibility = "visible";
+        
+        
+        
     } else {
         libelleCategorie.focus();
         libelleCategorie.style.border = "1.2px solid red";
         errorlibelle.textContent = "Ce champ est obligatoire";
         errorlibelle.style.color = "red";
     }
+    
+    location.reload();
 }
 
 
@@ -222,8 +223,6 @@ function modifierCategorie(evenement) {
             document.getElementById("LIB").textContent = moninput.value;
             HID.style.visibility = "visible";
 
-        } else {
-            alert("Aucune action n'a été faite !")
         }
     }
 }
@@ -265,7 +264,6 @@ function supprimerCategorie(event) {
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
         localStorage.setItem("CATEGORIES", JSON.stringify(toutdonne));
-        alert("Suppression effectuée avec succès !");
         document.getElementById(`ligne-${reference}`).remove();
     }
 }

@@ -1,5 +1,6 @@
 
-const dataEmployes = JSON.parse(localStorage.getItem("EMPLOYES")).filter(cle => cle.statut != 0 && cle.programmer == false);
+
+
 function dresserEmployesTaches(baseEmployes) {
   if (Array.isArray(baseEmployes) && baseEmployes.length != 0) {
     const contenuTach = document.getElementById("contenu-tach");
@@ -154,7 +155,12 @@ function dresserEmployesTaches(baseEmployes) {
   }
 }
 
-dresserEmployesTaches(dataEmployes);
+if (localStorage.getItem("EMPLOYES")) {
+  const dataEmployes = JSON.parse(localStorage.getItem("EMPLOYES")).filter(cle => cle.statut != 0 && cle.programmer == false);
+  dresserEmployesTaches(dataEmployes);
+}
+
+
 
 let select = document.querySelectorAll("select[ref='select']");
 select.forEach(element => {

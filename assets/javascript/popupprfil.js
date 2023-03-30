@@ -1,7 +1,7 @@
 // POUR VERIFIER SI LA SESSION EXISTE
 if (!sessionStorage.getItem("ADMIN")) {
-    window.location.href = "login.html";
-    // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
+    // window.location.href = "login.html";
+    window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
 }else{
     // Pour balancer l'ouverture et la fermerture du menu dropdown
     let user = document.getElementById("logo-user");
@@ -30,8 +30,8 @@ if (!sessionStorage.getItem("ADMIN")) {
     function deconnection() {
         if (window.confirm("Etes-vous vraiment sûre de vouloir vous déconnecter ?")) {
             sessionStorage.clear();
-            window.location.href = "./login.html";
-            // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+            // window.location.href = "./login.html";
+            window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
         }
     }
     if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")) {
@@ -40,7 +40,7 @@ if (!sessionStorage.getItem("ADMIN")) {
         const SESSION = JSON.parse(sessionStorage.getItem("ADMIN"));
         const ADMINISTRATEURS = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle => cle.statut == 1 || cle.statut == "ADMIN");
 
-        if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email != SUPER_ADMINISTRATEUR.email && SESSION.password != SUPER_ADMINISTRATEUR.password)) {
+        if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email != SUPER_ADMINISTRATEUR.login && SESSION.password != SUPER_ADMINISTRATEUR.password)) {
             if (document.querySelector("a[href='./addadmin.html']")) {
                 document.querySelectorAll("a[href='./addadmin.html']").forEach(cle => cle.remove());
             }
@@ -48,8 +48,8 @@ if (!sessionStorage.getItem("ADMIN")) {
                 document.querySelectorAll("a[href='./admin.html']").forEach(cle => cle.remove());
             }
             if (window.location.href.includes("admin.html") || window.location.href.includes("addadmin.html")) {
-                window.location.href = "./login.html";
-                // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+                // window.location.href = "./login.html";
+                window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
             }
         }
     }

@@ -1,4 +1,4 @@
-if (JSON.parse(localStorage.getItem("CATEGORIES")).filter(key => key.statut != 0).length != 0) {
+if (JSON.parse(localStorage.getItem("CATEGORIES"))) {
     const categorieEmploye = JSON.parse(localStorage.getItem("CATEGORIES")).filter(key => key.statut != 0);
     const selectChamps = document.getElementById("categorie-employes");
     categorieEmploye.forEach(cle => {
@@ -7,6 +7,17 @@ if (JSON.parse(localStorage.getItem("CATEGORIES")).filter(key => key.statut != 0
         selectOption.textContent = cle.libelle;
         selectChamps.append(selectOption);
     })
+}
+
+function reafraichirPage(){
+    let compte = 0
+    let ell = setInterval(() => {
+        location.reload();
+        compte + 5;
+        if (compte === 5) {
+            clearInterval(ell)
+        }
+    }, 500);
 }
 
 
@@ -36,12 +47,6 @@ function saveTaches(event) {
                 if (categorieEmployes.value.replaceAll(" ", "") != "") {
                     errorCategorie.textContent = "";
 
-                    const ID = document.getElementById("ID");
-                    const LIB = document.getElementById("LIB");
-                    const PRXN = document.getElementById("PRXN");
-                    const PRXAU = document.getElementById("PRXAU");
-                    const DES = document.getElementById("DES");
-
                     let dataAll = [];
                     const NewTache = {
                         id: "",
@@ -62,6 +67,11 @@ function saveTaches(event) {
                         libelleTache.style.border = "1px solid rgb(206, 212, 218)";
                         libelleTache.value = "";
                         categorieEmployes.value = "";
+                        categorieEmployes.value = "";
+                        prixTache.value = "";
+                        prixTacheAutre.value = "";
+                        categorieEmployes.value = "";
+                        reafraichirPage();
                     } else {
                         if (!JSON.parse(localStorage.getItem("TACHES")).find(cle => cle.libelle == libelleTache.value)) {
                             const conversion = JSON.parse(localStorage.getItem("TACHES"))
@@ -73,19 +83,16 @@ function saveTaches(event) {
                             localStorage.setItem("TACHES", JSON.stringify(dataAll));
                             libelleTache.style.border = "1px solid rgb(206, 212, 218)";
                             libelleTache.value = "";
+                            prixTache.value = "";
+                            prixTacheAutre.value = "";
                             categorieEmployes.value = "";
+                            reafraichirPage();
                         } else {
                             errorlibelle.textContent = "Cette tâche existe déjà.";
                             errorlibelle.style.color = "red";
                             errorlibelle.style.fontWeight = "blod";
                         }
                     }
-                    ID.textContent = NewTache.id;
-                    LIB.textContent = NewTache.libelle;
-                    DES.textContent = NewTache.destinataire;
-                    HID.style.visibility = "visible";
-
-                   
                 }else{
                     categorieEmployes.focus()
                     categorieEmployes.style.border = "1.2px solid red";
@@ -110,6 +117,7 @@ function saveTaches(event) {
         errorlibelle.textContent = "Ce champ est obligatoire";
         errorlibelle.style.color = "red";
     }
+    
 }
 
 
@@ -176,16 +184,13 @@ function afficheTaches(donneCategorie) {
             monaction2.append(boutonsupprimer);
             maligne.append(monaction2);
             contenutableau.append(maligne);
-
             // document.querySelectorAll("td").forEach(cle =>{ cle.style.fontSize = "12px", cle.style.fontWeight = "500"});
-            
         })
     }
 
 }
 
 afficheTaches(JSON.parse(localStorage.getItem("TACHES")));
-
 let bouton_modifier = document.querySelectorAll(".bi-pencil-square");
 bouton_modifier.forEach(bouton => {
     bouton.addEventListener("click", creerFormulaireModifier);
@@ -195,7 +200,6 @@ function creerFormulaireModifier(event) {
     if (document.querySelector(".bi-send")) {
         const envo = document.querySelector(".bi-send");
 
-        
         const encainInputLibelle = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
         const tdLibelle = document.getElementById(envo.id.replace("envoyer", "libelle"));
         tdLibelle.textContent = encainInputLibelle.value;
@@ -215,10 +219,6 @@ function creerFormulaireModifier(event) {
         const tdPrixanormal = document.getElementById(envo.id.replace("envoyer", "prixanormal"));
         tdPrixanormal.textContent = encainInputPrixanormal.value;
         encainInputPrixanormal.remove();
-
-
-
-
 
         const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
         const inaction1 = document.createElement("button");
@@ -440,7 +440,6 @@ function supprimerTaches(event) {
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
         localStorage.setItem("TACHES", JSON.stringify(toutdonne));
-        alert("Suppression effectuée avec succès !");
         document.getElementById(`ligne-${reference}`).remove();
     }
 }

@@ -1,6 +1,6 @@
 
 if (JSON.parse(localStorage.getItem("ADMINISTRATEURS"))) {
-    const nombreadministrateurs = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(key => key.statut != 0).length;
+    const nombreadministrateurs = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(key => key.statut != 0 && key.id != "ADMIN").length;
     document.getElementById("index-administrateurs-number").textContent = nombreadministrateurs;
 }
 

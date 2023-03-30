@@ -352,6 +352,7 @@ function modifierAdmininstrateur(evenement) {
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible) {
+        const envo = document.querySelector(".bi-send");
         if ((monInputNom.value != cible.nom || monInputNaissance.value != cible.naissance || monSelectRole.value != cible.roles || monInputEmail.value != cible.email || monInputPhone.value != cible.telephone || monInputPassword.value != cible.password) && (monInputNom.value.replaceAll(" ", "") != "" && monInputNaissance.value.replaceAll(" ", "") != "" && monSelectRole.value.replaceAll(" ", "") != "" && monInputEmail.value.replaceAll(" ", "") != "" && monInputPhone.value.replaceAll(" ", "") != "" && monInputPassword.value.replaceAll(" ", "") != "")) {
             let ladate = new Date();
             cible.nom = monInputNom.value;
@@ -361,7 +362,7 @@ function modifierAdmininstrateur(evenement) {
             cible.telephone = monInputPhone.value;
             cible.password = monInputPassword.value;
 
-            const envo = document.querySelector(".bi-send");
+            
             const encainInputPhoto = document.getElementById(`new-${envo.id.replace("envoyer", "photo")}`);
             const tdPhoto = document.getElementById(envo.id.replace("envoyer", "photo"));
             const lienDetail = document.createElement("a");
@@ -380,8 +381,6 @@ function modifierAdmininstrateur(evenement) {
             tdPhoto.append(lienDetail);
             encainInputPhoto.remove();
 
-
-
             if (monProfil.value != "") {
                 let fichierModif = new FileReader();
                 fichierModif.readAsDataURL(monProfil.files[0]);
@@ -393,19 +392,11 @@ function modifierAdmininstrateur(evenement) {
                 });
             }
 
-
-            
-
-
-
-
-
-
             
             local[indece] = cible;
             localStorage.setItem("ADMINISTRATEURS", JSON.stringify(local));
 
-            const envo = document.querySelector(".bi-send");
+            // const envo = document.querySelector(".bi-send");
 
             const encainInputNom = document.getElementById(`new-${envo.id.replace("envoyer", "nom")}`);
             const tdNom = document.getElementById(envo.id.replace("envoyer", "nom"));

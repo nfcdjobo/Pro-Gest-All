@@ -306,24 +306,24 @@ function modifierEmploye(evenement) {
             (maSpecialite.value != cible.specialite && maSpecialite.value.replaceAll(" ", "") != "") ||
             (monEmail.value != cible.email && monEmail.value.replaceAll(" ", "") != "") ||
             (monPayement.value != cible.modePayement && monPayement.value.replaceAll(" ", "") != "") ||
-            (monTelephone.value != cible.telephone && monTelephone.value.replaceAll(" ", "") != "") || 
+            (monTelephone.value != cible.telephone && monTelephone.value.replaceAll(" ", "") != "") ||
             (maNaissance.value != cible.dateNaissance && maNaissance.value.replaceAll(" ", "") != "")) {
-            if (monNom.value != cible.nom && monNom.value.replaceAll(" ", "") != ""){
-                cible.nom = monProfil.value;
+            if (monNom.value != cible.nom && monNom.value.replaceAll(" ", "") != "") {
+                cible.nom = monNom.value;
             }
-            if (maSpecialite.value != cible.specialite && maSpecialite.value.replaceAll(" ", "") != ""){
+            if (maSpecialite.value != cible.specialite && maSpecialite.value.replaceAll(" ", "") != "") {
                 cible.specialite = maSpecialite.value;
             }
-            if (monEmail.value != cible.email && monEmail.value.replaceAll(" ", "") != ""){
+            if (monEmail.value != cible.email && monEmail.value.replaceAll(" ", "") != "") {
                 cible.email = monEmail.value;
             }
-            if (monPayement.value != cible.modePayement && monPayement.value.replaceAll(" ", "") != ""){
+            if (monPayement.value != cible.modePayement && monPayement.value.replaceAll(" ", "") != "") {
                 cible.modePayement = monPayement.value;
             }
-            if (monTelephone.value != cible.telephone && monTelephone.value.replaceAll(" ", "") != ""){
+            if (monTelephone.value != cible.telephone && monTelephone.value.replaceAll(" ", "") != "") {
                 cible.telephone = monTelephone.value;
             }
-            if (maNaissance.value != cible.dateNaissance && maNaissance.value.replaceAll(" ", "") != ""){
+            if (maNaissance.value != cible.dateNaissance && maNaissance.value.replaceAll(" ", "") != "") {
                 cible.dateNaissance = maNaissance.value;
             }
             const envo = document.querySelector(".bi-send");
@@ -345,7 +345,7 @@ function modifierEmploye(evenement) {
             tdPhoto.append(lienDetail);
             encainInputPhoto.remove();
 
-            if (monProfil.value != ""){
+            if (monProfil.value != "") {
                 let fichierModif = new FileReader();
                 fichierModif.readAsDataURL(monProfil.files[0]);
                 fichierModif.addEventListener("load", () => {
@@ -496,7 +496,8 @@ function supprimerEmploye(event) {
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
         localStorage.setItem("EMPLOYES", JSON.stringify(toutdonne));
-        alert("Suppression effectuée avec succès !");
-        document.getElementById(`ligne-${reference}`).remove();
+        location.reload();
     }
 }
+
+

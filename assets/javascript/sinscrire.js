@@ -33,15 +33,14 @@ function creerCompte(event){
                                 const requette = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
                                 const admin = {
                                     id:"ADMIN",
-                                    nom : nom.value,
-                                    email: email.value,
-                                    password: password.value,
+                                    nom : "",
+                                    email:"root",
+                                    password: "root",
                                     naissance: "",
                                     photo: "",
                                     roles:"SUPER-ADMIN",
                                     telephone:"",
                                     statut: "ADMIN",
-
                                     create_at: "",
                                     update_at: "",
                                 }
@@ -107,3 +106,4 @@ function creerCompte(event){
         errorNom.textContent = "Champs obligatoire";
     }
 }
+
