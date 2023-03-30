@@ -33,11 +33,6 @@ function connexion(event) {
                 login: "admin",
                 password: "root",
             }
-
-            if()
-
-
-
             
 
             const data = [];
