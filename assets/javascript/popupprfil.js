@@ -1,5 +1,5 @@
 // POUR VERIFIER SI LA SESSION EXISTE
-if (!sessionStorage.getItem("ADMIN")) {
+if (!sessionStorage.getItem("SESSION_ADMIN")) {
     // window.location.href = "login.html";
     window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
 }else{
@@ -34,10 +34,10 @@ if (!sessionStorage.getItem("ADMIN")) {
             window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
         }
     }
-    if (sessionStorage.getItem("ADMIN") && localStorage.getItem("ADMINISTRATEURS")) {
+    if (sessionStorage.getItem("SESSION_ADMIN") && localStorage.getItem("ADMINISTRATEURS")) {
 
         const SUPER_ADMINISTRATEUR = JSON.parse(localStorage.getItem("SUPER_ADMINISTRATEUR"));
-        const SESSION = JSON.parse(sessionStorage.getItem("ADMIN"));
+        const SESSION = JSON.parse(sessionStorage.getItem("SESSION_ADMIN"));
         const ADMINISTRATEURS = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle => cle.statut == 1 || cle.statut == "ADMIN");
 
         if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email != SUPER_ADMINISTRATEUR.login && SESSION.password != SUPER_ADMINISTRATEUR.password)) {
