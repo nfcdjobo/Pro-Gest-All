@@ -34,11 +34,17 @@ function connexion(event) {
                 password: "root",
             }
 
+            if()
+
+
+
+            
+
             const data = [];
             if (localStorage.getItem("ADMINISTRATEURS")) {
+                sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(sperAdmin));
                 const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.email && cle.password == dataSession.password);
                 if (dataLocal) {
-                    sessionStorage.setItem("ADMIN", JSON.stringify(dataSession));
                     // window.location.href = "./dashboard.html";
                     window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
                 } else {
@@ -51,19 +57,13 @@ function connexion(event) {
                 localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
                 sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(sperAdmin));
                 if (dataSession.email === sperAdmin.login && dataSession.password === sperAdmin.password) {
-                    localStorage.setItem("SUPER_ADMINISTRATEUR", JSON.stringify(sperAdmin));
                     data.push(newAdmin)
-                    localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
-                    sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(sperAdmin));
                     window.location.href = "dashboard.html";
                 } else {
                     document.getElementById("error-password").textContent = "Votre compte n'est pas valable";
                     window.location.href = "login.html";
                 }
             }
-            
-            
-            
             
         }else{
             password.value = "";
