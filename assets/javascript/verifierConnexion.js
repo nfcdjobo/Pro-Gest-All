@@ -16,13 +16,30 @@ if (sessionStorage.SESSION_ADMIN){
             if (window.location.href.includes("admin.html") || window.location.href.includes("addadmin.html")) {
                 window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
             }
+            if (document.getElementById("user-profile")){
+                document.getElementById("user-profile").src = personne.photo;
+            }
+            if (document.getElementById("error-password")) {
+                document.getElementById("error-password").textContent = "Accèss incorrecte !";
+            }
+
+            if (document.getElementById("statut-admin")){
+                document.getElementById("statut-admin").textContent = personne.roles;
+            }
+
         }else{
-            document.getElementById("error-password").textContent = "Accèss incorrecte !";
+            if (document.getElementById("error-password")) {
+                document.getElementById("error-password").textContent = "Accèss incorrecte !";
+            }
+
             window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
         }
 
     }else{
-        document.getElementById("error-password").textContent = "Accèss incorrecte !";
+        if (document.getElementById("error-password")){
+            document.getElementById("error-password").textContent = "Accèss incorrecte !";
+        }
+        
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
     }
 }else{
