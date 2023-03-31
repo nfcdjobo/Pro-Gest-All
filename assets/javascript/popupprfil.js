@@ -1,8 +1,9 @@
-window.addEventListener("DOMContentLoaded", (event) => {
+// window.addEventListener("DOMContentLoaded", (event) => {
     // POUR VERIFIER SI LA SESSION EXISTE
     if (!sessionStorage.getItem("SESSION_ADMIN")) {
         // window.location.href = "login.html";
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+        // window.location.href = "login.html";
     } else {
         // Pour balancer l'ouverture et la fermerture du menu dropdown
         let user = document.getElementById("logo-user");
@@ -25,9 +26,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
             classe.toggle("show");
         }        
     }
-})
-
-
-
-
-
+// })
