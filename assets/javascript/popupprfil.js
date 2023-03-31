@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         }
         if (sessionStorage.getItem("SESSION_ADMIN") && localStorage.getItem("ADMINISTRATEURS")) {
 
-            const SUPER_ADMINISTRATEUR = JSON.parse(localStorage.getItem("SUPER_ADMINISTRATEUR"));
+            const SUPER_ADMINISTRATEUR = JSON.parse(localStorage.getItem("SUPER_ADMIN"));
             const SESSION = JSON.parse(sessionStorage.getItem("SESSION_ADMIN"));
             const ADMINISTRATEURS = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle => cle.statut == 1 || cle.statut == "ADMIN");
 
