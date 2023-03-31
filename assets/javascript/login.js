@@ -47,8 +47,12 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
                     }
                 } else {
-                    data.push(newAdmin)
                     if (dataSession.email === sperAdmin.login && dataSession.password === sperAdmin.password) {
+                        data.push(newAdmin);
+                        localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
+                        localStorage.setItem("SUPER_ADMIN", JSON.stringify(sperAdmin));
+                        sessionStorage.setItem("SESSION_ADMIN" ? JSON.stringify(dataSession));
+
                         // window.location.href = "dashboard.html";
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
                     } else {
