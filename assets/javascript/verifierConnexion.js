@@ -33,7 +33,6 @@ if (sessionStorage.SESSION_ADMIN){
             if (document.getElementById("statut-admin")){
                 document.getElementById("statut-admin").textContent = personne.roles;
             }
-
         }
 
     }else{
@@ -46,7 +45,6 @@ if (sessionStorage.SESSION_ADMIN){
 }else{
     window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
 }
-
 
 // Pour la déconnection
 // POUR LA DECONNEXION

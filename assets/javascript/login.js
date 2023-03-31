@@ -54,6 +54,7 @@
                        
                         sessionStorage.clear();
                         document.getElementById("error-password").textContent = "Accèss incorrecte !";
+                        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
                     }
                 }
 
@@ -61,11 +62,13 @@
                 password.value = "";
                 password.focus();
                 document.getElementById("error-password").textContent = "Ce champ est obligatoire";
+                window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
             }
         } else {
             email.value = "";
             email.focus();
             document.getElementById("error-email").textContent = "Ce champ est obligatoire";
+            window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
         }
     }
 // })
