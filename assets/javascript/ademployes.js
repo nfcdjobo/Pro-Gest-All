@@ -9,6 +9,8 @@ if(JSON.parse(localStorage.CATEGORIES).filter(cle => cle.statut != 0).length != 
     });
 }
 
+
+// Sauvégarder les employés
 document.getElementById("saveEmploye").addEventListener("click", saveEmployes);
 function saveEmployes(event) {
     const nomEmploye = document.getElementById("nomEmplye");
