@@ -34,7 +34,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 const data = [];
                 sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
                 if (localStorage.ADMINISTRATEURS){
-                    const infosAdmin = localStorage.ADMINISTRATEURS.find(cle => cle.email === dataSession.login && cle.password === dataSession.password);
+                    const infosAdmin = JSON.parse(localStorage.ADMINISTRATEURS).find(cle => cle.email === dataSession.login && cle.password === dataSession.password);
                     if(infosAdmin){
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
                     }else{
