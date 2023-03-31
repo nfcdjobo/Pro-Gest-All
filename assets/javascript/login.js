@@ -1,7 +1,7 @@
 
 // window.addEventListener("DOMContentLoaded", (event)=>{
     if (sessionStorage.getItem("SUPER_ADMIN")) {
-        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
+        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
         window.location.href = "dashboard.html";
     }
 
@@ -39,10 +39,8 @@
                     const infosAdmin = JSON.parse(localStorage.ADMINISTRATEURS).filter(cle => { cle.email == dataSession.login && cle.password == dataSession.password});
                     console.log(JSON.parse(localStorage.ADMINISTRATEURS))
                     if(infosAdmin){
-                        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
-                        window.location.href = "dashboard.html";
+                        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
                     }else{
-                        alert(23)
                         sessionStorage.clear();
                         document.getElementById("error-password").textContent = "Accèss incorrecte !";
                     }
@@ -51,8 +49,7 @@
                         data.push(newAdmin);
                        
                         localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
-                        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
-                        window.location.href = "dashboard.html";
+                        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
                     }else{
                        
                         sessionStorage.clear();
