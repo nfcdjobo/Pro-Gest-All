@@ -6,6 +6,8 @@ window.addEventListener("DOMContentLoaded", (event)=>{
     }
 
     document.getElementById("submit-login").addEventListener("click", connexion);
+    
+    // Fonction de CallBack du bouton de conenexion
     function connexion(event) {
         const email = document.getElementById("email");
         const password = document.getElementById("password");
@@ -29,39 +31,27 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                     create_at: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
                     update_at: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
                 }
-
-                const sperAdmin = {
-                    login: "admin",
-                    password: "root",
-                }
-
                 const data = [];
-                if (localStorage.getItem("ADMINISTRATEURS")) {
-                    const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.login && cle.password == dataSession.password);
-                    if (dataLocal) {
-                        sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
-                        // window.location.href = "./dashboard.html";
+                sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
+                if (localStorage.ADMINISTRATEURS){
+                    const infosAdmin = localStorage.ADMINISTRATEURS.find(cle => cle.email === dataSession.login && cle.password === dataSession.password);
+                    if(infosAdmin){
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
-                    } else {
-                        document.getElementById("error-password").textContent = "Email ou mot de passe incorrecte.";
-                        // window.location.href = "/login.html";
-                        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+                    }else{
+                        sessionStorage.clear();
+                        document.getElementById("error-password").textContent = "Accèss incorrecte !";
                     }
-                } else {
-                    if (dataSession.login === sperAdmin.login && dataSession.password === sperAdmin.password) {
-                        data.push(newAdmin);
+                }else{
+                    if(newAdmin.email === dataSession.login && newAdmin.password === dataSession.password){
+                        data.push(newAdmin)
                         localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
-                        localStorage.setItem("SUPER_ADMIN", JSON.stringify(sperAdmin));
-                        sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
-
-                        // window.location.href = "dashboard.html";
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
-                    } else {
-                        document.getElementById("error-password").textContent = "Votre compte n'est pas valable";
-                        // window.location.href = "login.html";
-                        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+                    }else{
+                        sessionStorage.clear();
+                        document.getElementById("error-password").textContent = "Accèss incorrecte !";
                     }
                 }
+
             } else {
                 password.value = "";
                 password.focus();

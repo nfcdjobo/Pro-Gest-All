@@ -23,37 +23,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         function closePopup() {
             let classe = menu.classList;
             classe.toggle("show");
-        }
-
-        // POUR LA DECONNEXION
-        document.getElementById("deconnexion").style.cursor = "pointer";
-        document.getElementById("deconnexion").addEventListener("click", deconnection);
-        function deconnection() {
-            if (window.confirm("Etes-vous vraiment sûre de vouloir vous déconnecter ?")) {
-                sessionStorage.clear();
-                // window.location.href = "./login.html";
-                window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-            }
-        }
-        if (sessionStorage.getItem("SESSION_ADMIN") && localStorage.getItem("ADMINISTRATEURS")) {
-
-            const SUPER_ADMINISTRATEUR = JSON.parse(localStorage.getItem("SUPER_ADMIN"));
-            const SESSION = JSON.parse(sessionStorage.getItem("SESSION_ADMIN"));
-            const ADMINISTRATEURS = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle => cle.statut == 1 || cle.statut == "ADMIN");
-
-            if (ADMINISTRATEURS.find(cle => cle.email == SESSION.login && cle.password == SESSION.password) && (SUPER_ADMINISTRATEUR.login != ADMINISTRATEURS.email && SUPER_ADMINISTRATEUR.password != ADMINISTRATEURS.password)) {
-                if (document.querySelector("a[href='./addadmin.html']")) {
-                    document.querySelectorAll("a[href='./addadmin.html']").forEach(cle => cle.remove());
-                }
-                if (document.querySelector("a[href='./admin.html']")) {
-                    document.querySelectorAll("a[href='./admin.html']").forEach(cle => cle.remove());
-                }
-                if (window.location.href.includes("admin.html") || window.location.href.includes("addadmin.html")) {
-                    // window.location.href = "./login.html";
-                    window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-                }
-            }
-        }
+        }        
     }
 })
 
