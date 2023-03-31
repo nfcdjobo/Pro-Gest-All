@@ -51,7 +51,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                         data.push(newAdmin);
                         localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
                         localStorage.setItem("SUPER_ADMIN", JSON.stringify(sperAdmin));
-                        sessionStorage.setItem("SESSION_ADMIN" ? JSON.stringify(dataSession));
+                        sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
 
                         // window.location.href = "dashboard.html";
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
