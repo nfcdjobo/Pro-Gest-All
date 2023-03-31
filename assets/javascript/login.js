@@ -39,6 +39,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 if (localStorage.getItem("ADMINISTRATEURS")) {
                     const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.email && cle.password == dataSession.password);
                     if (dataLocal) {
+                        sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
                         // window.location.href = "./dashboard.html";
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
                     } else {
@@ -61,7 +62,6 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
                     }
                 }
-
             } else {
                 password.value = "";
                 password.focus();
@@ -72,9 +72,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             email.focus();
             document.getElementById("error-email").textContent = "Ce champ est obligatoire";
         }
-
     }
-
 })
 
 
