@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
         if (email.value.replaceAll(" ", "") != "") {
             if (password.value.replaceAll(" ", "") != "") {
                 const dataSession = {
-                    email: email.value,
+                    login: email.value,
                     password: password.value,
                 }
                 const newAdmin = {
@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
 
                 const data = [];
                 if (localStorage.getItem("ADMINISTRATEURS")) {
-                    const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.email && cle.password == dataSession.password);
+                    const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.login && cle.password == dataSession.password);
                     if (dataLocal) {
                         sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
                         // window.location.href = "./dashboard.html";
@@ -48,7 +48,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
                     }
                 } else {
-                    if (dataSession.email === sperAdmin.login && dataSession.password === sperAdmin.password) {
+                    if (dataSession.login === sperAdmin.login && dataSession.password === sperAdmin.password) {
                         data.push(newAdmin);
                         localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
                         localStorage.setItem("SUPER_ADMIN", JSON.stringify(sperAdmin));
