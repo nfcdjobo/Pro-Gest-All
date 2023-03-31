@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             const SESSION = JSON.parse(sessionStorage.getItem("SESSION_ADMIN"));
             const ADMINISTRATEURS = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle => cle.statut == 1 || cle.statut == "ADMIN");
 
-            if (ADMINISTRATEURS.find(cle => cle.email == SESSION.email && cle.password == SESSION.password) && (SESSION.email != SUPER_ADMINISTRATEUR.login && SESSION.password != SUPER_ADMINISTRATEUR.password)) {
+            if (ADMINISTRATEURS.find(cle => cle.email == SESSION.login && cle.password == SESSION.password) && (SESSION.login != SUPER_ADMINISTRATEUR.login && SESSION.password != SUPER_ADMINISTRATEUR.password)) {
                 if (document.querySelector("a[href='./addadmin.html']")) {
                     document.querySelectorAll("a[href='./addadmin.html']").forEach(cle => cle.remove());
                 }

@@ -1,11 +1,9 @@
 
 window.addEventListener("DOMContentLoaded", (event)=>{
-
     if (sessionStorage.getItem("ADMIN")) {
         // window.location.href = "dashboard.html";
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
     }
-
 
     document.getElementById("submit-login").addEventListener("click", connexion);
     function connexion(event) {
@@ -37,10 +35,8 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                     password: "root",
                 }
 
-
                 const data = [];
                 if (localStorage.getItem("ADMINISTRATEURS")) {
-                    console.log("SESSION_ADMIN1", sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(sperAdmin)));
                     const dataLocal = JSON.parse(localStorage.getItem("ADMINISTRATEURS")).find(cle => cle.email == dataSession.email && cle.password == dataSession.password);
                     if (dataLocal) {
                         // window.location.href = "./dashboard.html";
@@ -52,16 +48,13 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                     }
                 } else {
                     data.push(newAdmin)
-                    console.log("SUPER_ADMINISTRATEUR", localStorage.setItem("SUPER_ADMINISTRATEUR", JSON.stringify(sperAdmin)));
-                    console.log("ADMINISTRATEURS", localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data)));
-                    console.log(sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(sperAdmin)));
-
                     if (dataSession.email === sperAdmin.login && dataSession.password === sperAdmin.password) {
-                       
-                        window.location.href = "dashboard.html";
+                        // window.location.href = "dashboard.html";
+                        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
                     } else {
                         document.getElementById("error-password").textContent = "Votre compte n'est pas valable";
-                        window.location.href = "login.html";
+                        // window.location.href = "login.html";
+                        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
                     }
                 }
 
