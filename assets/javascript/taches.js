@@ -44,61 +44,71 @@ function saveTaches(event) {
             errorprix.textContent = "";
             if (prixTacheAutre.value != "") {
                 errorprixau.textContent = "";
-                if (categorieEmployes.value.replaceAll(" ", "") != "") {
-                    errorCategorie.textContent = "";
+                if (parseInt(prixTache.value) > parseInt(prixTacheAutre.value)){
+                    if (categorieEmployes.value.replaceAll(" ", "") != "") {
+                        errorCategorie.textContent = "";
 
-                    let dataAll = [];
-                    const NewTache = {
-                        id: "",
-                        libelle: libelleTache.value,
-                        destinataire: categorieEmployes.value,
-                        prixTache: parseInt(prixTache.value),
-                        prixTacheAutre: parseInt(prixTacheAutre.value),
-                        effectue: false,
-                        statut: 1,
-                        creerle: datecreer.toLocaleString('en-GB', { timeZone: 'UTC' }),
-                        modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' }),
-                    };
+                        let dataAll = [];
+                        const NewTache = {
+                            id: "",
+                            libelle: libelleTache.value,
+                            destinataire: categorieEmployes.value,
+                            prixTache: parseInt(prixTache.value),
+                            prixTacheAutre: parseInt(prixTacheAutre.value),
+                            effectue: false,
+                            statut: 1,
+                            creerle: datecreer.toLocaleString('en-GB', { timeZone: 'UTC' }),
+                            modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' }),
+                        };
 
-                    if (localStorage.getItem("TACHES") == null) {
-                        NewTache.id = "T00L1";
-                        dataAll.push(NewTache);
-                        localStorage.setItem("TACHES", JSON.stringify(dataAll));
-                        libelleTache.style.border = "1px solid rgb(206, 212, 218)";
-                        libelleTache.value = "";
-                        categorieEmployes.value = "";
-                        categorieEmployes.value = "";
-                        prixTache.value = "";
-                        prixTacheAutre.value = "";
-                        categorieEmployes.value = "";
-                        reafraichirPage();
-                    } else {
-                        if (!JSON.parse(localStorage.getItem("TACHES")).find(cle => cle.libelle == libelleTache.value)) {
-                            const conversion = JSON.parse(localStorage.getItem("TACHES"))
-                            conversion.forEach(objetCategorie => {
-                                dataAll.push(objetCategorie)
-                            });
-                            NewTache.id = "T00L" + (dataAll.length + 1);
+                        if (localStorage.getItem("TACHES") == null) {
+                            NewTache.id = "T00L1";
                             dataAll.push(NewTache);
                             localStorage.setItem("TACHES", JSON.stringify(dataAll));
                             libelleTache.style.border = "1px solid rgb(206, 212, 218)";
                             libelleTache.value = "";
+                            categorieEmployes.value = "";
+                            categorieEmployes.value = "";
                             prixTache.value = "";
                             prixTacheAutre.value = "";
                             categorieEmployes.value = "";
                             reafraichirPage();
                         } else {
-                            errorlibelle.textContent = "Cette tâche existe déjà.";
-                            errorlibelle.style.color = "red";
-                            errorlibelle.style.fontWeight = "blod";
+                            if (!JSON.parse(localStorage.getItem("TACHES")).find(cle => cle.libelle == libelleTache.value)) {
+                                const conversion = JSON.parse(localStorage.getItem("TACHES"))
+                                conversion.forEach(objetCategorie => {
+                                    dataAll.push(objetCategorie)
+                                });
+                                NewTache.id = "T00L" + (dataAll.length + 1);
+                                dataAll.push(NewTache);
+                                localStorage.setItem("TACHES", JSON.stringify(dataAll));
+                                libelleTache.style.border = "1px solid rgb(206, 212, 218)";
+                                libelleTache.value = "";
+                                prixTache.value = "";
+                                prixTacheAutre.value = "";
+                                categorieEmployes.value = "";
+                                reafraichirPage();
+                            } else {
+                                errorlibelle.textContent = "Cette tâche existe déjà.";
+                                errorlibelle.style.color = "red";
+                                errorlibelle.style.fontWeight = "blod";
+                            }
                         }
+                    } else {
+                        categorieEmployes.focus()
+                        categorieEmployes.style.border = "1.2px solid red";
+                        errorCategorie.textContent = "Ce champ est obligatoire";
+                        errorCategorie.style.color = "red";
                     }
                 }else{
-                    categorieEmployes.focus()
-                    categorieEmployes.style.border = "1.2px solid red";
-                    errorCategorie.textContent = "Ce champ est obligatoire";
-                    errorCategorie.style.color = "red";
+                    prixTacheAutre.focus()
+                    prixTacheAutre.style.border = "1.2px solid red";
+                    errorprixau.textContent = "Le prix de la tache non terminée est supperieure à celle qui est terminée";
+                    errorprixau.style.color = "red";
                 }
+
+
+                
             }else{
                 prixTacheAutre.focus()
                 prixTacheAutre.style.border = "1.2px solid red";
