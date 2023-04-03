@@ -1,6 +1,4 @@
 document.getElementById("saverole").addEventListener("click", saverole);
-const HID = document.getElementById("hidden");
-HID.style.visibility ="hidden";
 function saverole(event){
     let errorlibelle = document.getElementById("errorlibelle");
     let errortype = document.getElementById("errortype");
@@ -10,9 +8,6 @@ function saverole(event){
         let typerole = document.getElementById("typerole");
         let datecreer = new Date();
         let datemodifier = new Date();
-        const ID = document.getElementById("ID");
-        const LIB = document.getElementById("LIB");
-        const DES = document.getElementById("DES");
         if (typerole.value.replaceAll(" ", "") != ""){
             errortype.textContent = "";
             const libelle = libellerole.value;
@@ -47,10 +42,7 @@ function saverole(event){
                 typerole.style.border = "1px solid rgb(206, 212, 218)";
                 typerole.value = "";
             }
-            ID.textContent = Newrole.id;
-            LIB.textContent = Newrole.libelle;
-            DES.textContent = Newrole.type;
-            HID.style.visibility = "visible";
+            location.reload();
         }else{
             typerole.focus();
             typerole.style.border = "1.2px solid red";

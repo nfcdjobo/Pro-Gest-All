@@ -36,17 +36,13 @@ function saveCategorie(event) {
             libelleCategorie.value = "";
            
         }
-        
-        
-        
+        location.reload();
     } else {
         libelleCategorie.focus();
         libelleCategorie.style.border = "1.2px solid red";
         errorlibelle.textContent = "Ce champ est obligatoire";
         errorlibelle.style.color = "red";
     }
-    
-    location.reload();
 }
 
 
