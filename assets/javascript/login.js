@@ -41,7 +41,6 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                     const infosAdmin = jsonParse.find(cle =>cle.email == dataSession.login && cle.password == dataSession.password);
                     console.log(infosAdmin)
                     if(infosAdmin){
-                        alert(password.value)
                         document.getElementById("messageLogin").textContent = "Connexion établie avec succès";
                         let recharger = setInterval(() => {
                             compteur = 1;
