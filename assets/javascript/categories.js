@@ -24,19 +24,24 @@ function saveCategorie(event) {
             localStorage.setItem("CATEGORIES", JSON.stringify(dataAll));
             libelleCategorie.style.border = "1px solid rgb(206, 212, 218)";
             libelleCategorie.value = "";
+            location.reload();
         } else {
-            const conversion = JSON.parse(localStorage.getItem("CATEGORIES"))
-            conversion.forEach(objetCategorie => {
-                dataAll.push(objetCategorie)
-            });
-            NewCategorie.id = "C00L" + (dataAll.length + 1);
-            dataAll.push(NewCategorie);
-            localStorage.setItem("CATEGORIES", JSON.stringify(dataAll));
-            libelleCategorie.style.border = "1px solid rgb(206, 212, 218)";
-            libelleCategorie.value = "";
-           
+            if(JSON.parse(localStorage.getItem("CATEGORIES")).find(cle=>cle.libelle.toLowerCase() == NewCategorie.libelle.toLowerCase())){
+                alert("Cette catégorie a été déjà ajouté");
+            }else{
+                const conversion = JSON.parse(localStorage.getItem("CATEGORIES"))
+                conversion.forEach(objetCategorie => {
+                    dataAll.push(objetCategorie)
+                });
+                NewCategorie.id = "C00L" + (dataAll.length + 1);
+                dataAll.push(NewCategorie);
+                localStorage.setItem("CATEGORIES", JSON.stringify(dataAll));
+                libelleCategorie.style.border = "1px solid rgb(206, 212, 218)";
+                libelleCategorie.value = "";
+                location.reload();
+            }
         }
-        location.reload();
+        
     } else {
         libelleCategorie.focus();
         libelleCategorie.style.border = "1.2px solid red";
@@ -103,7 +108,6 @@ function afficheroles(donneCategorie) {
             contenutableau.append(maligne);
         })
     }
-
 }
 
 afficheroles(JSON.parse(localStorage.getItem("CATEGORIES")));
@@ -173,52 +177,47 @@ function creerFormulaireModifier(event) {
 function modifierCategorie(evenement) {
     const idenel = document.getElementById(evenement.target.id.replace("envoyer", "id"));
     const moninput = document.getElementById("new-" + evenement.target.id.replace("envoyer", "libelle"));
-    const monselect = document.getElementById("new-" + evenement.target.id.replace("envoyer", "creerle"));
 
     const local = JSON.parse(localStorage.getItem("CATEGORIES"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible) {
         if (moninput.value != cible.libelle && moninput.value.replaceAll(" ", "") != "") {
-            let ladate = new Date();
-            cible.libelle = moninput.value;
-            
-            cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
-            local[indece] = cible;
-            localStorage.setItem("CATEGORIES", JSON.stringify(local));
+            if(JSON.parse(localStorage.getItem("CATEGORIES")).find(cle=>cle.libelle.toLowerCase() == moninput.value.toLowerCase())){
+                alert("Cette catégorie a été déjà ajoutée");
+            }else{
+                let ladate = new Date();
+                cible.libelle = moninput.value;
+                
+                cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
+                local[indece] = cible;
+                localStorage.setItem("CATEGORIES", JSON.stringify(local));
 
-            const envo = document.querySelector(".bi-send");
-            const encaininput = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
-            const tdlibelle = document.getElementById(envo.id.replace("envoyer", "libelle"));
-            tdlibelle.textContent = encaininput.value;
-            encaininput.remove();
+                const envo = document.querySelector(".bi-send");
+                const encaininput = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
+                const tdlibelle = document.getElementById(envo.id.replace("envoyer", "libelle"));
+                tdlibelle.textContent = encaininput.value;
+                encaininput.remove();
 
-            const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
-            const inaction1 = document.createElement("button");
-            inaction1.id = envo.id.replace("envoyer", "modifier");
-            inaction1.className = "bouton bouton-all-info bi bi-pencil-square";
-            inaction1.style.color = "white";
-            inaction1.addEventListener("click", creerFormulaireModifier);
-            tdaction1.append(inaction1);
+                const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
+                const inaction1 = document.createElement("button");
+                inaction1.id = envo.id.replace("envoyer", "modifier");
+                inaction1.className = "bouton bouton-all-info bi bi-pencil-square";
+                inaction1.style.color = "white";
+                inaction1.addEventListener("click", creerFormulaireModifier);
+                tdaction1.append(inaction1);
 
-            const tdaction2 = document.getElementById(envo.id.replace("envoyer", "action2"));
-            const inaction2 = document.createElement("button");
-            inaction2.id = envo.id.replace("envoyer", "supprimer");
-            inaction2.className = "bouton bouton-danger bi bi-trash3";
-            inaction2.addEventListener("click", supprimerCategorie)
-            inaction2.style.color = "white";
-            tdaction2.append(inaction2);
+                const tdaction2 = document.getElementById(envo.id.replace("envoyer", "action2"));
+                const inaction2 = document.createElement("button");
+                inaction2.id = envo.id.replace("envoyer", "supprimer");
+                inaction2.className = "bouton bouton-danger bi bi-trash3";
+                inaction2.addEventListener("click", supprimerCategorie)
+                inaction2.style.color = "white";
+                tdaction2.append(inaction2);
 
-            document.getElementById(envo.id.replace("envoyer", "annuler")).remove();
-            document.getElementById(envo.id).remove();
-
-            const ID = document.getElementById("ID");
-            const LIB = document.getElementById("LIB");
-
-            document.getElementById("ID").textContent = cible.id;
-            document.getElementById("LIB").textContent = moninput.value;
-            HID.style.visibility = "visible";
-
+                document.getElementById(envo.id.replace("envoyer", "annuler")).remove();
+                document.getElementById(envo.id).remove();
+            }
         }
     }
 }
@@ -249,6 +248,7 @@ function annulerAction(even) {
 
     document.getElementById(envo.id.replace("annuler", "envoyer")).remove();
     document.getElementById(envo.id).remove();
+    location.reload();
 }
 
 function supprimerCategorie(event) {

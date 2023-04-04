@@ -74,25 +74,19 @@ function saveTaches(event) {
                             categorieEmployes.value = "";
                             reafraichirPage();
                         } else {
-                            if (!JSON.parse(localStorage.getItem("TACHES")).find(cle => cle.libelle == libelleTache.value)) {
-                                const conversion = JSON.parse(localStorage.getItem("TACHES"))
-                                conversion.forEach(objetCategorie => {
-                                    dataAll.push(objetCategorie)
-                                });
-                                NewTache.id = "T00L" + (dataAll.length + 1);
-                                dataAll.push(NewTache);
-                                localStorage.setItem("TACHES", JSON.stringify(dataAll));
-                                libelleTache.style.border = "1px solid rgb(206, 212, 218)";
-                                libelleTache.value = "";
-                                prixTache.value = "";
-                                prixTacheAutre.value = "";
-                                categorieEmployes.value = "";
-                                reafraichirPage();
-                            } else {
-                                errorlibelle.textContent = "Cette tâche existe déjà.";
-                                errorlibelle.style.color = "red";
-                                errorlibelle.style.fontWeight = "blod";
-                            }
+                            const conversion = JSON.parse(localStorage.getItem("TACHES"))
+                            conversion.forEach(objetCategorie => {
+                                dataAll.push(objetCategorie)
+                            });
+                            NewTache.id = "T00L" + (dataAll.length + 1);
+                            dataAll.push(NewTache);
+                            localStorage.setItem("TACHES", JSON.stringify(dataAll));
+                            libelleTache.style.border = "1px solid rgb(206, 212, 218)";
+                            libelleTache.value = "";
+                            prixTache.value = "";
+                            prixTacheAutre.value = "";
+                            categorieEmployes.value = "";
+                            reafraichirPage();
                         }
                     } else {
                         categorieEmployes.focus()
@@ -129,8 +123,6 @@ function saveTaches(event) {
     }
     
 }
-
-
 
 
 let contenuTaches = JSON.parse(localStorage.getItem("TACHES"));
@@ -194,7 +186,6 @@ function afficheTaches(donneCategorie) {
             monaction2.append(boutonsupprimer);
             maligne.append(monaction2);
             contenutableau.append(maligne);
-            // document.querySelectorAll("td").forEach(cle =>{ cle.style.fontSize = "12px", cle.style.fontWeight = "500"});
         })
     }
 

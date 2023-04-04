@@ -354,6 +354,7 @@ function modifierAdmininstrateur(evenement) {
     if (cible) {
         const envo = document.querySelector(".bi-send");
         if ((monInputNom.value != cible.nom || monInputNaissance.value != cible.naissance || monSelectRole.value != cible.roles || monInputEmail.value != cible.email || monInputPhone.value != cible.telephone || monInputPassword.value != cible.password) && (monInputNom.value.replaceAll(" ", "") != "" && monInputNaissance.value.replaceAll(" ", "") != "" && monSelectRole.value.replaceAll(" ", "") != "" && monInputEmail.value.replaceAll(" ", "") != "" && monInputPhone.value.replaceAll(" ", "") != "" && monInputPassword.value.replaceAll(" ", "") != "")) {
+            // if(JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle=>cle.email.toLowerCase()==monInputEmail.value.toLowerCase()).length <= 1 && )
             let ladate = new Date();
             cible.nom = monInputNom.value;
             cible.naissance = monInputNaissance.value;
@@ -362,7 +363,6 @@ function modifierAdmininstrateur(evenement) {
             cible.telephone = monInputPhone.value;
             cible.password = monInputPassword.value;
 
-            
             const encainInputPhoto = document.getElementById(`new-${envo.id.replace("envoyer", "photo")}`);
             const tdPhoto = document.getElementById(envo.id.replace("envoyer", "photo"));
             const lienDetail = document.createElement("a");
@@ -446,7 +446,7 @@ function modifierAdmininstrateur(evenement) {
 
             document.getElementById(envo.id.replace("envoyer", "annuler")).remove();
             document.getElementById(envo.id).remove();
-            alert("Modifiaction effectuée avec succès.")
+            alert("Modifiaction effectuée avec succès.");
 
         } else {
             alert("Aucune action n'a été faite !")

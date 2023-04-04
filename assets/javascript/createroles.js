@@ -1,22 +1,16 @@
 document.getElementById("saverole").addEventListener("click", saverole);
 function saverole(event){
     let errorlibelle = document.getElementById("errorlibelle");
-    let errortype = document.getElementById("errortype");
     let libellerole = document.getElementById("libellerole");
     if(libellerole.value.replaceAll(" ", "") != ""){
         errorlibelle.textContent = "";
-        let typerole = document.getElementById("typerole");
         let datecreer = new Date();
         let datemodifier = new Date();
-        if (typerole.value.replaceAll(" ", "") != ""){
-            errortype.textContent = "";
             const libelle = libellerole.value;
-            const type = typerole.value;
             let dataAll = [];
             const Newrole = {
                 id: "",
                 libelle: libellerole.value,
-                type: typerole.value,
                 statut: 1,
                 creerle: datecreer.toLocaleString('en-GB', { timeZone: 'UTC' }),
                 modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' })
@@ -27,28 +21,23 @@ function saverole(event){
                 localStorage.setItem("ROLES",JSON.stringify(dataAll));
                 libellerole.style.border = "1px solid rgb(206, 212, 218)";
                 libellerole.value = "";
-                typerole.style.border = "1px solid rgb(206, 212, 218)";
-                typerole.value = "";
+                location.reload();
             }else{
-                const conversion = JSON.parse(localStorage.getItem("ROLES"))
-                conversion.forEach(objetrole => {
-                    dataAll.push(objetrole)
-                });
-                Newrole.id = "R00L" + (dataAll.length + 1);
-                dataAll.push(Newrole);
-                localStorage.setItem("ROLES", JSON.stringify(dataAll));
-                libellerole.style.border = "1px solid rgb(206, 212, 218)";
-                libellerole.value = "";
-                typerole.style.border = "1px solid rgb(206, 212, 218)";
-                typerole.value = "";
+                if(JSON.parse(localStorage.getItem("ROLES")).find(cle=>cle.libelle.toLowerCase() == libellerole.value.toLowerCase())){
+                    alert("Ce rôle a été déjà créé")
+                }else{
+                    const conversion = JSON.parse(localStorage.getItem("ROLES"))
+                    conversion.forEach(objetrole => {
+                        dataAll.push(objetrole)
+                    });
+                    Newrole.id = "R00L" + (dataAll.length + 1);
+                    dataAll.push(Newrole);
+                    localStorage.setItem("ROLES", JSON.stringify(dataAll));
+                    libellerole.style.border = "1px solid rgb(206, 212, 218)";
+                    libellerole.value = "";
+                    location.reload();
+                }
             }
-            location.reload();
-        }else{
-            typerole.focus();
-            typerole.style.border = "1.2px solid red";
-            errortype.textContent = "Ce champ est obligatoire";
-            errortype.style.color = "red";
-        }
     }else{
         libellerole.focus();
         libellerole.style.border = "1.2px solid red";
@@ -78,12 +67,6 @@ function afficheroles(donnerole){
             monlibelle.id = `roles-${element.id}-libelle`;
             monlibelle.textContent = element.libelle;
             maligne.append(monlibelle);
-
-            const mondestine = document.createElement("td");
-            mondestine.className = "cell";
-            mondestine.id = `roles-${element.id}-destine`;
-            mondestine.textContent = element.type;
-            maligne.append(mondestine);
 
             const mondatecreer = document.createElement("td");
             mondatecreer.className = "cell";
@@ -139,11 +122,6 @@ function creerFormulaireModifier(event){
         tdlibelle.textContent = encaininput.value;
         encaininput.remove();
 
-        const encainselect = document.getElementById(`new-${envo.id.replace("envoyer", "destine")}`);
-        const tddestine = document.getElementById(envo.id.replace("envoyer", "destine"));
-        tddestine.textContent = encainselect.value;
-        encainselect.remove();
-
         const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
         const inaction1 = document.createElement("button");
         inaction1.id = envo.id.replace("envoyer", "modifier");
@@ -171,28 +149,7 @@ function creerFormulaireModifier(event){
     newlibelleinput.id = `new-${event.target.id.replace("modifier", "libelle")}`;
     newlibelleinput.className = "form-control";
     libelleelement.innerHTML = "";
-    libelleelement.append(newlibelleinput)
-
-    const destineelement = document.getElementById(event.target.id.replace("modifier", "destine"));
-    const newdestineselect = document.createElement("select");
-    newdestineselect.id = `new-${event.target.id.replace("modifier", "destine")}`;
-    newdestineselect.className = "form-select";
-    const optionadmin = document.createElement("option");
-    optionadmin.value = "Administrateurs";
-    optionadmin.textContent = "Administrateurs";
-    const optionemploye = document.createElement("option");
-    optionemploye.value = "Employés";
-    optionemploye.textContent = "Employés";
-    if (destineelement.textContent == "Administrateurs"){
-        optionadmin.selected = true;
-    }else{
-        optionemploye.selected = true;
-    }
-    newdestineselect.append(optionadmin);
-    newdestineselect.append(optionemploye);
-
-    destineelement.innerHTML = "";
-    destineelement.append(newdestineselect);
+    libelleelement.append(newlibelleinput);
 
     const action2element = document.getElementById(event.target.id.replace("modifier", "action2"));
     const annuleelement = document.createElement("button");
@@ -217,59 +174,46 @@ function creerFormulaireModifier(event){
 function modifierRoles(evenement){
     const idenel = document.getElementById(evenement.target.id.replace("envoyer", "id"));
     const moninput = document.getElementById("new-" + evenement.target.id.replace("envoyer", "libelle"));
-    const monselect = document.getElementById("new-" + evenement.target.id.replace("envoyer", "destine"));
     
     const local = JSON.parse(localStorage.getItem("ROLES"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible){
-        if (moninput.value != cible.libelle || monselect.value != cible.type){
-            let ladate = new Date();
-            cible.libelle = moninput.value;
-            cible.type = monselect.value;
-            cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
-            local[indece] = cible;
-            localStorage.setItem("ROLES", JSON.stringify(local));
+        if (moninput.value != cible.libelle){
+            if(JSON.parse(localStorage.getItem("ROLES")).find(cle=>cle.libelle.toLowerCase() == moninput.value.toLowerCase())){
+                alert("Ce rôle a été déjà ajouté.")
+            }else{
+                let ladate = new Date();
+                cible.libelle = moninput.value;
+                cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
+                local[indece] = cible;
+                localStorage.setItem("ROLES", JSON.stringify(local));
 
-            const envo = document.querySelector(".bi-send");
-            const encaininput = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
-            const tdlibelle = document.getElementById(envo.id.replace("envoyer", "libelle"));
-            tdlibelle.textContent = encaininput.value;
-            encaininput.remove();
+                const envo = document.querySelector(".bi-send");
+                const encaininput = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
+                const tdlibelle = document.getElementById(envo.id.replace("envoyer", "libelle"));
+                tdlibelle.textContent = encaininput.value;
+                encaininput.remove();
 
-            const encainselect = document.getElementById(`new-${envo.id.replace("envoyer", "destine")}`);
-            const tddestine = document.getElementById(envo.id.replace("envoyer", "destine"));
-            tddestine.textContent = encainselect.value;
-            encainselect.remove();
+                const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
+                const inaction1 = document.createElement("button");
+                inaction1.id = envo.id.replace("envoyer", "modifier");
+                inaction1.className = "bouton bouton-all-info bi bi-pencil-square";
+                inaction1.style.color = "white";
+                inaction1.addEventListener("click", creerFormulaireModifier);
+                tdaction1.append(inaction1);
 
-            const tdaction1 = document.getElementById(envo.id.replace("envoyer", "action1"));
-            const inaction1 = document.createElement("button");
-            inaction1.id = envo.id.replace("envoyer", "modifier");
-            inaction1.className = "bouton bouton-all-info bi bi-pencil-square";
-            inaction1.style.color = "white";
-            inaction1.addEventListener("click", creerFormulaireModifier);
-            tdaction1.append(inaction1);
+                const tdaction2 = document.getElementById(envo.id.replace("envoyer", "action2"));
+                const inaction2 = document.createElement("button");
+                inaction2.id = envo.id.replace("envoyer", "supprimer");
+                inaction2.className = "bouton bouton-danger bi bi-trash3";
+                inaction2.addEventListener("click", supprimerRoles)
+                inaction2.style.color = "white";
+                tdaction2.append(inaction2);
 
-            const tdaction2 = document.getElementById(envo.id.replace("envoyer", "action2"));
-            const inaction2 = document.createElement("button");
-            inaction2.id = envo.id.replace("envoyer", "supprimer");
-            inaction2.className = "bouton bouton-danger bi bi-trash3";
-            inaction2.addEventListener("click", supprimerRoles)
-            inaction2.style.color = "white";
-            tdaction2.append(inaction2);
-
-            document.getElementById(envo.id.replace("envoyer", "annuler")).remove();
-            document.getElementById(envo.id).remove();
-
-            const ID = document.getElementById("ID");
-            const LIB = document.getElementById("LIB");
-            const DES = document.getElementById("DES");
-
-            document.getElementById("ID").textContent = cible.id;
-            document.getElementById("LIB").textContent = moninput.value;
-            document.getElementById("DES").textContent = monselect.value;
-            HID.style.visibility = "visible";
-
+                document.getElementById(envo.id.replace("envoyer", "annuler")).remove();
+                document.getElementById(envo.id).remove();
+            }
         }else{
             alert("Aucune action n'a été faite !")
         }
@@ -283,11 +227,6 @@ function annulerAction(even){
     const tdlibelle = document.getElementById(envo.id.replace("annuler", "libelle"));
     tdlibelle.textContent = encaininput.value;
     encaininput.remove();
-
-    const encainselect = document.getElementById(`new-${envo.id.replace("annuler", "destine")}`);
-    const tddestine = document.getElementById(envo.id.replace("annuler", "destine"));
-    tddestine.textContent = encainselect.value;
-    encainselect.remove();
 
     const tdaction1 = document.getElementById(envo.id.replace("annuler", "action1"));
     const inaction1 = document.createElement("button");
@@ -307,6 +246,7 @@ function annulerAction(even){
 
     document.getElementById(envo.id.replace("annuler", "envoyer")).remove();
     document.getElementById(envo.id).remove();
+    location.reload();
 }
 
 function supprimerRoles(event){

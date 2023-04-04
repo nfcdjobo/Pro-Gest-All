@@ -63,7 +63,7 @@ function saveEmployes(event) {
                                     const fichier = new FileReader();
                                     if(JSON.parse(localStorage.getItem("EMPLOYES"))){
                                         const data = JSON.parse(localStorage.getItem("EMPLOYES"));
-                                        if (!data.find(cle => cle.email == NewObjData.email)){
+                                        if (!data.find(cle => cle.email.toLowerCase() == NewObjData.email.toLowerCase())){
                                             fichier.readAsDataURL(photoEmploye.files[0]);
                                             fichier.addEventListener("load", () => {
                                                 NewObjData.id = "E00L" + (JSON.parse(localStorage.getItem("EMPLOYES")).length + 1);
