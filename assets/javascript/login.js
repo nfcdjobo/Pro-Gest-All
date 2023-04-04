@@ -1,8 +1,8 @@
 
 window.addEventListener("DOMContentLoaded", (event)=>{
     if (sessionStorage.getItem("SESSION_ADMIN")) {
-        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
-        // window.location.href = "dashboard.html";
+        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
+        window.location.href = "dashboard.html";
     }
 
     document.getElementById("submit-login").addEventListener("click", connexion);
@@ -47,8 +47,8 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                             compteur = 1;
                             if(compteur == 1){
                                 clearInterval(recharger);
-                                window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
-                                // window.location.href = "dashboard.html";
+                                // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
+                                window.location.href = "dashboard.html";
                             }
                         }, 1500);
                        
@@ -65,8 +65,8 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                             compteur = 1;
                             if(compteur == 1){
                                 clearInterval(recharger);
-                                window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
-                                // window.location.href = "dashboard.html";
+                                // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
+                                window.location.href = "dashboard.html";
                             }
                         }, 1500);
                     }else{

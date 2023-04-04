@@ -56,12 +56,12 @@ if (sessionStorage.SESSION_ADMIN){
         if (document.getElementById("error-password")){
             document.getElementById("error-password").textContent = "Accèss incorrecte !";
         }
-        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-        // window.location.href = "/login.html";
+        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+        window.location.href = "/login.html";
     }
 }else{
-    window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-    // window.location.href = "login.html";
+    // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+    window.location.href = "login.html";
 }
 
 // Pour la déconnection
@@ -71,7 +71,7 @@ document.getElementById("deconnexion").addEventListener("click", deconnection);
 function deconnection() {
     if (window.confirm("Etes-vous vraiment sûre de vouloir vous déconnecter ?")) {
         sessionStorage.clear();
-        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-        // window.location.href = "login.html";
+        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+        window.location.href = "login.html";
     }
 }
