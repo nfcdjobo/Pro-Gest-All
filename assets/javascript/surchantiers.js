@@ -22,7 +22,7 @@ function afficherAttribution(dataValidation){
 
             const photo = document.createElement("img");
             photo.id = `${cle.idEmploye}-${cle.idTache}-image`;
-            photo.src = JSON.parse(localStorage.getItem("EMPLOYES")).filter(element => element.id == cle.idEmploye)[0].photo;
+            photo.src = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All")).filter(element => element.id == cle.idEmploye)[0].photo;
             photo.style.width = "30px";
             photo.style.height = "30px";
             photo.style.borderRadius = "100%";
@@ -145,8 +145,8 @@ function afficherAttribution(dataValidation){
     }
 }
 
-if (localStorage.getItem("TACHES_ATTRIBUEES")) {
-    const dataTacheAttribuees = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES")).filter(cle => cle.statut == 1);
+if (localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All")) {
+    const dataTacheAttribuees = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All")).filter(cle => cle.statut == 1);
     afficherAttribution(dataTacheAttribuees);
 }
 
@@ -156,10 +156,10 @@ function approuver(event){
         let data = event.target.id.split("-");
         let idEmploye = data[0];
         let idTache = data[1];
-        let bigTache = JSON.parse(localStorage.getItem("TACHES"));
+        let bigTache = JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All"));
         let tache = bigTache.find(cle => cle.id == idTache);
 
-        let bigRequette = JSON.parse(localStorage.getItem("EMPLOYES"));
+        let bigRequette = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"));
         let employe = bigRequette.find(cle => cle.id == idEmploye);
         let indice = bigRequette.indexOf(employe);
 
@@ -191,29 +191,29 @@ function approuver(event){
             rapport.montant = tache.prixTacheAutre * 0;
         }
 
-        if (localStorage.getItem("TACHES_VALIDEES")) {
-            const allValidation = JSON.parse(localStorage.getItem("TACHES_VALIDEES"));
+        if (localStorage.getItem("TACHES_VALIDEES_Pro_Gest_All")) {
+            const allValidation = JSON.parse(localStorage.getItem("TACHES_VALIDEES_Pro_Gest_All"));
             rapport.id = "V00L" + (allValidation.length + 1);
             allValidation.push(rapport);
-            localStorage.setItem("TACHES_VALIDEES", JSON.stringify(allValidation));
+            localStorage.setItem("TACHES_VALIDEES_Pro_Gest_All", JSON.stringify(allValidation));
         } else {
             rapport.id = "V00L1";
             bigData.push(rapport);
-            localStorage.setItem("TACHES_VALIDEES", JSON.stringify(bigData));
+            localStorage.setItem("TACHES_VALIDEES_Pro_Gest_All", JSON.stringify(bigData));
         }
 
         employe.programmer = false;
         bigRequette[indice] = employe;
-        localStorage.setItem("EMPLOYES", JSON.stringify(bigRequette));
+        localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(bigRequette));
 
         let parent = event.target.closest("tr");
         const idParent = parent.id.replace("ligne-", "").split("-");
-        let allTacheValidee = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"));
+        let allTacheValidee = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All"));
         const requetteTacheAttribue = allTacheValidee.find(cle => { return cle.id.includes(idParent[0]) });
         const indeceTacheAttribue = allTacheValidee.indexOf(requetteTacheAttribue);
         requetteTacheAttribue.statut = 0;
         allTacheValidee[indeceTacheAttribue] = requetteTacheAttribue;
-        localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(allTacheValidee));
+        localStorage.setItem("TACHES_ATTRIBUEES_Pro_Gest_All", JSON.stringify(allTacheValidee));
         parent.remove();
     }
 }

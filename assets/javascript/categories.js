@@ -6,9 +6,6 @@ function saveCategorie(event) {
         errorlibelle.textContent = "";
         let datecreer = new Date();
         let datemodifier = new Date();
-        const ID = document.getElementById("ID");
-        const LIB = document.getElementById("LIB");
-        const DES = document.getElementById("DES");
         const libelle = libelleCategorie.value;
         let dataAll = [];
         const NewCategorie = {
@@ -18,24 +15,24 @@ function saveCategorie(event) {
             creerle: datecreer.toLocaleString('en-GB', { timeZone: 'UTC' }),
             modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' })
         };
-        if (localStorage.getItem("CATEGORIES") == null) {
+        if (localStorage.getItem("CATEGORIES_Pro_Gest_All") == null) {
             NewCategorie.id = "C00L1";
             dataAll.push(NewCategorie);
-            localStorage.setItem("CATEGORIES", JSON.stringify(dataAll));
+            localStorage.setItem("CATEGORIES_Pro_Gest_All", JSON.stringify(dataAll));
             libelleCategorie.style.border = "1px solid rgb(206, 212, 218)";
             libelleCategorie.value = "";
             location.reload();
         } else {
-            if(JSON.parse(localStorage.getItem("CATEGORIES")).find(cle=>cle.libelle.toLowerCase() == NewCategorie.libelle.toLowerCase())){
+            if(JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All")).find(cle=>cle.libelle.toLowerCase() == NewCategorie.libelle.toLowerCase())){
                 alert("Cette catégorie a été déjà ajouté");
             }else{
-                const conversion = JSON.parse(localStorage.getItem("CATEGORIES"))
+                const conversion = JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All"))
                 conversion.forEach(objetCategorie => {
                     dataAll.push(objetCategorie)
                 });
                 NewCategorie.id = "C00L" + (dataAll.length + 1);
                 dataAll.push(NewCategorie);
-                localStorage.setItem("CATEGORIES", JSON.stringify(dataAll));
+                localStorage.setItem("CATEGORIES_Pro_Gest_All", JSON.stringify(dataAll));
                 libelleCategorie.style.border = "1px solid rgb(206, 212, 218)";
                 libelleCategorie.value = "";
                 location.reload();
@@ -51,7 +48,7 @@ function saveCategorie(event) {
 }
 
 
-let contenuCategorie = JSON.parse(localStorage.getItem("CATEGORIES"));
+let contenuCategorie = JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All"));
 function afficheroles(donneCategorie) {
     if (donneCategorie != null) {
         const consernes = donneCategorie.filter(cle => cle.statut != 0);
@@ -110,7 +107,7 @@ function afficheroles(donneCategorie) {
     }
 }
 
-afficheroles(JSON.parse(localStorage.getItem("CATEGORIES")));
+afficheroles(JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All")));
 
 let bouton_modifier = document.querySelectorAll(".bi-pencil-square");
 bouton_modifier.forEach(bouton => {
@@ -178,12 +175,12 @@ function modifierCategorie(evenement) {
     const idenel = document.getElementById(evenement.target.id.replace("envoyer", "id"));
     const moninput = document.getElementById("new-" + evenement.target.id.replace("envoyer", "libelle"));
 
-    const local = JSON.parse(localStorage.getItem("CATEGORIES"));
+    const local = JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible) {
         if (moninput.value != cible.libelle && moninput.value.replaceAll(" ", "") != "") {
-            if(JSON.parse(localStorage.getItem("CATEGORIES")).find(cle=>cle.libelle.toLowerCase() == moninput.value.toLowerCase())){
+            if(JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All")).find(cle=>cle.libelle.toLowerCase() == moninput.value.toLowerCase())){
                 alert("Cette catégorie a été déjà ajoutée");
             }else{
                 let ladate = new Date();
@@ -191,7 +188,7 @@ function modifierCategorie(evenement) {
                 
                 cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
                 local[indece] = cible;
-                localStorage.setItem("CATEGORIES", JSON.stringify(local));
+                localStorage.setItem("CATEGORIES_Pro_Gest_All", JSON.stringify(local));
 
                 const envo = document.querySelector(".bi-send");
                 const encaininput = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
@@ -255,11 +252,11 @@ function supprimerCategorie(event) {
     const decision = window.confirm("Êtes-vous vraiment sûre de vouloir supprimer ?");
     if (decision) {
         const reference = event.target.id.replace("categorie-", "").replace("-supprimer", "");
-        const toutdonne = JSON.parse(localStorage.getItem("CATEGORIES"));
+        const toutdonne = JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All"));
         const requette = toutdonne.find(key => key.id == reference);
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
-        localStorage.setItem("CATEGORIES", JSON.stringify(toutdonne));
+        localStorage.setItem("CATEGORIES_Pro_Gest_All", JSON.stringify(toutdonne));
         document.getElementById(`ligne-${reference}`).remove();
     }
 }

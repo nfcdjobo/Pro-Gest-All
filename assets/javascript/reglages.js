@@ -1,4 +1,4 @@
-const dataOuvrable = JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES"));
+const dataOuvrable = JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES_Pro_Gest_All"));
 const jourOuvre = document.getElementById("jourOuvre");
 const matin_1 = document.getElementById("matin-1");
 const pose_1 = document.getElementById("pose-1");
@@ -55,7 +55,7 @@ function personnaliserOuvrable() {
                     repriseService: apresMidiOuvrable1.value,
                     arretService: apresMidiOuvrable2.value,
                   }
-                  localStorage.setItem("PARAM_JOURS_OUVRABLES", JSON.stringify(ObjeOuvrable));
+                  localStorage.setItem("PARAM_JOURS_OUVRABLES_Pro_Gest_All", JSON.stringify(ObjeOuvrable));
                   window.scroll(0, 140);
                   messageAlert.textContent = "Enregistrement effectué avec succès !!";
                   barre.hidden = false;
@@ -264,7 +264,7 @@ function personnaliserWeek() {
                     repriseService: apresMidiWeek1.value,
                     arretService: apresMidiWeek2.value,
                   }
-                  localStorage.setItem("PARAM_WEEK_END", JSON.stringify(ObjeWeek));
+                  localStorage.setItem("PARAM_WEEK_END_Pro_Gest_All", JSON.stringify(ObjeWeek));
                   window.scroll(0, 500);
                   messageWeekEnd.textContent = "Enregistrement effectué avec succès !!";
                   barre.hidden = false;
@@ -320,7 +320,7 @@ function personnaliserWeek() {
 }
 
 // Sauvegard des jours weeks-end
-const dataWenk = JSON.parse(localStorage.getItem("PARAM_WEEK_END"));
+const dataWenk = JSON.parse(localStorage.getItem("PARAM_WEEK_END_Pro_Gest_All"));
 
 function afficheParametreWeek(donneeWeek) {
   const weekEndJours = document.getElementById("week-end-jours");
@@ -415,7 +415,7 @@ function savaMasseSalariale() {
           max_tache_no_end: parseInt(max_tache_no_end.value)
         }
 
-        localStorage.setItem("MASSE_SALARIALES", JSON.stringify(masseSalariale));
+        localStorage.setItem("MASSE_SALARIALES_Pro_Gest_All", JSON.stringify(masseSalariale));
         
         const sall_1 = document.getElementById("sall-1");
         sall_1.innerHTML = "";
@@ -485,7 +485,7 @@ function savaMasseSalariale() {
 }
 
 
-const dataSalariale = JSON.parse(localStorage.getItem("MASSE_SALARIALES"));
+const dataSalariale = JSON.parse(localStorage.getItem("MASSE_SALARIALES_Pro_Gest_All"));
 
 function afficherMasseSalariale(detailSalariale){
   if (!Array.isArray(detailSalariale) && (typeof detailSalariale) == "object"){

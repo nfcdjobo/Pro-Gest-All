@@ -1,6 +1,6 @@
 
 window.addEventListener("DOMContentLoaded", (event)=>{
-    if (sessionStorage.getItem("SESSION_ADMIN")) {
+    if (sessionStorage.getItem("SESSION_ADMIN_Pro_Gest_All")) {
         // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
         window.location.href = "dashboard.html";
     }
@@ -34,9 +34,9 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                 }
                 
                 const data = [];
-                sessionStorage.setItem("SESSION_ADMIN", JSON.stringify(dataSession));
-                if (localStorage.getItem("ADMINISTRATEURS")){
-                    const jsonParse = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
+                sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", JSON.stringify(dataSession));
+                if (localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All")){
+                    const jsonParse = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
                     console.log(jsonParse)
                     const infosAdmin = jsonParse.find(cle =>cle.email == dataSession.login && cle.password == dataSession.password);
                     console.log(infosAdmin)
@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                      
                     if(newAdmin.email === dataSession.login && newAdmin.password === dataSession.password){
                         data.push(newAdmin);
-                        localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
+                        localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(data));
                          let recharger = setInterval(() => {
                             compteur = 1;
                             if(compteur == 1){

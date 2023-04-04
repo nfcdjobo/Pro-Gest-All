@@ -3,10 +3,10 @@ if(document.querySelector(".bouton-primondial")){
     primondial.forEach(cle =>{ cle.style.color = "white"; cle.style.fontWeight = "700" })
 }
 
-if (sessionStorage.SESSION_ADMIN){
-    if (localStorage.ADMINISTRATEURS){
-        const session = JSON.parse(sessionStorage.SESSION_ADMIN);
-        const element = JSON.parse(localStorage.ADMINISTRATEURS);
+if (sessionStorage.SESSION_ADMIN_Pro_Gest_All){
+    if (localStorage.ADMINISTRATEURS_Pro_Gest_All){
+        const session = JSON.parse(sessionStorage.SESSION_ADMIN_Pro_Gest_All);
+        const element = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All);
         const personne = element.find(cle => cle.email === session.login && cle.password === session.password && cle.roles != "SUPER-ADMIN");
         
         if(personne){
@@ -20,8 +20,8 @@ if (sessionStorage.SESSION_ADMIN){
                 document.getElementById("admin-nombre-html").remove();
             }
             if (window.location.href.includes("admin.html") || window.location.href.includes("addadmin.html")) {
-                // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-                window.location.href = "login.html";
+                window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+                // window.location.href = "login.html";
             }
             if (document.getElementById("user-profile")){
                 document.getElementById("user-profile").src = personne.photo;
@@ -50,7 +50,7 @@ if (sessionStorage.SESSION_ADMIN){
                 }else{
                     document.getElementById("user-profile").src = "./../icons/avatar.svg";
                 }
-               
+                
                 document.getElementById("user-profile").style.backgroundSize = "cove";
                 document.getElementById("user-profile").style.borderRadius = "100%";
                 document.getElementById("user-profile").style.width = "1.8rem";
@@ -61,12 +61,12 @@ if (sessionStorage.SESSION_ADMIN){
         if (document.getElementById("error-password")){
             document.getElementById("error-password").textContent = "Accèss incorrecte !";
         }
-        // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-        window.location.href = "/login.html";
+        window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+        // window.location.href = "/login.html";
     }
 }else{
-    // window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-    window.location.href = "login.html";
+    window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+    // window.location.href = "login.html";
 }
 
 // Pour la déconnection

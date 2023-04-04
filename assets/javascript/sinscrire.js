@@ -1,4 +1,4 @@
-if (sessionStorage.getItem("SUPER_ADMINISTRATEUR")){
+if (sessionStorage.getItem("SUPER_ADMINISTRATEUR_Pro_Gest_All")){
     window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
 }
 document.getElementById("creerCompte").addEventListener("click", creerCompte);
@@ -30,7 +30,7 @@ function creerCompte(event){
                             if (confirmePassword.value == password.value) {
                                 errorConfirmPassword.value = "";
                                 const data = [];
-                                const requette = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
+                                const requette = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
                                 const admin = {
                                     id:"ADMIN",
                                     nom : "",
@@ -49,16 +49,16 @@ function creerCompte(event){
                                     if(request.length != 0){
                                         const indice = requette.indexOf(request[0]);
                                         requette[indice]= admin;
-                                        localStorage.setItem("ADMINISTRATEURS", JSON.stringify(requette));
+                                        localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(requette));
                                     }else{
                                         requette.push(admin);
-                                        localStorage.setItem("ADMINISTRATEURS", JSON.stringify(requette));
+                                        localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(requette));
                                     }
-                                    localStorage.setItem("SUPER_ADMINISTRATEUR", JSON.stringify(admin));
+                                    localStorage.setItem("SUPER_ADMINISTRATEUR_Pro_Gest_All", JSON.stringify(admin));
                                 }else{
                                     data.push(admin);
-                                    localStorage.setItem("ADMINISTRATEURS", JSON.stringify(data));
-                                    localStorage.setItem("SUPER_ADMINISTRATEUR", JSON.stringify(admin));
+                                    localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(data));
+                                    localStorage.setItem("SUPER_ADMINISTRATEUR_Pro_Gest_All", JSON.stringify(admin));
                                 }
 
                                 nom.value = "";

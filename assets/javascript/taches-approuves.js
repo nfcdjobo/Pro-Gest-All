@@ -37,7 +37,7 @@ function afficherValider(allValidate){
             tdNom.textContent = cle.nomEmploye;
             tr.append(tdNom);
 
-            const categorie = JSON.parse(localStorage.EMPLOYES).find(key => key.id === cle.idEmploye);
+            const categorie = JSON.parse(localStorage.EMPLOYES_Pro_Gest_All).find(key => key.id === cle.idEmploye);
             const tdCategorie = document.createElement("td");
             tdCategorie.id = `${cle.id}-${cle.idEmploye}-${cle.idTache}-categorie`;
             tdCategorie.className = "cell";
@@ -108,7 +108,7 @@ function afficherValider(allValidate){
     }
 }
 
-if (localStorage.TACHES_VALIDEES){
-    const TACHES_VALIDEES = JSON.parse(localStorage.TACHES_VALIDEES).filter(cle => !cle.regle && cle.montant !== 0)
+if (localStorage.TACHES_VALIDEES_Pro_Gest_All){
+    const TACHES_VALIDEES = JSON.parse(localStorage.TACHES_VALIDEES_Pro_Gest_All).filter(cle => !cle.regle && cle.montant !== 0)
     afficherValider(TACHES_VALIDEES)
 }

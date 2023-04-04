@@ -1,8 +1,8 @@
 
 
 const role = document.getElementById("role-admin");
-if (JSON.parse(localStorage.getItem("ROLES"))){
-    const requetteselect = JSON.parse(localStorage.getItem("ROLES")).filter(key => key.statut != 0 && key.type == "Administrateurs");
+if (JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All"))){
+    const requetteselect = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).filter(key => key.statut != 0 && key.type == "Administrateurs");
     requetteselect.forEach(cle => {
         let optionselec = document.createElement("option");
         optionselec.textContent = cle.libelle;
@@ -58,7 +58,7 @@ function saveadministrateur(event){
                                         update_at: madate.toLocaleString('en-GB', { timeZone: 'UTC' }),
                                     }
                                     let dataTable = [];
-                                    let localData = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
+                                    let localData = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
                                     if(localData){
                                         if (!localData.find(key => key.email == objData.email)){
                                             if (photo.value != "") {
@@ -67,12 +67,12 @@ function saveadministrateur(event){
                                                     objData.photo = fichier.result;
                                                     objData.id = "A00L" + (localData.length + 1);
                                                     localData.push(objData);
-                                                    localStorage.setItem("ADMINISTRATEURS", JSON.stringify(localData));
+                                                    localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(localData));
                                                 });
                                             }else{
                                                 objData.id = "A00L" + (localData.length + 1);
                                                 localData.push(objData);
-                                                localStorage.setItem("ADMINISTRATEURS", JSON.stringify(localData));
+                                                localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(localData));
                                             }
                                             nom.value = "";
                                             naissance.value = "";
@@ -96,7 +96,7 @@ function saveadministrateur(event){
                                         }else{
                                             objData.id = "A00L1";
                                             dataTable.push(objData);
-                                            localStorage.setItem("ADMINISTRATEURS", JSON.stringify(dataTable));
+                                            localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(dataTable));
                                             const messagerie = document.getElementById("messagerie");
                                             const getMessage = document.getElementById("getMessage");
                                             getMessage.textContent = "Ce compte est déjà utilisé. Veuillez donc utiliser un autre adresse email."
@@ -114,12 +114,12 @@ function saveadministrateur(event){
                                                 objData.photo = fichier.result;
                                                 objData.id = "A00L1";
                                                 dataTable.push(objData);
-                                                localStorage.setItem("ADMINISTRATEURS", JSON.stringify(dataTable));
+                                                localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(dataTable));
                                             });
                                         } else {
                                             objData.id = "A00L1";
                                             dataTable.push(objData);
-                                            localStorage.setItem("ADMINISTRATEURS", JSON.stringify(dataTable));
+                                            localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(dataTable));
                                         }
                                         nom.value = "";
                                         naissance.value = "";

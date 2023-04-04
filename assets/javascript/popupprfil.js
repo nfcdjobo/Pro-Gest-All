@@ -1,6 +1,7 @@
 
-    if (!sessionStorage.getItem("SESSION_ADMIN")) {
+    if (!sessionStorage.getItem("SESSION_ADMIN_Pro_Gest_All")) {
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
+        // window.location.href = "./login.html";
     } else {
         let user = document.getElementById("logo-user");
         let menu = document.getElementById("dropdown-menu");

@@ -1,7 +1,7 @@
 let selectCategorie = document.getElementById("specialiteEmploye");
-if(JSON.parse(localStorage.CATEGORIES).filter(cle => cle.statut != 0).length != 0){
+if(JSON.parse(localStorage.CATEGORIES_Pro_Gest_All).filter(cle => cle.statut != 0).length != 0){
     const allCategorie = [];
-    JSON.parse(localStorage.CATEGORIES).filter(cle => cle.statut != 0).sort().forEach(element => {
+    JSON.parse(localStorage.CATEGORIES_Pro_Gest_All).filter(cle => cle.statut != 0).sort().forEach(element => {
         const optionsCategorie = document.createElement("option");
         optionsCategorie.value  = element.libelle;
         optionsCategorie.textContent = element.libelle;
@@ -61,15 +61,15 @@ function saveEmployes(event) {
                                 if(NewObjData.age >= 18){
                                     const globalDataEmploye = [];
                                     const fichier = new FileReader();
-                                    if(JSON.parse(localStorage.getItem("EMPLOYES"))){
-                                        const data = JSON.parse(localStorage.getItem("EMPLOYES"));
+                                    if(JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"))){
+                                        const data = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"));
                                         if (!data.find(cle => cle.email.toLowerCase() == NewObjData.email.toLowerCase())){
                                             fichier.readAsDataURL(photoEmploye.files[0]);
                                             fichier.addEventListener("load", () => {
-                                                NewObjData.id = "E00L" + (JSON.parse(localStorage.getItem("EMPLOYES")).length + 1);
+                                                NewObjData.id = "E00L" + (JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All")).length + 1);
                                                 NewObjData.photo = fichier.result;
                                                 data.push(NewObjData);
-                                                localStorage.setItem("EMPLOYES", JSON.stringify(data));
+                                                localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(data));
                                                 nomEmploye.value = "";
                                                 naissanceEmploye.value = "";
                                                 emailEmploye.value = "";
@@ -89,7 +89,7 @@ function saveEmployes(event) {
                                             NewObjData.id = "E00L1";
                                             NewObjData.photo = fichier.result;
                                             globalDataEmploye.push(NewObjData);
-                                            localStorage.setItem("EMPLOYES", JSON.stringify(globalDataEmploye));
+                                            localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(globalDataEmploye));
                                         });
                                         alert("Employé enregistré avec succès.");
                                         nomEmploye.value = "";

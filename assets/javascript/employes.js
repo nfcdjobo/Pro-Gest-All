@@ -105,7 +105,7 @@ function afficherEmployes(donneEmploye) {
 
 
 
-afficherEmployes(JSON.parse(localStorage.getItem("EMPLOYES")));
+afficherEmployes(JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All")));
 let bouton_modifier = document.querySelectorAll(".bi-pencil-square");
 bouton_modifier.forEach(bouton => {
     bouton.addEventListener("click", creerFormulaireModifier);
@@ -123,7 +123,7 @@ function creerFormulaireModifier(event) {
         lienDetail.href = `detailEmploye.html#${envo.id.replace("-envoyer", "")}`;
         const monImage = document.createElement("img");
         monImage.id = envo.id.replace("envoyer", "image");
-        const proofil = JSON.parse(localStorage.EMPLOYES).filter(cle => cle.id == envo.id.replace("employe-", "").replace("-envoyer", ""));
+        const proofil = JSON.parse(localStorage.EMPLOYES_Pro_Gest_All).filter(cle => cle.id == envo.id.replace("employe-", "").replace("-envoyer", ""));
         monImage.src = proofil[0].photo;
         monImage.style.width = "25px";
         monImage.style.height = "25px";
@@ -204,7 +204,7 @@ function creerFormulaireModifier(event) {
     const newSelectSpecialite = document.createElement("select");
     newSelectSpecialite.id = `new-${event.target.id.replace("modifier", "specialite")}`;
     newSelectSpecialite.className = "form-select";
-    const requette = JSON.parse(localStorage.getItem("CATEGORIES")).filter(cle => cle.statut != 0);
+    const requette = JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All")).filter(cle => cle.statut != 0);
     const reserve = tbSpecialite.textContent;
     tbSpecialite.innerHTML = "";
     requette.forEach(key => {
@@ -297,7 +297,7 @@ function modifierEmploye(evenement) {
     const monTelephone = document.getElementById("new-" + evenement.target.id.replace("envoyer", "telephone"));
     const maNaissance = document.getElementById("new-" + evenement.target.id.replace("envoyer", "naissance"));
 
-    const local = JSON.parse(localStorage.getItem("EMPLOYES"));
+    const local = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible) {
@@ -335,7 +335,7 @@ function modifierEmploye(evenement) {
             lienDetail.href = `detailEmploye.html#${envo.id.replace("-envoyer", "")}`;
             const monImage = document.createElement("img");
             monImage.id = envo.id.replace("envoyer", "image");
-            const proofil = JSON.parse(localStorage.EMPLOYES).filter(cle => cle.id == envo.id.replace("employe-", "").replace("-envoyer", ""));
+            const proofil = JSON.parse(localStorage.EMPLOYES_Pro_Gest_All).filter(cle => cle.id == envo.id.replace("employe-", "").replace("-envoyer", ""));
             monImage.src = proofil[0].photo;
             monImage.style.width = "25px";
             monImage.style.height = "25px";
@@ -351,13 +351,13 @@ function modifierEmploye(evenement) {
                 fichierModif.addEventListener("load", () => {
                     cible.photo = fichierModif.result;
                     local[indece] = cible;
-                    localStorage.setItem("EMPLOYES", JSON.stringify(local));
+                    localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(local));
                     monImage.src = fichierModif.result;
                 });
             }
             cible.update_at = madate.toLocaleString('en-GB', { timeZone: 'UTC' });
             local[indece] = cible;
-            localStorage.setItem("EMPLOYES", JSON.stringify(local));
+            localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(local));
 
             const encainInputNom = document.getElementById(`new-${envo.id.replace("envoyer", "nom")}`);
             const tdNom = document.getElementById(envo.id.replace("envoyer", "nom"));
@@ -427,7 +427,7 @@ function annulerAction(even) {
     lienDetail.href = `detailEmploye.html#${envo.id.replace("-annuler", "")}`;
     const monImage = document.createElement("img");
     monImage.id = envo.id.replace("annuler", "image");
-    const proofil = JSON.parse(localStorage.EMPLOYES).filter(cle => cle.id == envo.id.replace("employe-", "").replace("-annuler", ""));
+    const proofil = JSON.parse(localStorage.EMPLOYES_Pro_Gest_All).filter(cle => cle.id == envo.id.replace("employe-", "").replace("-annuler", ""));
     monImage.src = proofil[0].photo;
     monImage.style.width = "25px";
     monImage.style.height = "25px";
@@ -491,11 +491,11 @@ function supprimerEmploye(event) {
     const decision = window.confirm("Êtes-vous vraiment sûre de vouloir supprimer ?");
     if (decision) {
         const reference = event.target.id.replace("employe-", "").replace("-supprimer", "");
-        const toutdonne = JSON.parse(localStorage.getItem("EMPLOYES"));
+        const toutdonne = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"));
         const requette = toutdonne.find(key => key.id == reference);
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
-        localStorage.setItem("EMPLOYES", JSON.stringify(toutdonne));
+        localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(toutdonne));
         location.reload();
     }
 }

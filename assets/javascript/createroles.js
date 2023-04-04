@@ -15,24 +15,24 @@ function saverole(event){
                 creerle: datecreer.toLocaleString('en-GB', { timeZone: 'UTC' }),
                 modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' })
             }
-            if (localStorage.getItem("ROLES") == null){
+            if (localStorage.getItem("ROLES_Pro_Gest_All") == null){
                 Newrole.id = "R00L1";
                 dataAll.push(Newrole);
-                localStorage.setItem("ROLES",JSON.stringify(dataAll));
+                localStorage.setItem("ROLES_Pro_Gest_All",JSON.stringify(dataAll));
                 libellerole.style.border = "1px solid rgb(206, 212, 218)";
                 libellerole.value = "";
                 location.reload();
             }else{
-                if(JSON.parse(localStorage.getItem("ROLES")).find(cle=>cle.libelle.toLowerCase() == libellerole.value.toLowerCase())){
+                if(JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).find(cle=>cle.libelle.toLowerCase() == libellerole.value.toLowerCase())){
                     alert("Ce rôle a été déjà créé")
                 }else{
-                    const conversion = JSON.parse(localStorage.getItem("ROLES"))
+                    const conversion = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All"))
                     conversion.forEach(objetrole => {
                         dataAll.push(objetrole)
                     });
                     Newrole.id = "R00L" + (dataAll.length + 1);
                     dataAll.push(Newrole);
-                    localStorage.setItem("ROLES", JSON.stringify(dataAll));
+                    localStorage.setItem("ROLES_Pro_Gest_All", JSON.stringify(dataAll));
                     libellerole.style.border = "1px solid rgb(206, 212, 218)";
                     libellerole.value = "";
                     location.reload();
@@ -47,7 +47,7 @@ function saverole(event){
 }
 
 
-let contenurole =JSON.parse(localStorage.getItem("ROLES"));
+let contenurole =JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All"));
 function afficheroles(donnerole){
     if (donnerole != null){
         const consernes = donnerole.filter(cle => cle.statut != 0);
@@ -107,7 +107,7 @@ function afficheroles(donnerole){
     
 }
 
-afficheroles(JSON.parse(localStorage.getItem("ROLES")));
+afficheroles(JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")));
 
 let bouton_modifier = document.querySelectorAll(".bi-pencil-square");
 bouton_modifier.forEach(bouton => {
@@ -175,19 +175,19 @@ function modifierRoles(evenement){
     const idenel = document.getElementById(evenement.target.id.replace("envoyer", "id"));
     const moninput = document.getElementById("new-" + evenement.target.id.replace("envoyer", "libelle"));
     
-    const local = JSON.parse(localStorage.getItem("ROLES"));
+    const local = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible){
         if (moninput.value != cible.libelle){
-            if(JSON.parse(localStorage.getItem("ROLES")).find(cle=>cle.libelle.toLowerCase() == moninput.value.toLowerCase())){
+            if(JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).find(cle=>cle.libelle.toLowerCase() == moninput.value.toLowerCase())){
                 alert("Ce rôle a été déjà ajouté.")
             }else{
                 let ladate = new Date();
                 cible.libelle = moninput.value;
                 cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
                 local[indece] = cible;
-                localStorage.setItem("ROLES", JSON.stringify(local));
+                localStorage.setItem("ROLES_Pro_Gest_All", JSON.stringify(local));
 
                 const envo = document.querySelector(".bi-send");
                 const encaininput = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
@@ -253,11 +253,11 @@ function supprimerRoles(event){
     const decision = window.confirm("Êtes-vous vraiment sûre de vouloir supprimer ?");
     if(decision){
         const reference = event.target.id.replace("roles-", "").replace("-supprimer", "");
-        const toutdonne = JSON.parse(localStorage.getItem("ROLES"));
+        const toutdonne = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All"));
         const requette = toutdonne.find(key => key.id == reference);
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
-        localStorage.setItem("ROLES", JSON.stringify(toutdonne));
+        localStorage.setItem("ROLES_Pro_Gest_All", JSON.stringify(toutdonne));
         alert("Suppression effectuée avec succès !");
         document.getElementById(`ligne-${reference}`).remove();
     }

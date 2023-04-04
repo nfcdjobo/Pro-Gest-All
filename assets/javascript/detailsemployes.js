@@ -1,7 +1,7 @@
 let heure = new Date();
 // Je récupère l'url de ma page courante
 const dataUrl = window.location.href.split("#");
-const requette = JSON.parse(localStorage.getItem("EMPLOYES")).find(cle => cle.id == dataUrl[1].split("-")[0]);
+const requette = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All")).find(cle => cle.id == dataUrl[1].split("-")[0]);
 document.getElementById("photo").src = requette.photo;
 document.getElementById("photo").style.borderRadius = "100%";
 document.getElementById("nomEmploye").textContent = requette.nom;
@@ -9,7 +9,7 @@ document.getElementById("emailEmploye").textContent = requette.email;
 document.getElementById("payementEmploye").textContent = requette.modePayement;
 document.getElementById("telephoneEmploye").textContent = requette.telephone;
 document.getElementById("CategorieEmploye").textContent = requette.specialite;
-const bigDataVilide = JSON.parse(localStorage.getItem("TACHES_VALIDEES")).filter(cle => cle.idEmploye == dataUrl[1].split("-")[0] && cle.montant != 0);
+const bigDataVilide = JSON.parse(localStorage.getItem("TACHES_VALIDEES_Pro_Gest_All")).filter(cle => cle.idEmploye == dataUrl[1].split("-")[0] && cle.montant != 0);
 
 function configuration(event) {
     const somNom = document.getElementById("somNom");
@@ -28,7 +28,7 @@ function configuration(event) {
     } else {
         sonArgent.textContent = `${infos[3]} FCFA`;
         saValidation.setAttribute("refer", `${infos[0]}-${infos[1]}-${infos[2]}`);
-        const tacheConcerne = JSON.parse(localStorage.TACHES).find(cle => cle.id === infos[2]);
+        const tacheConcerne = JSON.parse(localStorage.TACHES_Pro_Gest_All).find(cle => cle.id === infos[2]);
         saTache.textContent = `${tacheConcerne.id}/${tacheConcerne.libelle}`;
 
     }
@@ -78,17 +78,7 @@ function afficherTacheNonPayee(dataTacheValide) {
             const option = document.createElement("option");
             option.value = `${cle.id}-${cle.idEmploye}-${cle.idTache}-${cle.montant}`;
             option.textContent = `${cle.montant} FCFA`;
-            select.append(option)
-
-            //             const tdModePayement = document.createElement("td");
-            //             tdModePayement.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-modePayement`;
-            //             tdModePayement.textContent = cle.modePayement;
-            //             contenutableau.append(tdModePayement);
-            // 
-            //             const tdTelephoneEmploye = document.createElement("td");
-            //             tdTelephoneEmploye.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-telephoneEmploye`;
-            //             tdTelephoneEmploye.textContent = `${cle.telephoneEmploye}`;
-            //             contenutableau.append(tdTelephoneEmploye);
+            select.append(option);
 
             const tdRegle = document.createElement("td");
             tdRegle.textContent = `${cle.id}-${cle.idEmploye}-${cle.idTache}-regle`;
@@ -102,16 +92,6 @@ function afficherTacheNonPayee(dataTacheValide) {
 
             document.getElementById("sommeApaye").textContent = `La somme totale à payer compte Mme/M. ${cle.nomEmploye} est:`
             document.getElementById("sommeApaye").style.fontWeight = "700";
-
-
-
-
-
-
-
-
-
-
         });
 
         document.getElementById("numeroCompte").textContent = `+225 ${requette.telephone}`;
@@ -138,28 +118,28 @@ function passePayement(event) {
 
 }
 
-function somme(a){
-    if(typeof a== "string"){
-        const t = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-        let newT = [];
-        let som = 0;
-        for(let i=0; i<a.length; i++){
-            if(t.includes(a[i])){
-                newT.push(a[i]);
-            }
-        }
-
-        if(newT.length>0){
-            for(let y = 0; y<newT.length; y++){
-                som += parseInt(newT[y]);
-            }
-            
-        }
-        console.log(som);
-    }
-}
-
-somme("ayederdfhjf67hj7fghj")
+// function somme(a){
+//     if(typeof a== "string"){
+//         const t = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+//         let newT = [];
+//         let som = 0;
+//         for(let i=0; i<a.length; i++){
+//             if(t.includes(a[i])){
+//                 newT.push(a[i]);
+//             }
+//         }
+// 
+//         if(newT.length>0){
+//             for(let y = 0; y<newT.length; y++){
+//                 som += parseInt(newT[y]);
+//             }
+//             
+//         }
+//         console.log(som);
+//     }
+// }
+// 
+// somme("ayederdfhjf67hj7fghj")
 
 
 

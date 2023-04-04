@@ -1,5 +1,5 @@
 
-let contenurole = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
+let contenurole = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
 function afficheAdministrateurs(dataAdministrateur) {
     if (dataAdministrateur) {
         const consernes = dataAdministrateur.filter(cle => cle.statut != 0 && cle.id != "ADMIN");
@@ -111,7 +111,7 @@ function formulaireModifier(event){
         lienDetail.href = `profil.html#${envo.id.replace("-envoyer", "")}`;
         const monImage = document.createElement("img");
         monImage.id = envo.id.replace("envoyer", "image");
-        const proofil = JSON.parse(localStorage.ADMINISTRATEURS).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-envoyer", ""));
+        const proofil = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-envoyer", ""));
         monImage.src = proofil[0].photo;
         monImage.style.width = "25px";
         monImage.style.height = "25px";
@@ -206,7 +206,7 @@ function formulaireModifier(event){
     const selectRoles = document.createElement("select");
     selectRoles.id = `new-${event.target.id.replace("modifier", "role")}`;
     selectRoles.className = "form-select";
-    const mesRoles = JSON.parse(localStorage.getItem("ROLES")).filter(cle => cle.type == "Administrateurs" && cle.statut == 1);
+    const mesRoles = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).filter(cle => cle.type == "Administrateurs" && cle.statut == 1);
     mesRoles.forEach(key => {
         const optionAdmin = document.createElement("option");
         optionAdmin.textContent = key.libelle
@@ -276,7 +276,7 @@ function annuler(even) {
     lienDetail.href = `profil.html#${envo.id.replace("-annuler", "")}`;
     const monImage = document.createElement("img");
     monImage.id = envo.id.replace("annuler", "image");
-    const proofil = JSON.parse(localStorage.ADMINISTRATEURS).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-annuler", ""));
+    const proofil = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-annuler", ""));
     monImage.src = proofil[0].photo;
     monImage.style.width = "25px";
     monImage.style.height = "25px";
@@ -348,13 +348,13 @@ function modifierAdmininstrateur(evenement) {
     const monInputPhone = document.getElementById("new-" + evenement.target.id.replace("envoyer", "phone"));
     const monInputPassword = document.getElementById("new-" + evenement.target.id.replace("envoyer", "password"));
 
-    const local = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
+    const local = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible) {
         const envo = document.querySelector(".bi-send");
         if ((monInputNom.value != cible.nom || monInputNaissance.value != cible.naissance || monSelectRole.value != cible.roles || monInputEmail.value != cible.email || monInputPhone.value != cible.telephone || monInputPassword.value != cible.password) && (monInputNom.value.replaceAll(" ", "") != "" && monInputNaissance.value.replaceAll(" ", "") != "" && monSelectRole.value.replaceAll(" ", "") != "" && monInputEmail.value.replaceAll(" ", "") != "" && monInputPhone.value.replaceAll(" ", "") != "" && monInputPassword.value.replaceAll(" ", "") != "")) {
-            // if(JSON.parse(localStorage.getItem("ADMINISTRATEURS")).filter(cle=>cle.email.toLowerCase()==monInputEmail.value.toLowerCase()).length <= 1 && )
+            // if(JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All")).filter(cle=>cle.email.toLowerCase()==monInputEmail.value.toLowerCase()).length <= 1 && )
             let ladate = new Date();
             cible.nom = monInputNom.value;
             cible.naissance = monInputNaissance.value;
@@ -371,7 +371,7 @@ function modifierAdmininstrateur(evenement) {
             lienDetail.href = `profil.html#${envo.id.replace("-envoyer", "")}`;
             const monImage = document.createElement("img");
             monImage.id = envo.id.replace("envoyer", "image");
-            const proofil = JSON.parse(localStorage.ADMINISTRATEURS).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-envoyer", ""));
+            const proofil = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All).filter(cle => cle.id == envo.id.replace("admin-", "").replace("-envoyer", ""));
             monImage.src = proofil[0].photo;
             monImage.style.width = "25px";
             monImage.style.height = "25px";
@@ -387,14 +387,14 @@ function modifierAdmininstrateur(evenement) {
                 fichierModif.addEventListener("load", () => {
                     cible.photo = fichierModif.result;
                     local[indece] = cible;
-                    localStorage.setItem("ADMINISTRATEURS", JSON.stringify(local));
+                    localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(local));
                     monImage.src = fichierModif.result;
                 });
             }
 
             
             local[indece] = cible;
-            localStorage.setItem("ADMINISTRATEURS", JSON.stringify(local));
+            localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(local));
 
             // const envo = document.querySelector(".bi-send");
 
@@ -458,11 +458,11 @@ function supprimerAdministrateur(event) {
     const decision = window.confirm("Êtes-vous vraiment sûre de vouloir supprimer ?");
     if (decision) {
         const reference = event.target.id.replace("admin-", "").replace("-supprimer", "");
-        const toutdonne = JSON.parse(localStorage.getItem("ADMINISTRATEURS"));
+        const toutdonne = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
         const requette = toutdonne.find(key => key.id == reference);
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
-        localStorage.setItem("ADMINISTRATEURS", JSON.stringify(toutdonne));
+        localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(toutdonne));
         alert("Suppression effectuée avec succès !");
         document.getElementById(`ligne-${reference}`).remove();
     }

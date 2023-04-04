@@ -1,5 +1,5 @@
-if (JSON.parse(localStorage.getItem("CATEGORIES"))) {
-    const categorieEmploye = JSON.parse(localStorage.getItem("CATEGORIES")).filter(key => key.statut != 0);
+if (JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All"))) {
+    const categorieEmploye = JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All")).filter(key => key.statut != 0);
     const selectChamps = document.getElementById("categorie-employes");
     categorieEmploye.forEach(cle => {
         const selectOption = document.createElement("option");
@@ -19,8 +19,6 @@ function reafraichirPage(){
         }
     }, 500);
 }
-
-
 
 document.getElementById("saveTache").addEventListener("click", saveTaches);
 const HID = document.getElementById("hidden");
@@ -61,10 +59,10 @@ function saveTaches(event) {
                             modifierle: datemodifier.toLocaleString('en-GB', { timeZone: 'UTC' }),
                         };
 
-                        if (localStorage.getItem("TACHES") == null) {
+                        if (localStorage.getItem("TACHES_Pro_Gest_All") == null) {
                             NewTache.id = "T00L1";
                             dataAll.push(NewTache);
-                            localStorage.setItem("TACHES", JSON.stringify(dataAll));
+                            localStorage.setItem("TACHES_Pro_Gest_All", JSON.stringify(dataAll));
                             libelleTache.style.border = "1px solid rgb(206, 212, 218)";
                             libelleTache.value = "";
                             categorieEmployes.value = "";
@@ -74,13 +72,13 @@ function saveTaches(event) {
                             categorieEmployes.value = "";
                             reafraichirPage();
                         } else {
-                            const conversion = JSON.parse(localStorage.getItem("TACHES"))
+                            const conversion = JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All"))
                             conversion.forEach(objetCategorie => {
                                 dataAll.push(objetCategorie)
                             });
                             NewTache.id = "T00L" + (dataAll.length + 1);
                             dataAll.push(NewTache);
-                            localStorage.setItem("TACHES", JSON.stringify(dataAll));
+                            localStorage.setItem("TACHES_Pro_Gest_All", JSON.stringify(dataAll));
                             libelleTache.style.border = "1px solid rgb(206, 212, 218)";
                             libelleTache.value = "";
                             prixTache.value = "";
@@ -99,10 +97,7 @@ function saveTaches(event) {
                     prixTacheAutre.style.border = "1.2px solid red";
                     errorprixau.textContent = "Le prix de la tache non terminée est supperieure à celle qui est terminée";
                     errorprixau.style.color = "red";
-                }
-
-
-                
+                }                
             }else{
                 prixTacheAutre.focus()
                 prixTacheAutre.style.border = "1.2px solid red";
@@ -125,7 +120,7 @@ function saveTaches(event) {
 }
 
 
-let contenuTaches = JSON.parse(localStorage.getItem("TACHES"));
+let contenuTaches = JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All"));
 function afficheTaches(donneCategorie) {
     if (donneCategorie != null) {
         const consernes = donneCategorie.filter(cle => cle.statut != 0 && cle.effectue == false);
@@ -191,7 +186,7 @@ function afficheTaches(donneCategorie) {
 
 }
 
-afficheTaches(JSON.parse(localStorage.getItem("TACHES")));
+afficheTaches(JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All")));
 let bouton_modifier = document.querySelectorAll(".bi-pencil-square");
 bouton_modifier.forEach(bouton => {
     bouton.addEventListener("click", creerFormulaireModifier);
@@ -268,13 +263,11 @@ function creerFormulaireModifier(event) {
     prixanormalElement.textContent = "";
     prixanormalElement.append(newprixanormalinput);
 
-
-
     const adminRoles = document.getElementById(event.target.id.replace("modifier", "categorie"));
     const selectDestinataire = document.createElement("select");
     selectDestinataire.id = `new-${event.target.id.replace("modifier", "categorie")}`;
     selectDestinataire.className = "form-select";
-    const mesRoles = JSON.parse(localStorage.getItem("CATEGORIES")).filter(cle => cle.statut == 1);
+    const mesRoles = JSON.parse(localStorage.getItem("CATEGORIES_Pro_Gest_All")).filter(cle => cle.statut == 1);
     mesRoles.forEach(key => {
         const optionSelect = document.createElement("option");
         optionSelect.textContent = key.libelle
@@ -322,7 +315,7 @@ function modifierTaches(evenement) {
     const prixanormal = document.getElementById("new-" + evenement.target.id.replace("envoyer", "prixanormal"));
     const monselect = document.getElementById("new-" + evenement.target.id.replace("envoyer", "categorie"));
 
-    const local = JSON.parse(localStorage.getItem("TACHES"));
+    const local = JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All"));
     const cible = local.find(key => key.id == idenel.textContent);
     const indece = local.indexOf(cible);
     if (cible) {
@@ -334,7 +327,7 @@ function modifierTaches(evenement) {
             cible.prixTacheAutre = parseInt(prixanormal.value);
             cible.modifierle = ladate.toLocaleString('en-GB', { timeZone: 'UTC' });
             local[indece] = cible;
-            localStorage.setItem("TACHES", JSON.stringify(local));
+            localStorage.setItem("TACHES_Pro_Gest_All", JSON.stringify(local));
 
             const envo = document.querySelector(".bi-send");
             const encaininput = document.getElementById(`new-${envo.id.replace("envoyer", "libelle")}`);
@@ -375,14 +368,6 @@ function modifierTaches(evenement) {
 
             document.getElementById(envo.id.replace("envoyer", "annuler")).remove();
             document.getElementById(envo.id).remove();
-
-            const ID = document.getElementById("ID");
-            const LIB = document.getElementById("LIB");
-
-            document.getElementById("ID").textContent = cible.id;
-            document.getElementById("LIB").textContent = moninput.value;
-            document.getElementById("DES").textContent = monselect.value;
-            HID.style.visibility = "visible";
         } else {
             alert("Aucune action n'a été faite !")
         }
@@ -436,11 +421,11 @@ function supprimerTaches(event) {
     const decision = window.confirm("Êtes-vous vraiment sûre de vouloir supprimer ?");
     if (decision) {
         const reference = event.target.id.replace("taches-", "").replace("-supprimer", "");
-        const toutdonne = JSON.parse(localStorage.getItem("TACHES"));
+        const toutdonne = JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All"));
         const requette = toutdonne.find(key => key.id == reference);
         const position = toutdonne.indexOf(requette);
         toutdonne[position].statut = 0;
-        localStorage.setItem("TACHES", JSON.stringify(toutdonne));
+        localStorage.setItem("TACHES_Pro_Gest_All", JSON.stringify(toutdonne));
         document.getElementById(`ligne-${reference}`).remove();
     }
 }

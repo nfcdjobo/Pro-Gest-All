@@ -57,8 +57,8 @@ function dresserEmployesTaches(baseEmployes) {
       presselectionner.value = "";
       selectTache.append(presselectionner);
 
-      if (JSON.parse(localStorage.getItem("TACHES"))) {
-        const dataTache = JSON.parse(localStorage.getItem("TACHES")).filter(tache => tache.destinataire == employe.specialite);
+      if (JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All"))) {
+        const dataTache = JSON.parse(localStorage.getItem("TACHES_Pro_Gest_All")).filter(tache => tache.destinataire == employe.specialite);
         if (dataTache.length != 0) {
           dataTache.forEach(key => {
             const optionSelect = document.createElement("option");
@@ -96,22 +96,6 @@ function dresserEmployesTaches(baseEmployes) {
       duree.placeholder = "01"
       duree.className = "form-control";
       col_duree.append(duree);
-
-
-
-
-//       const col_fin = document.createElement("td");
-//       col_fin.className = "cell";
-//       col_fin.id = `col-fin-${employe.id}`;
-//       ligne.append(col_fin);
-// 
-//       const fin = document.createElement("input");
-//       fin.type = "datetime-local";
-//       fin.className = "form-control";
-//       fin.disabled = true;
-//       fin.id = `fin-${employe.id}`;
-//       fin.style.maxWidth = "170px";
-//       col_fin.append(fin);
 
       const col_validation = document.createElement("td");
       col_validation.id = `col-validation-${employe.id}`;
@@ -155,8 +139,8 @@ function dresserEmployesTaches(baseEmployes) {
   }
 }
 
-if (localStorage.getItem("EMPLOYES")) {
-  const dataEmployes = JSON.parse(localStorage.getItem("EMPLOYES")).filter(cle => cle.statut != 0 && cle.programmer == false);
+if (localStorage.getItem("EMPLOYES_Pro_Gest_All")) {
+  const dataEmployes = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All")).filter(cle => cle.statut != 0 && cle.programmer == false);
   dresserEmployesTaches(dataEmployes);
 }
 
@@ -190,12 +174,12 @@ document.querySelectorAll("option").forEach(key =>{ key.style.fontSize = "13px";
 
 document.querySelectorAll("button[ref='valider']").forEach(cle=>cle.addEventListener("click", validerTache));
 function validerTache(event){
-  const employe = JSON.parse(localStorage.getItem("EMPLOYES")).filter(cle => cle.id == event.target.id.replace("Valider-", ""))[0];
+  const employe = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All")).filter(cle => cle.id == event.target.id.replace("Valider-", ""))[0];
   const tache = document.getElementById(event.target.id.replace("Valider", "tache")).value.split("-");
   const debutTache = document.getElementById(event.target.id.replace("Valider", "debut"));
   const finTache = document.getElementById(event.target.id.replace("Valider", "fin"));
   const dureTache = document.getElementById(event.target.id.replace("Valider", "duree"));
-  const start = JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES"));
+  const start = JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES_Pro_Gest_All"));
   
   if (debutTache.value != ""){
     if (dureTache.value != ""){
@@ -214,22 +198,22 @@ function validerTache(event){
       }
 
       const dataTacheAttribue = [];
-      if (JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"))) {
-        attribution.id = `VAL0${(JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES")).length+1)}-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
-        const tacheAttribues = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES"));
+      if (JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All"))) {
+        attribution.id = `VAL0${(JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All")).length+1)}-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
+        const tacheAttribues = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All"));
         tacheAttribues.push(attribution);
-        localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(tacheAttribues));
+        localStorage.setItem("TACHES_ATTRIBUEES_Pro_Gest_All", JSON.stringify(tacheAttribues));
       } else {
         attribution.id = `VAL01-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
         dataTacheAttribue.push(attribution);
-        localStorage.setItem("TACHES_ATTRIBUEES", JSON.stringify(dataTacheAttribue));
+        localStorage.setItem("TACHES_ATTRIBUEES_Pro_Gest_All", JSON.stringify(dataTacheAttribue));
       }
-      const employJson = JSON.parse(localStorage.getItem("EMPLOYES"));
+      const employJson = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"));
       const cible = employJson.filter(cle => cle.id == attribution.idEmploye && cle.nom == attribution.employe)[0];
       const indiceCible = employJson.indexOf(cible);
       cible.programmer = true;
       employJson[indiceCible] = cible;
-      localStorage.setItem("EMPLOYES", JSON.stringify(employJson));
+      localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(employJson));
       document.getElementById(event.target.id.replace("Valider", "ligne")).remove();
     }else{
       dureTache.focus();
