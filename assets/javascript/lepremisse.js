@@ -1,14 +1,14 @@
 'use strict';
 
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-    return new bootstrap.Popover(popoverTriggerEl)
-})
-
-var alertList = document.querySelectorAll('.alert')
-alertList.forEach(function (alert) {
-    new bootstrap.Alert(alert)
-});
+// var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-toggle="popover"]'))
+// var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+//     return new bootstrap.Popover(popoverTriggerEl)
+// })
+// 
+// var alertList = document.querySelectorAll('.alert')
+// alertList.forEach(function (alert) {
+//     new bootstrap.Alert(alert)
+// });
 
 
 /* ===== Responsive Sidepanel ====== */
