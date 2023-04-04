@@ -107,8 +107,8 @@ function personnaliserOuvrable() {
                   soir_1.append(ii_3_1);
                   soir_1.append(strong_3);
                   soir_1.append(ii_3_2);
-
-
+                  
+                  location.reload();
                 } else {
                   window.scroll(0, 140);
                   messageAlert.textContent = "Formulaire mal remplie !!";
@@ -276,7 +276,7 @@ function personnaliserWeek() {
                   apresMidiWeek1.value = "";
                   apresMidiWeek2.value = "";
                   ElementWeek.forEach(key => key.checked = false);
-
+                  location.reload();
                 } else {
                   window.scroll(0, 730);
                   messageWeekEnd.textContent = "Formulaire mal remplie !!";
@@ -402,7 +402,7 @@ function savaMasseSalariale() {
   const min_tache_no_end = document.getElementById("min-tache-no-end");
   const max_tache_no_end = document.getElementById("max-tache-no-end");
 
-  // 
+  // Juste pour scroller
   window.scroll(0, 1280);
 
   if (min_salaire.value.replaceAll(" ", "") != ""){
@@ -477,6 +477,8 @@ function savaMasseSalariale() {
         sall_4.append(infos4);
         sall_4.append(strong_4);
         sall_4.append(ii_4_2);
+
+        location.reload();
       }
     }
   }

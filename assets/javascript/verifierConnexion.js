@@ -1,3 +1,8 @@
+if(document.querySelector(".bouton-primondial")){
+    const primondial = document.querySelectorAll(".bouton-primondial");
+    primondial.forEach(cle =>{ cle.style.color = "white"; cle.style.fontWeight = "700" })
+}
+
 if (sessionStorage.SESSION_ADMIN){
     if (localStorage.ADMINISTRATEURS){
         const session = JSON.parse(sessionStorage.SESSION_ADMIN);
