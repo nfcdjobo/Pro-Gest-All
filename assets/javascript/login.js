@@ -20,28 +20,25 @@ window.addEventListener("DOMContentLoaded", (event)=>{
 
                 const newAdmin = {
                     id: "ADMIN",
-                    email: "admin",
-                    password: "root",
                     nom: "",
-                    roles: "SUPER-ADMIN",
-                    statut: "ADMIN",
-                    categorie: "SUPER-ADMIN",
-                    telephone: "",
-                    photo: "",
                     naissance: "",
+                    roles: "TOUT RÔLES",
+                    email: "admin",
+                    telephone: "",
+                    password: "root",
+                    photo: "",
+                    etat: "SUPER ADMINISTRATEUR",
+                    statut: "1",
                     create_at: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
                     update_at: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
-                }
+                };
                 
                 const data = [];
-                sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", JSON.stringify(dataSession));
                 if (localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All")){
                     const jsonParse = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
-                    console.log(jsonParse)
-                    const infosAdmin = jsonParse.find(cle =>cle.email == dataSession.login && cle.password == dataSession.password);
-                    console.log(infosAdmin)
-                    if(infosAdmin){
-                        document.getElementById("messageLogin").textContent = "Connexion établie avec succès";
+                    if(jsonParse.find(cle=>cle.email === dataSession.login && cle.password === dataSession.password)){
+                        sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", JSON.stringify(dataSession));
+                         document.getElementById("messageLogin").textContent = "Connexion établie avec succès";
                         let recharger = setInterval(() => {
                             compteur = 1;
                             if(compteur == 1){
@@ -50,13 +47,12 @@ window.addEventListener("DOMContentLoaded", (event)=>{
                                 window.location.href = "dashboard.html";
                             }
                         }, 1500);
-                       
                     }else{
                         sessionStorage.clear();
                         document.getElementById("error-password").textContent = "Accèss incorrecte !";
                     }
                 }else{
-                     
+                    sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", JSON.stringify(dataSession));
                     if(newAdmin.email === dataSession.login && newAdmin.password === dataSession.password){
                         data.push(newAdmin);
                         localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(data));

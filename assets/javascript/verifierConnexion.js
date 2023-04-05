@@ -7,7 +7,7 @@ if (sessionStorage.SESSION_ADMIN_Pro_Gest_All){
     if (localStorage.ADMINISTRATEURS_Pro_Gest_All){
         const session = JSON.parse(sessionStorage.SESSION_ADMIN_Pro_Gest_All);
         const element = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All);
-        const personne = element.find(cle => cle.email === session.login && cle.password === session.password && cle.roles != "SUPER-ADMIN");
+        const personne = element.find(cle => cle.email === session.login && cle.password === session.password && cle.etat == "ADMINISTRATEUR");
         
         if(personne){
             if (document.getElementById("admin-html")) {
@@ -30,7 +30,7 @@ if (sessionStorage.SESSION_ADMIN_Pro_Gest_All){
                 document.getElementById("user-profile").style.width = "1.8rem";
                 document.getElementById("user-profile").style.height = "1.8rem";
             }
-            document.getElementById("satut-admin").textContent = "ADMINISTRATEUR";
+            document.getElementById("satut-admin").textContent =  personne.etat;
             document.getElementById("satut-admin").style.backgroundColor = "green";
             document.getElementById("satut-admin").style.color = "white";
             if (document.getElementById("error-password")) {
@@ -39,9 +39,9 @@ if (sessionStorage.SESSION_ADMIN_Pro_Gest_All){
             if (document.getElementById("statut-admin")){
                 document.getElementById("statut-admin").textContent = personne.roles;
             }
-        }else if(element.find(cle => cle.email == session.login && cle.password == session.password && cle.roles == "SUPER-ADMIN")){
-            let myAdn = element.find(cle => cle.email == session.login && cle.password == session.password && cle.roles == "SUPER-ADMIN");
-            document.getElementById("satut-admin").textContent = "SUPER ADMINISTRATEUR";
+        }else if(element.find(cle => cle.email == session.login && cle.password == session.password && cle.etat == "SUPER ADMINISTRATEUR")){
+            let myAdn = element.find(cle => cle.email == session.login && cle.password == session.password && cle.etat == "SUPER ADMINISTRATEUR");
+            document.getElementById("satut-admin").textContent = myAdn.etat;
             document.getElementById("satut-admin").style.backgroundColor = "green";
             document.getElementById("satut-admin").style.color = "white";
             if (document.getElementById("user-profile")){
@@ -80,3 +80,4 @@ function deconnection() {
         // window.location.href = "login.html";
     }
 }
+

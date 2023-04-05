@@ -2,7 +2,7 @@
 
 const role = document.getElementById("role-admin");
 if (JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All"))){
-    const requetteselect = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).filter(key => key.statut != 0 && key.type == "Administrateurs");
+    const requetteselect = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).filter(key => key.statut != 0);
     requetteselect.forEach(cle => {
         let optionselec = document.createElement("option");
         optionselec.textContent = cle.libelle;
@@ -46,6 +46,7 @@ function saveadministrateur(event){
                                 if (confirme_password.value.replaceAll(" ", "") != "" && password.value == confirme_password.value){
                                     document.getElementById("error-password-confirm").textContent = "";
                                     const objData = {
+                                        id:"",
                                         nom: nom.value,
                                         naissance: naissance.value,
                                         roles: roles.value,
@@ -53,6 +54,7 @@ function saveadministrateur(event){
                                         telephone: telephone.value,
                                         password: password.value,
                                         photo: "",
+                                        etat: "ADMINISTRATEUR",
                                         statut: 1,
                                         create_at: madate.toLocaleString('en-GB', { timeZone: 'UTC' }),
                                         update_at: madate.toLocaleString('en-GB', { timeZone: 'UTC' }),
