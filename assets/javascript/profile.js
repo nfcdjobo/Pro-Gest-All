@@ -258,8 +258,8 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
     }
 
     function sauveEmail(event){
-        alert(22)
         const newEmail = document.getElementById("newEmail");
+        alert(newEmail.value)
         if(newEmail.value.replaceAll(" ", "") != "" && newEmail.value.toLowerCase() != admin.nom.toLowerCase()){
             admin.email = newEmail.value;
             admins[indice] = admin;
