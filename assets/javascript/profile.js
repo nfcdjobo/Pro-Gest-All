@@ -1,6 +1,3 @@
-// localStorage.clear();
-// sessionStorage.clear();
-
 if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
     const maSession = JSON.parse(sessionStorage.SESSION_ADMIN_Pro_Gest_All);
     const admins = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All);
@@ -268,9 +265,8 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
             admins[indice] = admin;
             localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(admins));
             maSession.login = newEmail.value;
-            console.log(maSession);
-            // sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", maSession);
-            // location.reload();
+            sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", JSON.stringify(maSession));
+            location.reload();
             
         }else{
             alert("Aucune action n'a été effectuée.")
@@ -321,7 +317,6 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
             admins[indice] = admin;
             localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(admins));
             location.reload();
-            
         }else{
             alert("Aucune action n'a été effectuée.")
         }
