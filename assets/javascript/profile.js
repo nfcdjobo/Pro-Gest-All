@@ -1,3 +1,6 @@
+// localStorage.clear();
+// sessionStorage.clear();
+
 if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
     const maSession = JSON.parse(sessionStorage.SESSION_ADMIN_Pro_Gest_All);
     const admins = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All);
@@ -132,6 +135,7 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
         const boutonAction = document.createElement("button");
         boutonAction.id = "SaveAvatar";
         boutonAction.className = "bouton bouton-success bi bi-send";
+        boutonAction.textContent = " Envoyer";
         boutonAction.style.color = "white";
         boutonAction.style.fontWeight = "700";
         boutonAction.style.marginLeft = "-5px";
@@ -145,6 +149,7 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
         const annuler = document.createElement("button");
         annuler.className = "bouton bouton-secondary bi bi-x-circle";
         annuler.id = "AnnulerI";
+        annuler.textContent = " Annuler";
         annuler.style.color = "white";
         annuler.fontWeight = "700";
         annuler.style.marginRight = "-5px";
@@ -219,7 +224,6 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
     }
 
 
-
     const ChangerEmail = document.getElementById("ChangerEmail");
     ChangerEmail.addEventListener("click", creerForEmail);
     function creerForEmail(event){
@@ -251,29 +255,27 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
         annuler.textContent = " Annuler";
         annuler.style.color = "white";
         annuler.fontWeight = "700";
-        envoier.style.marginRight = "10px";
+        annuler.style.marginRight = "10px";
         annuler.addEventListener("click", (event)=>location.reload())
         ActionEmail.append(annuler);
     }
 
-    function sauveEmail(){
+    function sauveEmail(event){
+        alert(22)
         const newEmail = document.getElementById("newEmail");
         if(newEmail.value.replaceAll(" ", "") != "" && newEmail.value.toLowerCase() != admin.nom.toLowerCase()){
             admin.email = newEmail.value;
             admins[indice] = admin;
             localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(admins));
             maSession.login = newEmail.value;
-            sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", maSession)
-            location.reload();
+            console.log(maSession);
+            // sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", maSession);
+            // location.reload();
             
         }else{
             alert("Aucune action n'a été effectuée.")
         }
     }
-
-
-
-
 
 
     const ChangerTelephone = document.getElementById("ChangerTelephone");
@@ -324,18 +326,6 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
             alert("Aucune action n'a été effectuée.")
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
     document.querySelectorAll(".bi-pencil-square").forEach(cle=>{
         cle.style.color = "white";
