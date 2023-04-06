@@ -261,6 +261,7 @@ if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
         const newEmail = document.getElementById("newEmail");
         alert(newEmail.value)
         if(newEmail.value.replaceAll(" ", "") != "" && newEmail.value.toLowerCase() != admin.nom.toLowerCase()){
+            alert("DJOBO");
             admin.email = newEmail.value;
             admins[indice] = admin;
             localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(admins));
