@@ -1,7 +1,7 @@
 if(sessionStorage.SESSION_ADMIN_Pro_Gest_All){
     const maSession = JSON.parse(sessionStorage.SESSION_ADMIN_Pro_Gest_All);
     const admins = JSON.parse(localStorage.ADMINISTRATEURS_Pro_Gest_All);
-    const admin = admins.find(cle=>cle.email === maSession.login && cle.password === maSession.password);
+    const admin = admins.find(cle=>cle.email == maSession.login && cle.password == maSession.password);
     const indice = admins.indexOf(admin);
 
     const avatar = document.getElementById("Avatar");
