@@ -19,9 +19,7 @@ function configuration(event) {
     const sonCompte = document.getElementById("sonCompte");
     const saDate = document.getElementById("saDate");
     const saValidation = document.getElementById("saValidation");
-
     const infos = event.target.value.split("-");
-    
     if (infos.includes("all")) {
         sonArgent.textContent = `${infos[2]} FCFA`;
         saTache.textContent = "Toutes ses tâches effectuées."
@@ -30,9 +28,7 @@ function configuration(event) {
         saValidation.setAttribute("refer", `${infos[0]}-${infos[1]}-${infos[2]}`);
         const tacheConcerne = JSON.parse(localStorage.TACHES_Pro_Gest_All).find(cle => cle.id === infos[2]);
         saTache.textContent = `${tacheConcerne.id}/${tacheConcerne.libelle}`;
-
     }
-
 }
 
 function afficherTacheNonPayee(dataTacheValide) {
@@ -117,29 +113,6 @@ function passePayement(event) {
     document.getElementById("payement-1").style.display = "none";
 
 }
-
-// function somme(a){
-//     if(typeof a== "string"){
-//         const t = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-//         let newT = [];
-//         let som = 0;
-//         for(let i=0; i<a.length; i++){
-//             if(t.includes(a[i])){
-//                 newT.push(a[i]);
-//             }
-//         }
-// 
-//         if(newT.length>0){
-//             for(let y = 0; y<newT.length; y++){
-//                 som += parseInt(newT[y]);
-//             }
-//             
-//         }
-//         console.log(som);
-//     }
-// }
-// 
-// somme("ayederdfhjf67hj7fghj")
 
 
 

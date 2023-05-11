@@ -1,6 +1,4 @@
 
-
-
 function dresserEmployesTaches(baseEmployes) {
   if (Array.isArray(baseEmployes) && baseEmployes.length != 0) {
     const contenuTach = document.getElementById("contenu-tach");
@@ -144,8 +142,6 @@ if (localStorage.getItem("EMPLOYES_Pro_Gest_All")) {
   dresserEmployesTaches(dataEmployes);
 }
 
-
-
 let select = document.querySelectorAll("select[ref='select']");
 select.forEach(element => {
   element.addEventListener("change", activer);
@@ -173,6 +169,7 @@ document.querySelectorAll("select").forEach(key => {key.style.fontSize = "13px";
 document.querySelectorAll("option").forEach(key =>{ key.style.fontSize = "13px";  key.style.fontWeight = "500"});
 
 document.querySelectorAll("button[ref='valider']").forEach(cle=>cle.addEventListener("click", validerTache));
+
 function validerTache(event){
   const employe = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All")).filter(cle => cle.id == event.target.id.replace("Valider-", ""))[0];
   const tache = document.getElementById(event.target.id.replace("Valider", "tache")).value.split("-");
@@ -184,37 +181,45 @@ function validerTache(event){
   if (debutTache.value != ""){
     if (dureTache.value != ""){
       const tacheAttribuees = [];
-      const attribution = {
-        
-        idEmploye: employe.id,
-        employe: employe.nom,
-        categorie: employe.specialite,
-        idTache: tache[0],
-        tache: document.getElementById(event.target.id.replace("Valider", "tache")).value.replace(`${tache[0]}-`, ""),
-        debutTache: debutTache.value,
-        dureTache: dureTache.value,
-        valider_le: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
-        statut: 1,
-      }
+      if (localStorage.PARAM_JOURS_OUVRABLES_Pro_Gest_All){
+        const donnee = JSON.parse(localStorage.PARAM_JOURS_OUVRABLES_Pro_Gest_All);
+        const attribution = {
+          idEmploye: employe.id,
+          employe: employe.nom,
+          categorie: employe.specialite,
+          idTache: tache[0],
+          tache: document.getElementById(event.target.id.replace("Valider", "tache")).value.replace(`${tache[0]}-`, ""),
+          debutTache: `${debutTache.value} ${donnee.ouvertureService}:00`,
+          dureTache: dureTache.value,
+          valider_le: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+          statut: 1,
+        }
 
-      const dataTacheAttribue = [];
-      if (JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All"))) {
-        attribution.id = `VAL0${(JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All")).length+1)}-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
-        const tacheAttribues = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All"));
-        tacheAttribues.push(attribution);
-        localStorage.setItem("TACHES_ATTRIBUEES_Pro_Gest_All", JSON.stringify(tacheAttribues));
-      } else {
-        attribution.id = `VAL01-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
-        dataTacheAttribue.push(attribution);
-        localStorage.setItem("TACHES_ATTRIBUEES_Pro_Gest_All", JSON.stringify(dataTacheAttribue));
+        const dataTacheAttribue = [];
+        if (JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All"))) {
+          attribution.id = `VAL0${(JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All")).length + 1)}-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
+          const tacheAttribues = JSON.parse(localStorage.getItem("TACHES_ATTRIBUEES_Pro_Gest_All"));
+          tacheAttribues.push(attribution);
+          localStorage.setItem("TACHES_ATTRIBUEES_Pro_Gest_All", JSON.stringify(tacheAttribues));
+        } else {
+          attribution.id = `VAL01-${employe.id}-${new Date().toLocaleString('en-GB', { timeZone: 'UTC' })}`;
+          dataTacheAttribue.push(attribution);
+          localStorage.setItem("TACHES_ATTRIBUEES_Pro_Gest_All", JSON.stringify(dataTacheAttribue));
+        }
+        const employJson = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"));
+        const cible = employJson.filter(cle => cle.id == attribution.idEmploye && cle.nom == attribution.employe)[0];
+        const indiceCible = employJson.indexOf(cible);
+        cible.programmer = true;
+        employJson[indiceCible] = cible;
+        localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(employJson));
+        document.getElementById(event.target.id.replace("Valider", "ligne")).remove();
+      }else{
+        if(confirm("Les jours et horaire de service ne sont pas définies. Veuillez les définir en cliquant sur <OK> ou <OUI>")){
+          window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/reglage.html";
+          // window.location.href = "reglage.html";
+        }
       }
-      const employJson = JSON.parse(localStorage.getItem("EMPLOYES_Pro_Gest_All"));
-      const cible = employJson.filter(cle => cle.id == attribution.idEmploye && cle.nom == attribution.employe)[0];
-      const indiceCible = employJson.indexOf(cible);
-      cible.programmer = true;
-      employJson[indiceCible] = cible;
-      localStorage.setItem("EMPLOYES_Pro_Gest_All", JSON.stringify(employJson));
-      document.getElementById(event.target.id.replace("Valider", "ligne")).remove();
+     
     }else{
       dureTache.focus();
     }

@@ -450,14 +450,16 @@
                         <hr class="mb-4">
                         <h5>Salaire Quotidien</h5>
                         <p id="sall-1"></p>
-
                         <p id="sall-2"></p>
+
+                        
 
                         <hr class="mb-4">
                         <h5>Tâches non terminées</h5>
                         <p id="sall-3"></p>
-
                         <p id="sall-4"></p>
+
+                        
                         
                     </div>
                     <div class="colonne-modere-12 nbr-colonne-modere-6">
@@ -470,6 +472,13 @@
 
                                 <h5>Salaire Quotidien</h5>
                                 <div class="row">
+                                    <div class="colonne-6 nbr-colonne-modere-6">
+                                        <div class="mb-3">
+                                            <label for="max-salaire" class="form-label">Maximum par Jour</label>
+                                            <input type="number" min="1000" id="max-salaire" placeholder="Entrer le montant" class="form-control">
+                                            <code id="max-q"></code>
+                                        </div>
+                                    </div>
 
                                     <div class="colonne-6 nbr-colonne-modere-6">
                                         <div class="mb-3">
@@ -479,27 +488,12 @@
                                             <code id="min-q"></code>
                                         </div>
                                     </div>
-                                    <div class="colonne-6 nbr-colonne-modere-6">
-                                        <div class="mb-3">
-                                            <label for="max-salaire" class="form-label">Maximum par Jour</label>
-                                            <input type="number" min="1000" id="max-salaire" placeholder="Entrer le montant" class="form-control">
-                                            <code id="max-q"></code>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <hr class="mb-4">
 
                                 <h5>Salaire de tâche non terminée</h5>
                                 <div class="row">
-                                    <div class="colonne-6 nbr-colonne-modere-6">
-                                        <div class="mb-3">
-                                            <label for="min-tache-no-end" class="form-label">Salaire minimum de tâche
-                                                non terminée</label>
-                                            <input type="number" min="1000" id="min-tache-no-end" class="form-control"
-                                                placeholder="Entrer le montant (en FCFA)">
-                                            <code id="min-s"></code>
-                                        </div>
-                                    </div>
                                     <div class="colonne-6 nbr-colonne-modere-6">
                                         <div class="mb-3">
                                             <label for="max-tache-no-end" class="form-label">Salaire maxomum de tâche
@@ -509,6 +503,16 @@
                                             <code id="max-s"></code>
                                         </div>
                                     </div>
+                                    <div class="colonne-6 nbr-colonne-modere-6">
+                                        <div class="mb-3">
+                                            <label for="min-tache-no-end" class="form-label">Salaire minimum de tâche
+                                                non terminée</label>
+                                            <input type="number" min="1000" id="min-tache-no-end" class="form-control"
+                                                placeholder="Entrer le montant (en FCFA)">
+                                            <code id="min-s"></code>
+                                        </div>
+                                    </div>
+                                    
                                     <button class="bouton bouton-primondial" id="save-masse-salariale">Sauvégarder</button>
                                 </div>
 

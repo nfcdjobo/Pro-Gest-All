@@ -1,5 +1,3 @@
-
-
 const contenuTableau = document.getElementById("contenu-tach");
 function afficherAttribution(dataValidation){
     if(Array.isArray(dataValidation) && dataValidation.length != 0){
@@ -27,7 +25,6 @@ function afficherAttribution(dataValidation){
             photo.style.height = "30px";
             photo.style.borderRadius = "100%";
             tdPhoto.append(photo);
-
             const nomEmploye = document.createElement("td");
             nomEmploye.className = "cell";
             nomEmploye.id = `${cle.idEmploye}-${cle.idTache}-employe`;
@@ -48,7 +45,7 @@ function afficherAttribution(dataValidation){
 
             const debutTache = document.createElement("td");
             debutTache.className = "cell";
-            debutTache.id = `${cle.idEmploye}-${cle.iddebutTache}-debutTache`;
+            debutTache.id = `${cle.idEmploye}-${cle.idTache}-debutTache`;
             debutTache.textContent = cle.debutTache;
             ligne.append(debutTache);
 
@@ -59,43 +56,32 @@ function afficherAttribution(dataValidation){
             dureTache.textContent = cle.dureTache;
             ligne.append(dureTache);
 
-            const aujourdui = [new Date().getDay(), new Date().getMonth() + 1, new Date().getFullYear()];
-            const au2 = cle.debutTache.split('-')[2];
-            const au1 = cle.debutTache.split('-')[1];
-            const au0 = cle.debutTache.split('-')[0];
-            const pourTache = [au0, au1, au2];
-            let ii = "";
-            pourTache.forEach(le =>ii += le + " ");
-            const jour = new Date(`${ii} 07:00:00`);
-            const all = [jour.getDay(), jour.getMonth() + 1, jour.getFullYear()];
+            const aujourdui = new Date();
+            const debut = new Date(cle.debutTache);
+            const duree = cle.dureTache;
+            const fin = duree * 24 * 60 * 60 * 1000 + debut.getTime()+10*60*60*1000;
 
             const encours = document.createElement("td");
             encours.className = "cell";
             encours.id = `${cle.idEmploye}-${cle.idTache}-encours`;
-            if ((jour.getMilliseconds() + (parseInt(cle.dureTache) - 1) * 86400000) < new Date().getMilliseconds() && (jour.getMilliseconds() <= new Date().getMilliseconds())) {
-                encours.textContent = "Fermer !!";
-                encours.style.color = "red";
-                encours.style.fontWeight = "500";
-            } else if (((jour.getMilliseconds() + (parseInt(cle.dureTache) - 1) * 86400000) < new Date().getMilliseconds()) && (jour.getMilliseconds() < new Date().getMilliseconds())){
+            if (debut.getTime() < aujourdui.getTime() && aujourdui.getTime()<fin) {
                 encours.style.color = "green";
                 encours.style.fontWeight = "500";
-                encours.textContent = "En attent...";
-                encours.style.cursor = "pointer"
-                
-            }else{
+                encours.textContent = "En cours...";
+                encours.style.cursor = "wait";
+            } else if (debut.getTime() > aujourdui.getTime() && aujourdui.getTime() < fin){
+                encours.style.color = "green";
+                encours.style.fontWeight = "500";
+                encours.textContent = " En attente...";
+                encours.style.cursor = "pointer";
+            }else if(debut.getTime()< aujourdui.getTime() && fin < aujourdui.getTime()){
                 encours.style.color = "blue";
                 encours.style.fontWeight = "500";
-                encours.textContent = "En cours...";
-                encours.style.cursor = "wait"
+                encours.textContent = "Fermer";
             }
             
             encours.style.width = "70px";
             ligne.append(encours);
-            // const tdDecision = document.createElement("td");
-            // tdDecision.className = "cell";
-            // tdDecision.id = `${cle.idEmploye}-${cle.idtdDecision}-decision`;
-            // ligne.append(tdDecision);
-
 
             const tdAccompli = document.createElement("td");
             tdAccompli.className = "cell";
@@ -140,7 +126,6 @@ function afficherAttribution(dataValidation){
             rienAccomplir.style.cursor = "no-drop";
             rienAccomplir.addEventListener("click", approuver);
             tdRienAccomplir.append(rienAccomplir);
-
         });
     }
 }

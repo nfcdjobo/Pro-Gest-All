@@ -19,7 +19,7 @@ function saveadministrateur(event){
     }
     const nom = document.getElementById("nom-admin");
     const naissance = document.getElementById("naissance-admin");
-    const roles = document.getElementById("role-admin");
+    // const roles = document.getElementById("role-admin");
     const email = document.getElementById("email-admin");
     email.addEventListener("blur", validateurEmail);
     const confirme_email = document.getElementById("confirme-email-admin");
@@ -33,8 +33,8 @@ function saveadministrateur(event){
         document.getElementById("error-nom").textContent = "";
         if (naissance.value.replaceAll(" ", "") != ""){
             document.getElementById("error-naissance").textContent = "";
-            if (roles.value.replaceAll(" ", "") != ""){
-                document.getElementById("error-roles").textContent = "";
+            // if (roles.value.replaceAll(" ", "") != ""){
+                // document.getElementById("error-roles").textContent = "";
                 if (email.value.replaceAll(" ", "") != ""){
                     document.getElementById("error-email").textContent = "";
                     if (confirme_email.value.replaceAll(" ", "") != "" && email.value == confirme_email.value){
@@ -49,7 +49,7 @@ function saveadministrateur(event){
                                         id:"",
                                         nom: nom.value,
                                         naissance: naissance.value,
-                                        roles: roles.value,
+                                        // roles: roles.value,
                                         email: email.value,
                                         telephone: telephone.value,
                                         password: password.value,
@@ -78,7 +78,7 @@ function saveadministrateur(event){
                                             }
                                             nom.value = "";
                                             naissance.value = "";
-                                            roles.value = "";
+                                            // roles.value = "";
                                             email.value = "";
                                             confirme_email.value = "";
                                             telephone.value = "";
@@ -125,7 +125,7 @@ function saveadministrateur(event){
                                         }
                                         nom.value = "";
                                         naissance.value = "";
-                                        roles.value = "";
+                                        // roles.value = "";
                                         email.value = "";
                                         confirme_email.value = "";
                                         telephone.value = "";
@@ -144,8 +144,8 @@ function saveadministrateur(event){
                                     }
                                 }else{
                                     document.getElementById("error-password-confirm").textContent = "Mot de passe incorrecte !";
-                                    roles.style.border = "1.5px solid red";
-                                    roles.style.boxShadow = "0.1px -0.1px red, -0.1px 0.1px 0.1px red";
+                                    // roles.style.border = "1.5px solid red";
+                                    // roles.style.boxShadow = "0.1px -0.1px red, -0.1px 0.1px 0.1px red";
                                     confirme_password.focus();
                                 }
                             }else{
@@ -176,12 +176,12 @@ function saveadministrateur(event){
                     email.style.boxShadow = "0.1px -0.1px red, -0.1px 0.1px 0.1px red";
                     email.focus();
                 }
-            }else{
-                document.getElementById("error-roles").textContent = "Champs obligatoire";
-                roles.style.border = "1.5px solid red";
-                roles.style.boxShadow = "0.1px -0.1px red, -0.1px 0.1px 0.1px red";
-                roles.focus();
-            }
+            // }else{
+            //     document.getElementById("error-roles").textContent = "Champs obligatoire";
+            //     roles.style.border = "1.5px solid red";
+            //     roles.style.boxShadow = "0.1px -0.1px red, -0.1px 0.1px 0.1px red";
+            //     roles.focus();
+            // }
         }else{
             document.getElementById("error-naissance").textContent = "Champs obligatoire";
             naissance.style.border = "1.5px solid red";

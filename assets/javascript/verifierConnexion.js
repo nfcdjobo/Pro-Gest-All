@@ -62,7 +62,7 @@ if (sessionStorage.SESSION_ADMIN_Pro_Gest_All){
             document.getElementById("error-password").textContent = "Accèss incorrecte !";
         }
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";
-        // window.location.href = "/login.html";
+        // window.location.href = "login.html";
     }
 }else{
     window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/login.html";

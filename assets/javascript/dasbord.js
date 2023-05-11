@@ -30,13 +30,11 @@ if (JSON.parse(localStorage.getItem("MASSE_SALARIALES_Pro_Gest_All"))) {
     document.getElementById("index-salaire-non").textContent = ` [ ${messeSalariale.min_tache_no_end} - ${messeSalariale.max_tache_no_end} ]`;
 }
 
-
 if (JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES_Pro_Gest_All"))) {
     const ouvrable = JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES_Pro_Gest_All"));
     document.getElementById("index-horaire").textContent = ` ${ouvrable.ouvertureService} - ${ouvrable.arretService}`;
     document.getElementById("index-pose").textContent = ` ${ouvrable.debutPoseService} - ${ouvrable.finPoseService}`
 }
-
 
 if (JSON.parse(localStorage.getItem("PARAM_WEEK_END_Pro_Gest_All"))) {
     const week = JSON.parse(localStorage.getItem("PARAM_WEEK_END_Pro_Gest_All"));
@@ -47,8 +45,10 @@ if (JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES_Pro_Gest_All"))) {
     const pose = JSON.parse(localStorage.getItem("PARAM_JOURS_OUVRABLES_Pro_Gest_All"));
 }
 
+setInterval(() => {
+    const ma_date = new Date();
+    document.getElementById("resume-bord").textContent = ma_date.toLocaleString('en-GB', { timeZone: 'UTC' });
+}, 1000);
 
-const ma_date = new Date();
-document.getElementById("resume-bord").textContent = ma_date.toLocaleString('en-GB', { timeZone: 'UTC' });
 
 

@@ -28,21 +28,20 @@ function personnaliserOuvrable() {
           if (apresMidiOuvrable1.value != "") {
             if (apresMidiOuvrable2.value != "") {
               if (dataJours.length != 0) {
-                
                 const avant_H1 = new Date(`2023-03-15, ${avantMidiOuvrable1.value}:00`).getHours();
-                const avant_M1 = new Date(`2023-03-15, ${avantMidiOuvrable1.value}:00`).getMinutes();
+                // const avant_M1 = new Date(`2023-03-15, ${avantMidiOuvrable1.value}:00`).getMinutes();
                 const avant_H2 = new Date(`2023-03-15, ${avantMidiOuvrable2.value}:00`).getHours();
-                const avant_M2 = new Date(`2023-03-15, ${avantMidiOuvrable2.value}:00`).getMinutes();
+                // const avant_M2 = new Date(`2023-03-15, ${avantMidiOuvrable2.value}:00`).getMinutes();
 
                 const repos_H1 = new Date(`2023-03-15, ${apresMidiPose1.value}:00`).getHours();
-                const repos_M1 = new Date(`2023-03-15, ${apresMidiPose1.value}:00`).getMinutes();
+                // const repos_M1 = new Date(`2023-03-15, ${apresMidiPose1.value}:00`).getMinutes();
                 const repos_H2 = new Date(`2023-03-15, ${apresMidiPose2.value}:00`).getHours();
-                const repos_M2 = new Date(`2023-03-15, ${apresMidiPose2.value}:00`).getMinutes();
+                // const repos_M2 = new Date(`2023-03-15, ${apresMidiPose2.value}:00`).getMinutes();
 
                 const apres_H1 = new Date(`2023-03-15, ${apresMidiOuvrable1.value}:00`).getHours();
-                const apres_M1 = new Date(`2023-03-15, ${apresMidiOuvrable1.value}:00`).getMinutes();
+                // const apres_M1 = new Date(`2023-03-15, ${apresMidiOuvrable1.value}:00`).getMinutes();
                 const apres_H2 = new Date(`2023-03-15, ${apresMidiOuvrable2.value}:00`).getHours();
-                const apres_M2 = new Date(`2023-03-15, ${apresMidiOuvrable2.value}:00`).getMinutes();
+                // const apres_M2 = new Date(`2023-03-15, ${apresMidiOuvrable2.value}:00`).getMinutes();
 
                 if ((avant_H1 <= avant_H2) && (avant_H2 <= repos_H1) && (repos_H1 <= repos_H2) && (repos_H2 <= apres_H1) && (apres_H1 <= apres_H2)) {
                   const ObjeOuvrable = {
@@ -151,12 +150,10 @@ function personnaliserOuvrable() {
   }
 }
 
-
 document.querySelectorAll("input").forEach(cle => cle.addEventListener("focus", () => {
   document.getElementById("messageAlert").textContent = "";
   document.getElementById("barre").hidden = true;
 }));
-
 
 function afficheParametre(donnee) {
   if (donnee) {
@@ -212,7 +209,6 @@ function afficheParametre(donnee) {
 
 afficheParametre(dataOuvrable);
 
-
 document.getElementById("submitWeek").addEventListener("click", personnaliserWeek);
 messageWeekEnd = document.getElementById("message-week-end");
 
@@ -239,19 +235,19 @@ function personnaliserWeek() {
             if (apresMidiWeek2.value != "") {
               if (dataWeekEnd.length != 0) {
                 const avant_H1 = new Date(`2023-03-15, ${avantMidiWeek1.value}:00`).getHours();
-                const avant_M1 = new Date(`2023-03-15, ${avantMidiWeek1.value}:00`).getMinutes();
+                // const avant_M1 = new Date(`2023-03-15, ${avantMidiWeek1.value}:00`).getMinutes();
                 const avant_H2 = new Date(`2023-03-15, ${avantMidiWeek2.value}:00`).getHours();
-                const avant_M2 = new Date(`2023-03-15, ${avantMidiWeek2.value}:00`).getMinutes();
+                // const avant_M2 = new Date(`2023-03-15, ${avantMidiWeek2.value}:00`).getMinutes();
 
                 const repos_H1 = new Date(`2023-03-15, ${apresMidiPose3.value}:00`).getHours();
-                const repos_M1 = new Date(`2023-03-15, ${apresMidiPose3.value}:00`).getMinutes();
+                // const repos_M1 = new Date(`2023-03-15, ${apresMidiPose3.value}:00`).getMinutes();
                 const repos_H2 = new Date(`2023-03-15, ${apresMidiPose4.value}:00`).getHours();
-                const repos_M2 = new Date(`2023-03-15, ${apresMidiPose4.value}:00`).getMinutes();
+                // const repos_M2 = new Date(`2023-03-15, ${apresMidiPose4.value}:00`).getMinutes();
 
                 const apres_H1 = new Date(`2023-03-15, ${apresMidiWeek1.value}:00`).getHours();
-                const apres_M1 = new Date(`2023-03-15, ${apresMidiWeek1.value}:00`).getMinutes();
+                // const apres_M1 = new Date(`2023-03-15, ${apresMidiWeek1.value}:00`).getMinutes();
                 const apres_H2 = new Date(`2023-03-15, ${apresMidiWeek2.value}:00`).getHours();
-                const apres_M2 = new Date(`2023-03-15, ${apresMidiWeek2.value}:00`).getMinutes();
+                // const apres_M2 = new Date(`2023-03-15, ${apresMidiWeek2.value}:00`).getMinutes();
 
                 if ((avant_H1 < avant_H2) && (avant_H2 <= repos_H1) && (repos_H1 < repos_H2) && (repos_H2 <= apres_H1) && (apres_H1 < apres_H2)) {
                   const ObjeWeek = {
@@ -342,7 +338,7 @@ function afficheParametreWeek(donneeWeek) {
     const ii_1_1 = document.createElement("i");
     ii_1_1.className = "bi bi-align-start";
     const strong_1 = document.createElement("strong");
-    strong_1.textContent = ` Ouvert de ${donneeWeek.ouvertureService} à ${donneeWeek.stopServicePose} `
+    strong_1.textContent = ` Ouvert de ${donneeWeek.ouvertureService} à ${donneeWeek.stopServicePose} `;
     const ii_1_2 = document.createElement("i");
     ii_1_2.className = "bi bi-align-end";
     matin_2.append(ii_1_1);
@@ -356,7 +352,7 @@ function afficheParametreWeek(donneeWeek) {
     const ii_2_1 = document.createElement("i");
     ii_2_1.className = "bi bi-align-start";
     const strong_2 = document.createElement("strong");
-    strong_2.textContent = ` De ${donneeWeek.debutPoseService} à ${donneeWeek.finPoseService} `
+    strong_2.textContent = ` De ${donneeWeek.debutPoseService} à ${donneeWeek.finPoseService} `;
     const ii_2_2 = document.createElement("i");
     ii_2_2.className = "bi bi-align-end";
     pose_2.append(ii_2_1);
@@ -379,12 +375,9 @@ function afficheParametreWeek(donneeWeek) {
     document.getElementById("apresMidiWeek1").value = donneeWeek.repriseService;
     document.getElementById("apresMidiWeek2").value = donneeWeek.arretService;
   }
-
 }
 
 afficheParametreWeek(dataWenk);
-
-
 
 document.querySelectorAll("input[type='number']").forEach(cle => {
   cle.addEventListener("focus", () => {
@@ -395,19 +388,22 @@ document.querySelectorAll("input[type='number']").forEach(cle => {
 
 document.getElementById("save-masse-salariale").addEventListener("click", savaMasseSalariale);
 function savaMasseSalariale() {
-
+  
   // On sélection les chams de saisies
-  const min_salaire = document.getElementById("min-salaire");
   const max_salaire = document.getElementById("max-salaire");
-  const min_tache_no_end = document.getElementById("min-tache-no-end");
+  const min_salaire = document.getElementById("min-salaire");
   const max_tache_no_end = document.getElementById("max-tache-no-end");
-
-  // Juste pour scroller
-  window.scroll(0, 1280);
-
+  const min_tache_no_end = document.getElementById("min-tache-no-end");
+  console.log(max_salaire.value);
+  console.log(min_salaire.value);
+  console.log(max_tache_no_end.value);
+  console.log(min_tache_no_end.value);
+  
   if (min_salaire.value.replaceAll(" ", "") != ""){
     if (max_salaire.value.replaceAll(" ", "") != ""){
-      if ((parseInt(min_salaire.value) < parseInt(max_salaire.value)) && (parseInt(min_tache_no_end.value) <= parseInt(max_tache_no_end.value))){
+      
+      if (parseInt(max_salaire.value) > parseInt(min_salaire.value) && parseInt(max_tache_no_end.value) >= parseInt(min_tache_no_end.value)){
+        alert(min_salaire.value)
         const masseSalariale = {
           min_salaire: parseInt(min_salaire.value),
           max_salaire: parseInt(max_salaire.value),
@@ -431,7 +427,6 @@ function savaMasseSalariale() {
         sall_1.append(infos1);
         sall_1.append(strong_1);
         sall_1.append(ii_1_2);
-
 
         const sall_2 = document.getElementById("sall-2");
         sall_2.innerHTML = "";
@@ -479,80 +474,87 @@ function savaMasseSalariale() {
         sall_4.append(ii_4_2);
 
         location.reload();
+
+        // Juste pour scroller
+        window.scroll(0, 1280);
       }
     }
   }
 }
 
 
-const dataSalariale = JSON.parse(localStorage.getItem("MASSE_SALARIALES_Pro_Gest_All"));
 
-function afficherMasseSalariale(detailSalariale){
-  if (!Array.isArray(detailSalariale) && (typeof detailSalariale) == "object"){
-    const sall_1 = document.getElementById("sall-1");
-    sall_1.innerHTML = "";
-    const ii_1_1 = document.createElement("i");
-    ii_1_1.className = "bi bi-align-start";
-    const infos1 = document.createElement("strong");
-    infos1.textContent = " Minimum :";
-    const strong_1 = document.createElement("strong");
-    strong_1.textContent = ` ${detailSalariale.min_salaire} FCFA `;
-    const ii_1_2 = document.createElement("i");
-    ii_1_2.className = "bi bi-align-end";
-    sall_1.append(ii_1_1);
-    sall_1.append(infos1);
-    sall_1.append(strong_1);
-    sall_1.append(ii_1_2);
-    document.getElementById("min-salaire").value = detailSalariale.min_salaire;
 
-    const sall_2 = document.getElementById("sall-2");
+function afficherMasseSalariale(grandDonne){
+  if (!Array.isArray(grandDonne) && (typeof grandDonne) == "object"){
+    const sall_2 = document.getElementById("sall-1");
     sall_2.innerHTML = "";
     const ii_2_1 = document.createElement("i");
     ii_2_1.className = "bi bi-align-start";
     const infos2 = document.createElement("strong");
     infos2.textContent = " Maximum :";
     const strong_2 = document.createElement("strong");
-    strong_2.textContent = ` ${detailSalariale.max_salaire} FCFA `;
+    strong_2.textContent = ` ${grandDonne.max_salaire} FCFA `;
     const ii_2_2 = document.createElement("i");
     ii_2_2.className = "bi bi-align-end";
     sall_2.append(ii_2_1);
     sall_2.append(infos2);
     sall_2.append(strong_2);
     sall_2.append(ii_2_2);
-    document.getElementById("max-salaire").value = detailSalariale.max_salaire;
+    document.getElementById("max-salaire").value = grandDonne.max_salaire;
 
-    const sall_3 = document.getElementById("sall-3");
-    sall_3.innerHTML = "";
-    const ii_3_1 = document.createElement("i");
-    ii_3_1.className = "bi bi-align-start";
-    const infos3 = document.createElement("strong");
-    infos3.textContent = " Minimum :";
-    const strong_3 = document.createElement("strong");
-    strong_3.textContent = ` ${detailSalariale.min_tache_no_end} FCFA `;
-    const ii_3_2 = document.createElement("i");
-    ii_3_2.className = "bi bi-align-end";
-    sall_3.append(ii_3_1);
-    sall_3.append(infos3);
-    sall_3.append(strong_3);
-    sall_3.append(ii_3_2);
-    document.getElementById("min-tache-no-end").value = detailSalariale.min_tache_no_end;
+    const sall_1 = document.getElementById("sall-2");
+    sall_1.innerHTML = "";
+    const ii_1_1 = document.createElement("i");
+    ii_1_1.className = "bi bi-align-start";
+    const infos1 = document.createElement("strong");
+    infos1.textContent = " Minimum :";
+    const strong_1 = document.createElement("strong");
+    strong_1.textContent = ` ${grandDonne.min_salaire} FCFA `;
+    const ii_1_2 = document.createElement("i");
+    ii_1_2.className = "bi bi-align-end";
+    sall_1.append(ii_1_1);
+    sall_1.append(infos1);
+    sall_1.append(strong_1);
+    sall_1.append(ii_1_2);
+    document.getElementById("min-salaire").value = grandDonne.min_salaire;
 
-    const sall_4 = document.getElementById("sall-4");
+    const sall_4 = document.getElementById("sall-3");
     sall_4.innerHTML = "";
     const ii_4_1 = document.createElement("i");
     ii_4_1.className = "bi bi-align-start";
     const infos4 = document.createElement("strong");
     infos4.textContent = " Maximum :";
     const strong_4 = document.createElement("strong");
-    strong_4.textContent = ` ${detailSalariale.max_tache_no_end} FCFA `;
+    strong_4.textContent = ` ${grandDonne.max_tache_no_end} FCFA `;
     const ii_4_2 = document.createElement("i");
     ii_4_2.className = "bi bi-align-end";
     sall_4.append(ii_4_1);
     sall_4.append(infos4);
     sall_4.append(strong_4);
     sall_4.append(ii_4_2);
-    document.getElementById("max-tache-no-end").value = detailSalariale.max_tache_no_end;
+    document.getElementById("max-tache-no-end").value = grandDonne.max_tache_no_end;
+
+    const sall_3 = document.getElementById("sall-4");
+    sall_3.innerHTML = "";
+    const ii_3_1 = document.createElement("i");
+    ii_3_1.className = "bi bi-align-start";
+    const infos3 = document.createElement("strong");
+    infos3.textContent = " Minimum :";
+    const strong_3 = document.createElement("strong");
+    strong_3.textContent = ` ${grandDonne.min_tache_no_end} FCFA `;
+    const ii_3_2 = document.createElement("i");
+    ii_3_2.className = "bi bi-align-end";
+    sall_3.append(ii_3_1);
+    sall_3.append(infos3);
+    sall_3.append(strong_3);
+    sall_3.append(ii_3_2);
+    document.getElementById("min-tache-no-end").value = grandDonne.min_tache_no_end;
   }
 }
 
-afficherMasseSalariale(dataSalariale)
+const dataSalariale = JSON.parse(localStorage.getItem("MASSE_SALARIALES_Pro_Gest_All"));
+if (dataSalariale){
+  afficherMasseSalariale(dataSalariale);
+}
+

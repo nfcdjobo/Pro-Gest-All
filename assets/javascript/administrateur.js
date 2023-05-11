@@ -46,11 +46,11 @@ function afficheAdministrateurs(dataAdministrateur) {
             maNaissance.textContent = element.naissance;
             maligne.append(maNaissance);
 
-            const monRole = document.createElement("td");
-            monRole.className = "cell";
-            monRole.id = `admin-${element.id}-role`;
-            monRole.textContent = element.roles;
-            maligne.append(monRole);
+            // const monRole = document.createElement("td");
+            // monRole.className = "cell";
+            // monRole.id = `admin-${element.id}-role`;
+            // monRole.textContent = element.roles;
+            // maligne.append(monRole);
 
             const monEmail = document.createElement("td");
             monEmail.className = "cell";
@@ -134,10 +134,10 @@ function formulaireModifier(event){
         tdNaissance.textContent = encainInputNaissance.value;
         encainInputNaissance.remove();
 
-        const encainSelectRole = document.getElementById(`new-${envo.id.replace("envoyer", "role")}`);
-        const tdRole = document.getElementById(envo.id.replace("envoyer", "role"));
-        tdRole.textContent = encainSelectRole.value;
-        encainSelectRole.remove();
+        // const encainSelectRole = document.getElementById(`new-${envo.id.replace("envoyer", "role")}`);
+        // const tdRole = document.getElementById(envo.id.replace("envoyer", "role"));
+        // tdRole.textContent = encainSelectRole.value;
+        // encainSelectRole.remove();
 
         const encainInputEmail = document.getElementById(`new-${envo.id.replace("envoyer", "email")}`);
         const tdEmail = document.getElementById(envo.id.replace("envoyer", "email"));
@@ -202,21 +202,21 @@ function formulaireModifier(event){
     adminNaissance.textContent = "";
     adminNaissance.append(inputNaissance);
 
-    const adminRoles = document.getElementById(event.target.id.replace("modifier", "role"));
-    const selectRoles = document.createElement("select");
-    selectRoles.id = `new-${event.target.id.replace("modifier", "role")}`;
-    selectRoles.className = "form-select";
-    const mesRoles = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).filter(cle => cle.type == "Administrateurs" && cle.statut == 1);
-    mesRoles.forEach(key => {
-        const optionAdmin = document.createElement("option");
-        optionAdmin.textContent = key.libelle
-        if (adminRoles.textContent == key.libelle){
-            optionAdmin.selected = true
-        }
-        selectRoles.append(optionAdmin);
-    });
-    adminRoles.textContent = "";
-    adminRoles.append(selectRoles);
+    // const adminRoles = document.getElementById(event.target.id.replace("modifier", "role"));
+    // const selectRoles = document.createElement("select");
+    // selectRoles.id = `new-${event.target.id.replace("modifier", "role")}`;
+    // selectRoles.className = "form-select";
+    // const mesRoles = JSON.parse(localStorage.getItem("ROLES_Pro_Gest_All")).filter(cle => cle.type == "Administrateurs" && cle.statut == 1);
+    // mesRoles.forEach(key => {
+    //     const optionAdmin = document.createElement("option");
+    //     optionAdmin.textContent = key.libelle
+    //     if (adminRoles.textContent == key.libelle){
+    //         optionAdmin.selected = true
+    //     }
+    //     selectRoles.append(optionAdmin);
+    // });
+    // adminRoles.textContent = "";
+    // adminRoles.append(selectRoles);
 
     const adminEmail = document.getElementById(event.target.id.replace("modifier", "email"));
     const inputEmail = document.createElement("input");
@@ -296,10 +296,10 @@ function annuler(even) {
     tdNaissance.textContent = encainNaissance.value;
     encainNaissance.remove();
     
-    const encainSelectRole = document.getElementById(`new-${envo.id.replace("annuler", "role")}`);
-    const tdSelectRole = document.getElementById(envo.id.replace("annuler", "role"));
-    tdSelectRole.textContent = encainSelectRole.value;
-    encainSelectRole.remove();
+    // const encainSelectRole = document.getElementById(`new-${envo.id.replace("annuler", "role")}`);
+    // const tdSelectRole = document.getElementById(envo.id.replace("annuler", "role"));
+    // tdSelectRole.textContent = encainSelectRole.value;
+    // encainSelectRole.remove();
 
     const encainInputEmail = document.getElementById(`new-${envo.id.replace("annuler", "email")}`);
     const tdInputEmail = document.getElementById(envo.id.replace("annuler", "email"));
@@ -343,7 +343,7 @@ function modifierAdmininstrateur(evenement) {
     const monProfil = document.getElementById("new-" + evenement.target.id.replace("envoyer", "photo"));
     const monInputNom = document.getElementById("new-" + evenement.target.id.replace("envoyer", "nom"));
     const monInputNaissance = document.getElementById("new-" + evenement.target.id.replace("envoyer", "naissance"));
-    const monSelectRole = document.getElementById("new-" + evenement.target.id.replace("envoyer", "role"));
+    // const monSelectRole = document.getElementById("new-" + evenement.target.id.replace("envoyer", "role"));
     const monInputEmail = document.getElementById("new-" + evenement.target.id.replace("envoyer", "email"));
     const monInputPhone = document.getElementById("new-" + evenement.target.id.replace("envoyer", "phone"));
     const monInputPassword = document.getElementById("new-" + evenement.target.id.replace("envoyer", "password"));
@@ -353,12 +353,11 @@ function modifierAdmininstrateur(evenement) {
     const indece = local.indexOf(cible);
     if (cible) {
         const envo = document.querySelector(".bi-send");
-        if ((monInputNom.value != cible.nom || monInputNaissance.value != cible.naissance || monSelectRole.value != cible.roles || monInputEmail.value != cible.email || monInputPhone.value != cible.telephone || monInputPassword.value != cible.password) && (monInputNom.value.replaceAll(" ", "") != "" && monInputNaissance.value.replaceAll(" ", "") != "" && monSelectRole.value.replaceAll(" ", "") != "" && monInputEmail.value.replaceAll(" ", "") != "" && monInputPhone.value.replaceAll(" ", "") != "" && monInputPassword.value.replaceAll(" ", "") != "")) {
-            // if(JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All")).filter(cle=>cle.email.toLowerCase()==monInputEmail.value.toLowerCase()).length <= 1 && )
+        if ((monInputNom.value != cible.nom || monInputNaissance.value != cible.naissance || monInputEmail.value != cible.email || monInputPhone.value != cible.telephone || monInputPassword.value != cible.password || monProfil.value !="") && (monInputNom.value.replaceAll(" ", "") != "" && monInputNaissance.value.replaceAll(" ", "") != "" && monInputEmail.value.replaceAll(" ", "") != "" && monInputPhone.value.replaceAll(" ", "") != "" && monInputPassword.value.replaceAll(" ", "") != "")) {
             let ladate = new Date();
             cible.nom = monInputNom.value;
             cible.naissance = monInputNaissance.value;
-            cible.roles = monSelectRole.value;
+            // cible.roles = monSelectRole.value;
             cible.email = monInputEmail.value;
             cible.telephone = monInputPhone.value;
             cible.password = monInputPassword.value;
@@ -408,10 +407,10 @@ function modifierAdmininstrateur(evenement) {
             tdNaissance.textContent = encainInputNaissance.value;
             encainInputNaissance.remove();
 
-            const encainSelectRole = document.getElementById(`new-${envo.id.replace("envoyer", "role")}`);
-            const tdRole = document.getElementById(envo.id.replace("envoyer", "role"));
-            tdRole.textContent = encainSelectRole.value;
-            encainSelectRole.remove();
+            // const encainSelectRole = document.getElementById(`new-${envo.id.replace("envoyer", "role")}`);
+            // const tdRole = document.getElementById(envo.id.replace("envoyer", "role"));
+            // tdRole.textContent = encainSelectRole.value;
+            // encainSelectRole.remove();
 
             const encainInputEmail = document.getElementById(`new-${envo.id.replace("envoyer", "email")}`);
             const tdEmail = document.getElementById(envo.id.replace("envoyer", "email"));
@@ -449,7 +448,7 @@ function modifierAdmininstrateur(evenement) {
             alert("Modifiaction effectuée avec succès.");
 
         } else {
-            alert("Aucune action n'a été faite !")
+            alert("Aucune action n'a été faite !");
         }
     }
 }

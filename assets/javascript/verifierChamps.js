@@ -7,7 +7,6 @@ if (mesPhone.length != 0){
 if(mesEmail.length != 0){
     mesEmail.forEach(key=>allElement.push(key));
 }
-
 if(allElement.length != 0){
     allElement.forEach(key => key.addEventListener("blur", validateur));
 }
