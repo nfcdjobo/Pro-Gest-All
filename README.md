@@ -225,6 +225,62 @@ Notre équipe est là pour vous accompagner !
 
 ---
 
+## 👨‍💻 **À Propos du Développeur**
+
+<div align="center">
+
+### 🌟 **DJOBO N'DRI FRANÇOIS CARÊM**
+![Developer](https://img.shields.io/badge/Développeur-Full%20Stack-FF6B35?style=for-the-badge&logo=code&logoColor=white)
+![Admin](https://img.shields.io/badge/Administrateur-Système-2E8B57?style=for-the-badge&logo=server&logoColor=white)
+
+</div>
+
+<table align="center">
+<tr>
+<td align="center" width="50%">
+
+### 📧 **Contact Professionnel**
+[![Email](https://img.shields.io/badge/Email-nfcdjobo@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:nfcdjobo@gmail.com)
+
+### 📱 **Téléphones**
+![Phone1](https://img.shields.io/badge/Tél%201-+225%200575554499-25D366?style=flat-square&logo=whatsapp&logoColor=white)
+![Phone2](https://img.shields.io/badge/Tél%202-+225%200140940330-00BCD4?style=flat-square&logo=phone&logoColor=white)
+
+</td>
+<td align="center" width="50%">
+
+### 🌐 **Réseaux Sociaux**
+[![Facebook](https://img.shields.io/badge/Facebook-francois.djobo.3-1877F2?style=flat-square&logo=facebook&logoColor=white)](https://www.facebook.com/francois.djobo.3)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Full%20Stack%20Developer-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nfcdjobofullstackdevelopper/)
+
+[![Instagram](https://img.shields.io/badge/Instagram-francois__djobo-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/francois_djobo/)
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+
+### 💼 **Compétences Techniques**
+![Frontend](https://img.shields.io/badge/Frontend-Expert-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Backend](https://img.shields.io/badge/Backend-Expert-339933?style=flat-square&logo=node.js&logoColor=white)
+![Database](https://img.shields.io/badge/Database-Expert-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![DevOps](https://img.shields.io/badge/DevOps-Expert-FF6F00?style=flat-square&logo=docker&logoColor=white)
+![System Admin](https://img.shields.io/badge/Sys%20Admin-Expert-DC382D?style=flat-square&logo=redhat&logoColor=white)
+
+### 🏆 **Spécialisations**
+- 🌐 **Développement Web Full Stack**
+- 🖥️ **Administration Systèmes Linux/Windows**
+- ☁️ **Architecture Cloud & DevOps**
+- 📱 **Applications Mobile & Desktop**
+- 🔒 **Sécurité Informatique**
+- 📊 **Systèmes de Gestion d'Entreprise**
+
+</div>
+
+---
+
 <div align="center">
 
 ## 🎉 **Prêt à Révolutionner Votre Gestion ?**
@@ -233,10 +289,11 @@ Notre équipe est là pour vous accompagner !
 
 ---
 
-*Made with* 💚 *by the **Pro-Gest'All** Team*
+*Made with* 💚 *by* **François DJOBO** *- Full Stack Developer*
 
 ![Footer](https://img.shields.io/badge/2024-Pro--Gest'All-00C851?style=flat-square)
 ![Build](https://img.shields.io/badge/Build-Success-brightgreen?style=flat-square)
 ![Uptime](https://img.shields.io/badge/Uptime-99.9%25-blue?style=flat-square)
+![Developer](https://img.shields.io/badge/Dev-François%20DJOBO-FF6B35?style=flat-square)
 
 </div>
