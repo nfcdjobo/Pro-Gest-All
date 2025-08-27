@@ -10,7 +10,7 @@
 ![Platform](https://img.shields.io/badge/Platform-Web-blue?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)
 
-### 🚀 **[ACCÉDER À LA PLATEFORME](https://nfcdjobo.github.io/Pro-Gest-All/)**
+### 🚀 **<a href="https://nfcdjobo.github.io/Pro-Gest-All/" target="_blank" rel="noopener noreferrer">ACCÉDER À LA PLATEFORME</a>**
 
 *Révolutionnez votre gestion d'entreprise dès aujourd'hui !*
 
@@ -147,7 +147,7 @@ graph LR
 ```
 
 ### 🌐 **Lien d'Accès Direct**
-**➡️ [CLIQUEZ ICI POUR ACCÉDER](https://nfcdjobo.github.io/Pro-Gest-All/)**
+**➡️ <a href="https://nfcdjobo.github.io/Pro-Gest-All/" target="_blank" rel="noopener noreferrer">CLIQUEZ ICI POUR ACCÉDER</a>**
 
 ---
 
@@ -191,9 +191,15 @@ graph LR
 ### 💌 **Besoin d'Aide ?**
 Notre équipe est là pour vous accompagner !
 
-[![Email](https://img.shields.io/badge/Email-Support-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:support@progestall.com)
-[![Documentation](https://img.shields.io/badge/Documentation-Complète-4285F4?style=for-the-badge&logo=read-the-docs&logoColor=white)](#)
-[![FAQ](https://img.shields.io/badge/FAQ-Disponible-FF9800?style=for-the-badge&logo=question&logoColor=white)](#)
+<a href="mailto:support@progestall.com" target="_blank">
+<img src="https://img.shields.io/badge/Email-Support-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email Support">
+</a>
+<a href="#" target="_blank" rel="noopener noreferrer">
+<img src="https://img.shields.io/badge/Documentation-Complète-4285F4?style=for-the-badge&logo=read-the-docs&logoColor=white" alt="Documentation">
+</a>
+<a href="#" target="_blank" rel="noopener noreferrer">
+<img src="https://img.shields.io/badge/FAQ-Disponible-FF9800?style=for-the-badge&logo=question&logoColor=white" alt="FAQ">
+</a>
 
 </div>
 
@@ -240,21 +246,34 @@ Notre équipe est là pour vous accompagner !
 <td align="center" width="50%">
 
 ### 📧 **Contact Professionnel**
-[![Email](https://img.shields.io/badge/Email-nfcdjobo@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white)](mailto:nfcdjobo@gmail.com)
+<a href="mailto:nfcdjobo@gmail.com" target="_blank">
+<img src="https://img.shields.io/badge/Email-nfcdjobo@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email">
+</a>
 
 ### 📱 **Téléphones**
-![Phone1](https://img.shields.io/badge/Tél%201-+225%200575554499-25D366?style=flat-square&logo=whatsapp&logoColor=white)
-![Phone2](https://img.shields.io/badge/Tél%202-+225%200140940330-00BCD4?style=flat-square&logo=phone&logoColor=white)
+<a href="tel:+2250575554499" target="_blank">
+<img src="https://img.shields.io/badge/Tél%201-+225%200575554499-25D366?style=flat-square&logo=whatsapp&logoColor=white" alt="Phone1">
+</a>
+<br>
+<a href="tel:+2250140940330" target="_blank">
+<img src="https://img.shields.io/badge/Tél%202-+225%200140940330-00BCD4?style=flat-square&logo=phone&logoColor=white" alt="Phone2">
+</a>
 
 </td>
 <td align="center" width="50%">
 
 ### 🌐 **Réseaux Sociaux**
-[![Facebook](https://img.shields.io/badge/Facebook-francois.djobo.3-1877F2?style=flat-square&logo=facebook&logoColor=white)](https://www.facebook.com/francois.djobo.3)
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Full%20Stack%20Developer-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nfcdjobofullstackdevelopper/)
-
-[![Instagram](https://img.shields.io/badge/Instagram-francois__djobo-E4405F?style=flat-square&logo=instagram&logoColor=white)](https://www.instagram.com/francois_djobo/)
+<a href="https://www.facebook.com/francois.djobo.3" target="_blank" rel="noopener noreferrer">
+<img src="https://img.shields.io/badge/Facebook-francois.djobo.3-1877F2?style=flat-square&logo=facebook&logoColor=white" alt="Facebook">
+</a>
+<br><br>
+<a href="https://www.linkedin.com/in/nfcdjobofullstackdevelopper/" target="_blank" rel="noopener noreferrer">
+<img src="https://img.shields.io/badge/LinkedIn-Full%20Stack%20Developer-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn">
+</a>
+<br><br>
+<a href="https://www.instagram.com/francois_djobo/" target="_blank" rel="noopener noreferrer">
+<img src="https://img.shields.io/badge/Instagram-francois__djobo-E4405F?style=flat-square&logo=instagram&logoColor=white" alt="Instagram">
+</a>
 
 </td>
 </tr>
@@ -285,7 +304,7 @@ Notre équipe est là pour vous accompagner !
 
 ## 🎉 **Prêt à Révolutionner Votre Gestion ?**
 
-### 🚀 **[COMMENCER MAINTENANT](https://nfcdjobo.github.io/Pro-Gest-All/)**
+### 🚀 **<a href="https://nfcdjobo.github.io/Pro-Gest-All/" target="_blank" rel="noopener noreferrer">COMMENCER MAINTENANT</a>**
 
 ---
 
