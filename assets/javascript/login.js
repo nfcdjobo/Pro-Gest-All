@@ -1,4 +1,3 @@
-
 window.addEventListener("DOMContentLoaded", (event)=>{
     if (sessionStorage.getItem("SESSION_ADMIN_Pro_Gest_All")) {
         window.location.href = "https://nfcdjobo.github.io/Pro-Gest-All/corporates/dashboard.html";
@@ -80,6 +79,14 @@ window.addEventListener("DOMContentLoaded", (event)=>{
             document.getElementById("error-email").textContent = "Ce champ est obligatoire";
         }
     }
+
+    // BOUTON DEV — connexion rapide sans saisie manuelle — à retirer avant mise en production
+    const devLoginBtn = document.getElementById("dev-login");
+    if (devLoginBtn) {
+        devLoginBtn.addEventListener("click", () => {
+            document.getElementById("email").value = "admin";
+            document.getElementById("password").value = "root";
+            connexion();
+        });
+    }
 })
-
-
