@@ -494,7 +494,7 @@
             <div class="content-card login-section fade-in-delay-2">
                 <h3>Connectez-vous pour commencer</h3>
                 
-                <a href="./corporates/login.html" class="login-button" id="loginBtn">
+                <a href="./corporates/dashboard.html" class="login-button" id="loginBtn">
                     <span id="btnText">Connexion</span>
                     <span id="btnLoader" class="loading" style="display: none;"></span>
                 </a>
@@ -578,10 +578,45 @@
             // Show loading state
             btnText.style.display = 'none';
             btnLoader.style.display = 'inline-block';
-            
-            // Simulate loading then redirect
+
+            // Connexion directe avec les accès par défaut (admin / root)
+            // — reproduit le comportement de corporates/login.js sans saisie manuelle
+            const dataSession = {
+                login: "admin",
+                password: "root",
+            };
+
+            const newAdmin = {
+                id: "ADMIN",
+                nom: "",
+                naissance: "",
+                roles: "TOUT RÔLES",
+                email: "admin",
+                telephone: "",
+                password: "root",
+                photo: "",
+                etat: "SUPER ADMINISTRATEUR",
+                statut: "1",
+                create_at: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+                update_at: new Date().toLocaleString('en-GB', { timeZone: 'UTC' }),
+            };
+
+            if (localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All")) {
+                const jsonParse = JSON.parse(localStorage.getItem("ADMINISTRATEURS_Pro_Gest_All"));
+                if (!jsonParse.find(cle => cle.email === dataSession.login && cle.password === dataSession.password)) {
+                    // Si l'admin par défaut n'existe pas encore dans la liste, on l'ajoute
+                    jsonParse.push(newAdmin);
+                    localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify(jsonParse));
+                }
+            } else {
+                localStorage.setItem("ADMINISTRATEURS_Pro_Gest_All", JSON.stringify([newAdmin]));
+            }
+
+            sessionStorage.setItem("SESSION_ADMIN_Pro_Gest_All", JSON.stringify(dataSession));
+
+            // Redirection vers le dashboard
             setTimeout(() => {
-                window.location.href = './corporates/login.html';
+                window.location.href = './corporates/dashboard.html';
             }, 1000);
         });
 
